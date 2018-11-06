@@ -1,0 +1,8 @@
+{
+  "name": "yuhe",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
