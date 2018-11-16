@@ -1,8 +1,7 @@
 {
-  "name": "yuhe",
+  "name": "HelloIonic",
   "integrations": {
-    "cordova": {},
-    "capacitor": {}
+    "cordova": {}
   },
-  "type": "angular"
+  "type": "ionic-angular"
 }
