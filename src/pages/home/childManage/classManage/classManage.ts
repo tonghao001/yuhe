@@ -10,9 +10,6 @@ import { Component } from '@angular/core';
 })
 
 export class ClassManagePage {
-  data:{
-    list: []
-  }
 
   doRefresh(event){
     console.log('refresh');
@@ -29,12 +26,7 @@ export class ClassManagePage {
   }
 
   loadMore(event){
-    if (this.data.list.length === 4) {
-      event.disabled = true;
-    }
-    else{
-      this.data.list.push('a');
-    }
+  
   }
 
 }
