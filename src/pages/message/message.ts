@@ -1,3 +1,5 @@
+
+import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,5 +7,15 @@ import { Component } from '@angular/core';
   templateUrl: 'message.html'
 })
 export class MessagePage {
-  
+  constructor(public navCtrl: NavController) {
+
+  }
+
+  goToClassManage() {
+    this.navCtrl.push('app-home-classManage',{id:123});
+  }
+
+  goToChildCheckOnManage() {
+    this.navCtrl.push('app-home-childCheckOnManage',{id:123});
+  }
 }
