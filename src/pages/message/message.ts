@@ -12,10 +12,10 @@ export class MessagePage {
   }
 
   goToClassManage() {
-    this.navCtrl.push('app-home-classManage',{id:123});
+    this.navCtrl.push('app-home-classManage', { id: 123 });
   }
 
   goToChildCheckOnManage() {
-    this.navCtrl.push('app-home-childCheckOnManage',{id:123});
+    this.navCtrl.push('app-home-childCheckOnManage', { id: 123 });
   }
 }

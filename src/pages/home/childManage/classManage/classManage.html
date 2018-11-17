@@ -6,6 +6,62 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  班级管理
+<ion-content class="class-content">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-lg offset="3">
+        <div class='class-item'>
+          name
+          1
+        </div>
+      </ion-col>
+      <ion-col size="6" size-lg offset="3">
+        <div class='class-item'>
+          name
+          2
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+      <ion-col size="6" size-lg offset="3">
+        <div class='class-item'>
+          name
+          1
+        </div>
+      </ion-col>
+      <ion-col size="6" size-lg offset="3">
+        <div class='class-item'>
+          name
+          2
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- Default Item -->
+  <ion-item>
+    <ion-label>
+      Item
+    </ion-label>
+  </ion-item>
+
+  <!-- Item as a Button -->
+  <ion-item>
+    <ion-label>
+      Button Item
+    </ion-label>
+  </ion-item>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="doRefresh($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
