@@ -18,6 +18,8 @@ npm-debug.log*
 .sass-cache/
 .tmp/
 .versions/
+package-lock.json
+yarn-lock.json
 coverage/
 www/
 node_modules/
