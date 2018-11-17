@@ -1,11 +1,15 @@
 {
-    "name": "helloionic",
+    "name": "YuHe",
     "version": "0.0.1",
     "author": "Ionic Framework",
     "homepage": "http://ionicframework.com/",
     "private": true,
     "scripts": {
         "start": "ionic-app-scripts serve",
+        "start:android": "ionic cordova run android",
+        "start:ios": "ionic cordova run ios",
+        "device:android": "ionic cordova run android --device",
+        "device:ios": "ionic cordova run ios --device",
         "clean": "ionic-app-scripts clean",
         "build": "ionic-app-scripts build",
         "lint": "ionic-app-scripts lint"
