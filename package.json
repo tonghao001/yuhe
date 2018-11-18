@@ -7,7 +7,7 @@
     "scripts": {
         "start": "ionic-app-scripts serve",
         "start:android": "ionic cordova run android",
-        "start:ios": "ionic cordova run ios",
+        "start:ios": "ionic cordova run ios -- --buildFlag=\"-UseModernBuildSystem=0\" --target=\"iPhone-8\"",
         "device:android": "ionic cordova run android --device",
         "device:ios": "ionic cordova run ios --device",
         "clean": "ionic-app-scripts clean",
@@ -32,7 +32,7 @@
         "@ionic/storage": "2.2.0",
         "ajv": "^5.0.0",
         "cordova-android": "^6.2.3",
-        "cordova-ios": "^4.4.0",
+        "cordova-ios": "^4.5.0",
         "cordova-plugin-device": "^2.0.2",
         "cordova-plugin-ionic": "^5.0.0",
         "cordova-plugin-ionic-keyboard": "^2.1.3",
