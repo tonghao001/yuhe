@@ -1,3 +1,4 @@
+import { EditAnnouncementPageModule } from './management/editAnnouncement/editAnnouncement.module';
 import { AnnounceDetailsPageModule } from './management/announcement/announce-details.module';
 import { AnnouncementPageModule } from './management/announcement/announcement.module';
 import { NgModule } from "@angular/core";
@@ -14,29 +15,13 @@ import { ChildManageModule } from "./childManage/childManage.module";
     IonicPageModule.forChild(HomePage),
     ChildManageModule,
     AnnouncementPageModule,
-    AnnounceDetailsPageModule
+    AnnounceDetailsPageModule,
+    EditAnnouncementPageModule
   ],
   
   entryComponents:[
     HomePage,
   ]
 })
-
-
-
-
-
-// @NgModule({
-//   declarations: [TabPage],
-//   imports: [
-//     IonicPageModule.forChild(TabPage),
-//     MessagePageModule,
-//     DynamicPageModule,
-//     HomePageModule,
-//     ContactPageModule,
-//     MePageModule
-//   ],
-//   entryComponents: [TabPage]
-// })
 
 export class HomePageModule {};

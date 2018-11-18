@@ -23,6 +23,8 @@ yarn-lock.json
 coverage/
 www/
 node_modules/
+resources/
+config.xml
 tmp/
 temp/
 platforms/

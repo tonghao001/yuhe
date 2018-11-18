@@ -121,4 +121,8 @@ export class Announcement {
       event.complete();
     }, 500);
   }
+
+  editAnnouncemnetClick() {
+    this.navCtrl.push("app-home-edit-announcement");
+  }
 }
