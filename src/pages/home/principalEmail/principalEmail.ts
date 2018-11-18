@@ -2,13 +2,13 @@ import { Component } from "@angular/core";
 import { NavParams, NavController, IonicPage } from "ionic-angular";
 
 @IonicPage({
-  name: "app-home-announcement"
+  name: "app-home-principal-email"
 })
 @Component({
-  templateUrl: "announcement.html",
-  selector: "announcement.ts"
+  templateUrl: "principalEmail.html",
+  selector: "principalEmail.ts"
 })
-export class Announcement {
+export class PrincipalEmail {
   props;
   items;
   isRead: string = "false";
@@ -104,7 +104,7 @@ export class Announcement {
   }
 
   clickItem(item) {
-    this.navCtrl.push("app-home-announce-details", item);
+    this.navCtrl.push("app-home-feedbak-email", item);
   }
 
   doRefresh(event) {
@@ -122,7 +122,7 @@ export class Announcement {
     }, 500);
   }
 
-  editAnnouncemnetClick() {
-    this.navCtrl.push("app-home-edit-announcement");
+  editEmail() {
+    this.navCtrl.push("app-home-edit-announcement", {type: 1});
   }
 }

@@ -9,7 +9,10 @@ export class MePage {
   constructor(public nav: NavController) {
       
   }
-  onClick() {
+  announcementClick() {
     this.nav.push('app-home-announcement');
+  }
+  princeipalEmailClick() {
+    this.nav.push('app-home-principal-email');
   }
 }

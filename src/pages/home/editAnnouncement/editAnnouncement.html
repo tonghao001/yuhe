@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title> 编辑通知 </ion-title>
+    <ion-title> {{type == 0 ? "编辑通知" : "编辑邮件"}} </ion-title>
     <ion-buttons end> <button (click)="sendAnnounceMent()" color="clear">发送</button> </ion-buttons>
   </ion-navbar>
 </ion-header>

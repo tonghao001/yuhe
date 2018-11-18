@@ -22,8 +22,8 @@
   <ion-list>
     <ion-list-header>
       <ion-segment [(ngModel)]="isRead">
-        <ion-segment-button value="false"> 未查阅 </ion-segment-button>
-        <ion-segment-button value="true"> 已查阅 </ion-segment-button>
+        <ion-segment-button value="false"> 未读 </ion-segment-button>
+        <ion-segment-button value="true"> 已读 </ion-segment-button>
       </ion-segment>
     </ion-list-header>
     <ion-item *ngFor="let item of items" (click)="clickItem(item)">
