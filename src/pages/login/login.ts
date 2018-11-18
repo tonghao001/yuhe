@@ -7,10 +7,17 @@ import { NavController } from 'ionic-angular';
 })
 export class LoginPage {
   constructor(public navCtrl: NavController) {
+    
+  }
+  isRememberPassword:Boolean = false;
 
+  onRememberPassword(): void {
+    console.log(this.isRememberPassword);
   }
 
-  onLogin() {
+  onLogin(): void {
     this.navCtrl.push('app-tab',{id:123});
   }
+
+
 }
