@@ -32,11 +32,7 @@
         "@ionic/storage": "2.2.0",
         "ajv": "^5.0.0",
         "cordova-android": "^6.2.3",
-<<<<<<< HEAD
-        "cordova-ios": "4.5.5",
-=======
         "cordova-ios": "^4.5.0",
->>>>>>> 927aed117a08bf1ec62bc26d57a6986593b9f0a7
         "cordova-plugin-device": "^2.0.2",
         "cordova-plugin-ionic": "^5.0.0",
         "cordova-plugin-ionic-keyboard": "^2.1.3",
