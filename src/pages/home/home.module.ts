@@ -1,10 +1,12 @@
-import { AnnounceDetailsPageModule } from './management/announcement/announce-details.module';
-import { AnnouncementPageModule } from './management/announcement/announcement.module';
+import { PrincipalEmailPageModule } from './principalEmail/principalEmail.module';
+import { EditAnnouncementPageModule } from './editAnnouncement/editAnnouncement.module';
+import { AnnounceDetailsPageModule } from './announcement/announce-details.module';
+import { AnnouncementPageModule } from './announcement/announcement.module';
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
 import { HomePage } from "./home";
-
 import { ChildManageModule } from "./childManage/childManage.module";
+import { FeedbackEmailPageModule } from './feedbackEmail/feedbackEmail.module';
 
 @NgModule({
   declarations:[
@@ -14,29 +16,15 @@ import { ChildManageModule } from "./childManage/childManage.module";
     IonicPageModule.forChild(HomePage),
     ChildManageModule,
     AnnouncementPageModule,
-    AnnounceDetailsPageModule
+    AnnounceDetailsPageModule,
+    EditAnnouncementPageModule,
+    FeedbackEmailPageModule,
+    PrincipalEmailPageModule
   ],
   
   entryComponents:[
     HomePage,
   ]
 })
-
-
-
-
-
-// @NgModule({
-//   declarations: [TabPage],
-//   imports: [
-//     IonicPageModule.forChild(TabPage),
-//     MessagePageModule,
-//     DynamicPageModule,
-//     HomePageModule,
-//     ContactPageModule,
-//     MePageModule
-//   ],
-//   entryComponents: [TabPage]
-// })
 
 export class HomePageModule {};

@@ -9,15 +9,16 @@ import { MePage } from '../me/me';
 
 @IonicPage({
   name: 'app-tab',
-  segment: 'tab/:id'
+  segment: 'tab/:id',
+  defaultHistory: ['app-tab']
 })
 @Component({
   templateUrl: 'tab.html'
 })
 export class TabPage {
-  tab1=MessagePage;
-  tab2=DynamicPage;
-  tab3=HomePage;
-  tab4=ContactPage;
-  tab5=MePage;
+  tab1 = MessagePage;
+  tab2 = DynamicPage;
+  tab3 = HomePage;
+  tab4 = ContactPage;
+  tab5 = MePage;
 }
