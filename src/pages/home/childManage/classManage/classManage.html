@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="class-content">
+<ion-content class="class-content" color="light">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
@@ -15,50 +15,27 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size="6" size-lg offset="3">
+      <ion-col *ngFor="let item of list">
         <div class='class-item'>
-          name
-          1
-        </div>
-      </ion-col>
-      <ion-col size="6" size-lg offset="3">
-        <div class='class-item'>
-          name
-          2
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-
-      <ion-col size="6" size-lg offset="3">
-        <div class='class-item'>
-          name
-          1
-        </div>
-      </ion-col>
-      <ion-col size="6" size-lg offset="3">
-        <div class='class-item'>
-          name
-          2
+          <div class="class-detail photo">
+              <img class="header-image" src=".././../assets/imgs/logo.png" />
+          </div>
+          <div class="class-detail">
+            <label>{{item.name}}</label>
+          </div>
+          <div class="class-detail">
+            <label>总人数:</label><span>{{item.totalCount}}人</span>
+          </div>
+          <div class="class-detail">
+            <strong>男:</strong><span>{{item.male}}人</span>
+            <strong>女:</strong><span>{{item.female}}人</span>
+          </div>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
 
 
-  <!-- Default Item -->
-  <ion-item>
-    <ion-label>
-      Item
-    </ion-label>
-  </ion-item>
-
-  <!-- Item as a Button -->
-  <ion-item>
-    <ion-label>
-      Button Item
-    </ion-label>
-  </ion-item>
 
   <ion-infinite-scroll threshold="100px" (ionInfinite)="doRefresh($event)">
     <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">

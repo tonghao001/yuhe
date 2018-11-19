@@ -10,6 +10,18 @@ import { Component } from '@angular/core';
 })
 
 export class ClassManagePage {
+  list;
+  constructor() {
+  
+    this.list = [
+      {name: '大一班', image:'',totalCount: 30, female: 15, male: 15},
+      {name: '大二班', image:'',totalCount: 30, female: 15, male: 15},
+      {name: '大三班', image:'',totalCount: 30, female: 15, male: 15},
+      {name: '大四班', image:'',totalCount: 30, female: 15, male: 15},
+      {name: '大五班', image:'',totalCount: 30, female: 15, male: 15},
+
+    ];
+  }
 
   doRefresh(event){
     console.log('refresh');

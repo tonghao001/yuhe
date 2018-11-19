@@ -1,6 +1,29 @@
 .class-content{
+    ion-col {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
     .class-item {
-        height: 100px;
-        background: red;
+        height: 150px;
+        background: #fff;
+
+        .class-detail{
+            display: block;
+            overflow: hidden;
+            line-height: 20px;
+            height: 20px;
+            text-align: center;
+
+            &.photo {
+             height: 60px;   
+            }img{
+                margin-top: 20px;
+                margin-bottom: 20px;
+                border-radius: 30px;
+                background: #eee;
+                width: 20%;
+                height: auto;
+            }
+        }
     }
 }
