@@ -15,20 +15,19 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of list">
+      <ion-col *ngFor="let item of list" (click)="goToStudentDetail(item.id)">
         <div class='student-item'>
           <div class="student-detail photo">
               <img class="header-image" src=".././../assets/imgs/logo.png" />
           </div>
-          <div class="student-detail class-name">
+          <div class="student-detail">
             <label>{{item.name}}</label>
           </div>
-          <div class="student-detail student-count">
-            <label>总人数:</label><span>{{item.totalCount}}人</span>
+          <div class="student-detail status" ngClass="{{item.status}}">
+            <label>{{item.statusString}}</label>
           </div>
-          <div class="student-detail student-detail">
-            <span>男:{{item.male}}人</span>
-            <span>女:{{item.female}}人</span>
+          <div class="student-detail status-description" ngClass="{{item.status}}">
+            <span>状态：{{item.statusDescription}}；评分：{{item.score}}</span>
           </div>
         </div>
       </ion-col>

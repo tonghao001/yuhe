@@ -3,6 +3,7 @@ import { IonicPageModule } from "ionic-angular";
 import { ChildManagePage } from "./childManage";
 import { ClassManagePageModule } from "./classManage/classManage.module";
 import { StudentManagePageModule } from "./studentManage/studentManage.module";
+import { StudentDetailPageModule } from "./studentDetail/studentDetail.module";
 import { ChildCheckOnPageModule } from "./childCheckOn/childCheckOn.module";
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ChildCheckOnPageModule } from "./childCheckOn/childCheckOn.module";
     IonicPageModule.forChild(ChildManagePage),
     ClassManagePageModule,
     ChildCheckOnPageModule,
-    StudentManagePageModule
+    StudentManagePageModule,
+    StudentDetailPageModule
   ],
   entryComponents:[
     ChildManagePage
