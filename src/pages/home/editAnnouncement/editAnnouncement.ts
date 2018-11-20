@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavParams, IonicPage, AlertController } from "ionic-angular";
+import { NavParams, IonicPage } from "ionic-angular";
 
 @IonicPage({
     name: "app-home-edit-announcement",
