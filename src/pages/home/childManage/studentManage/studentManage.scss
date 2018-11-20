@@ -1,16 +1,16 @@
 @import "../../../../theme/variables.scss";
-.class-content{
+.student-content{
     ion-col {
         flex: 0 0 50%;
         max-width: 50%;
     }
 
     background: $color-light;
-    .class-item {
+    .student-item {
         height: 180px;
         background: #fff;
 
-        .class-detail{
+        .student-detail{
             display: block;
             overflow: hidden;
             line-height: 20px;
