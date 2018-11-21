@@ -19,6 +19,8 @@
   5、web浏览器运行	   npm start
   6、安卓运行	         npm run start:android               (真机运行：npm run device:android)
   7、IOS运行	        npm run start:ios                   (真机运行：npm run device:ios)
+     问题：卸载重新安装node，加上参数：--buildFlag="-UseModernBuildSystem=0" --target="iPhone-8"
+
 
 源码目录：src
   page：放置所有子页面的内容
