@@ -7,6 +7,7 @@ import { IonicPageModule } from "ionic-angular";
 import { HomePage } from "./home";
 import { ChildManageModule } from "./childManage/childManage.module";
 import { FeedbackEmailPageModule } from './feedbackEmail/feedbackEmail.module';
+import {ChartModule} from 'angular-highcharts';
 
 @NgModule({
   declarations:[
@@ -14,6 +15,7 @@ import { FeedbackEmailPageModule } from './feedbackEmail/feedbackEmail.module';
   ],
   imports:[
     IonicPageModule.forChild(HomePage),
+    ChartModule,
     ChildManageModule,
     AnnouncementPageModule,
     AnnounceDetailsPageModule,
