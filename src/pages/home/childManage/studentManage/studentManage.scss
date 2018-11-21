@@ -1,16 +1,16 @@
 @import "../../../../theme/variables.scss";
-.class-content{
+.student-content{
     ion-col {
         flex: 0 0 50%;
         max-width: 50%;
     }
 
     background: $color-light;
-    .class-item {
+    .student-item {
         height: 180px;
         background: #fff;
 
-        .class-detail{
+        .student-detail{
             display: block;
             overflow: hidden;
             line-height: 20px;
@@ -32,16 +32,15 @@
                 line-height: 24px;
                 height: 24px;
             }
-            &.student-count{
+            &.status.leave{
                 font-size: 14px;
                 line-height: 18px;
+                color: $color-danger;
             }
-            &.student-detail{
-                strong{
-                    font-weight: normal;
-                }
+            &.status-description.absent{
                 font-size: 14px;
                 line-height: 18px;
+                color: $color-danger;
             }
         }
     }

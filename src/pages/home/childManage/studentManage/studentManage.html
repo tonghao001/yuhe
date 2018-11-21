@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      班级列表
+        学生列表
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="class-content" color="background">
+<ion-content class="student-content" color="background">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
       refreshingText="Refreshing...">
@@ -15,20 +15,19 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of list" (click)="goToStudentList(item.id)">
-        <div class='class-item'>
-          <div class="class-detail photo">
+      <ion-col *ngFor="let item of list" (click)="goToStudentDetail(item.id)">
+        <div class='student-item'>
+          <div class="student-detail photo">
               <img class="header-image" src=".././../assets/imgs/logo.png" />
           </div>
-          <div class="class-detail class-name">
+          <div class="student-detail">
             <label>{{item.name}}</label>
           </div>
-          <div class="class-detail student-count">
-            <label>总人数:</label><span>{{item.totalCount}}人</span>
+          <div class="student-detail status" ngClass="{{item.status}}">
+            <label>{{item.statusString}}</label>
           </div>
-          <div class="class-detail student-detail">
-            <span>男:{{item.male}}人</span>
-            <span>女:{{item.female}}人</span>
+          <div class="student-detail status-description" ngClass="{{item.status}}">
+            <span>状态：{{item.statusDescription}}；评分：{{item.score}}</span>
           </div>
         </div>
       </ion-col>
