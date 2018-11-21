@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import {Chart} from 'angular-highcharts';
+import { Chart } from 'angular-highcharts';
 
 @Component({
   templateUrl: 'home.html'
 })
 export class HomePage {
-  chart = new Chart({
-    chart:{
-      type:'line'
+  chart: Chart = new Chart({
+    chart: {
+      type: 'line'
     },
     title: {
       text: 'Linechart'
@@ -18,12 +18,22 @@ export class HomePage {
     series: [
       {
         name: 'Line 1',
-        data:[1,2,3]
+        data: [1, 2, 3]
       },
       {
         name: 'Line 2',
-        data: [4,5,6]
+        data: [4, 5, 6]
       }
     ]
   });
+
+  searchText: string = '';
+
+  onSearch(e): void {
+    console.log(e, this.searchText);
+  }
+  onClearSearchText(e): void {
+    console.log('cancel',e, this.searchText);
+  }
+
 }

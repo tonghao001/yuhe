@@ -1,14 +1,16 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-content class="page-home-view">
 
-<ion-content>
-  Home
+  <div class="header-back">
+    <ion-searchbar
+      [(ngModel)]="searchText"
+      [showCancelButton]="true"
+      (ionInput)="onSearch($event)"
+      (ionCancel)="onClearSearchText($event)"
+    >
+    </ion-searchbar>
+  </div>
 
   <div [chart]="chart"></div>
+
 
 </ion-content>
