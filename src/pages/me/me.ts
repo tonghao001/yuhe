@@ -15,4 +15,7 @@ export class MePage {
   princeipalEmailClick() {
     this.nav.push('app-home-principal-email');
   }
+  myApprovalClick() {
+    this.nav.push('app-home-my-approval');
+  }
 }
