@@ -1,0 +1,9 @@
+@import "../../../../theme/variables.scss";
+
+.child-check-page .attenance-statistic .box-content{
+     ion-item ion-label{
+        &.class-name{
+            color: $color-primary;
+        }
+    }
+}

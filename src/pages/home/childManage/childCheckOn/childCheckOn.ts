@@ -1,7 +1,6 @@
-import { IonicPage } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
-
 
 @IonicPage({
   name: 'app-home-childCheckOnManage'
@@ -10,6 +9,9 @@ import { Chart } from 'angular-highcharts';
   templateUrl: 'childCheckOn.html'
 })
 export class ChildCheckOn {
+  constructor(public navCtrl: NavController) {
+  }
+
   chart: Chart = new Chart({
     chart: {
       type: 'pie'
@@ -55,5 +57,13 @@ export class ChildCheckOn {
       }]
     }]
   });
+
+
+  goToPage(pageName, id){
+    pageName = pageName || 'app-home-childCheckList';
+    console.log('id:',id);
+    this.navCtrl.push(pageName, { id: id });
+  }
+
 
 }
