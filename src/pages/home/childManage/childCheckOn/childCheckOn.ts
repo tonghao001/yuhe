@@ -26,7 +26,7 @@ export class ChildCheckOn {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
-          enabled: false
+          enabled: true
         },
         showInLegend: true
       }
@@ -38,7 +38,8 @@ export class ChildCheckOn {
         y: 20,
         sliced: true,
         selected: true,
-        color: '#df56ff'
+        color: '#df56ff',
+        description: '20%'
       }, {
         name: '应到',
         y: 25,
