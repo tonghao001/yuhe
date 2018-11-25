@@ -1,4 +1,6 @@
-.body {
+.salary-body {
+
+
   .container-fluid {
     width: 100%;
     position: absolute;
@@ -7,5 +9,27 @@
     background-size: cover;
     background-image: url(../../../../../assets/image/home/salary/v2_pgohyt.png);
     height: 175px;
+  }
+
+  .date-center {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+  }
+  .icon-left {
+    text-align: right;
+  }
+  .content-card {
+    margin-top: 100px;
+  }
+  .salary-number {
+    color: white;
+    font-size: 32px;
+    font-weight: 400;
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 30px;
   }
 }

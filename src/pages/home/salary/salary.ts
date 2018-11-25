@@ -11,4 +11,11 @@ import { IonicPage } from "ionic-angular";
 
 export class Salary {
     
+
+  nextMonth() {
+    console.log("上一月")
+  }
+  preMonth() {
+    console.log("下一月")
+  }
 }
