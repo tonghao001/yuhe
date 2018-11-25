@@ -16,27 +16,32 @@ export class MyApproval {
       {
         name: "肥妹仔",
         type: "类型：请假（婚假）",
-        status: "未审批"
+        statusString: "待审批",
+        status: "one"
       },
       {
         name: "肥妹仔",
         type: "类型：请假（婚假）",
-        status: "未审批"
+        statusString: "已审批",
+        status: "two"
       },
       {
         name: "肥妹仔",
         type: "类型：请假（婚假）",
-        status: "未审批"
+        statusString: "未通过",
+        status: "three"
       },
       {
         name: "肥妹仔",
         type: "类型：请假（婚假）",
-        status: "未审批"
+        statusString: "未审批",
+        status: "one"
       },
       {
         name: "肥妹仔",
         type: "类型：请假（婚假）",
-        status: "未审批"
+        statusString: "未审批",
+        status: "one"
       }
     ];
   }

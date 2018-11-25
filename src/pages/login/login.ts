@@ -18,6 +18,8 @@ export class LoginPage {
   onLogin(): void {
     this.navCtrl.push('app-tab',{id:123});
   }
-
+  onForgetPassword() {
+    this.navCtrl.push('app-forget-password');
+  }
 
 }
