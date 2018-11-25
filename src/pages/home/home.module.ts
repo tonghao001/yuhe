@@ -13,6 +13,7 @@ import {ChartModule} from 'angular-highcharts';
 import { ApprovalDetailsPageModule } from './approval/approvalDetails/approvalDetails.module';
 import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
+import { ActionSheetService } from '../../service/actionSheet.service';
 
 
 
@@ -35,7 +36,8 @@ import { ConfirmService } from '../../service/confirm.service';
   ],
   providers:[
     MessageService,
-    ConfirmService
+    ConfirmService,
+    ActionSheetService
   ],
   entryComponents:[
     HomePage,
