@@ -12,7 +12,7 @@ export class MePage {
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
-      header: "退出后，您不再收到来自雨荷的消息",
+      
       buttons: [{
         text: '退出登录',
         role: 'destructive',
@@ -26,7 +26,8 @@ export class MePage {
         handler: () => {
           console.log('Cancel clicked');
         }
-      }]
+      }],
+      title: "退出后，您不再收到来自雨荷的消息"
     });
     await actionSheet.present();
   }
