@@ -3,46 +3,52 @@
 </ion-header>
 
 <ion-content class="approval-detail-body">
-  <ion-item>
-    <ion-label>请假类型</ion-label>
-    <ion-label item-end class="right-label">婚假</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>开始时间</ion-label>
-    <ion-label item-end class="right-label">2018-10-09 9:00</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>结束时间</ion-label>
-    <ion-label item-end class="right-label">2018-10-09 18:00</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>时长</ion-label>
-    <ion-label item-end class="right-label">9</ion-label>
-  </ion-item>
+  <div class="block-view">
+    <div class="info-cell">
+      <p class="left">请假类型</p>
+      <p class="right">事假</p>
+    </div>
+    <div class="info-cell">
+      <p class="left">开始时间</p>
+      <p class="right">2018-10-09 10:30</p>
+    </div>
+    <div class="info-cell">
+      <p class="left">结束时间</p>
+      <p class="right">2018-10-09 12:30</p>
+    </div>
+    <div class="info-cell">
+      <p class="left">时长</p>
+      <p class="right">2</p>
+    </div>
+  </div>
 
-  <ion-item>
-    <h2>事由</h2>
-    <p>在此向领导请婚假。</p>
-  </ion-item>
+  <div class="block-view">
+    <div class="title-view">
+      <p class="left title">事由</p>
+      <p class="right">在此向领导请婚假。</p>
+    </div>
+  </div>
 
-  <ion-item>
-    <h2>图片</h2>
-    <ion-row padding-horizontal>
-      <ion-col class="reason-img">
-        <img
-          class="header-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-      </ion-col>
-    </ion-row>
-  </ion-item>
+  <div class="block-view">
+    <div class="title-view">
+      <p class="left title">图片</p>
+      <ion-row>
+        <ion-col class="reason-img">
+          <img
+            class="header-image"
+            src=".././../assets/icon/thumbnail-puppy-1.jpg"
+          />
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 
   <div class="appoval-person-list">
     <p>审批人：</p>
     <ion-row padding-horizontal>
       <ion-col class="approval-person">
         <img
-          class="header-image"
+          class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
         <p>我发起的申请</p>
@@ -51,7 +57,7 @@
       </ion-col>
       <ion-col class="approval-person">
         <img
-          class="header-image"
+          class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
         <p>我发起的申请</p>
@@ -60,7 +66,7 @@
       </ion-col>
       <ion-col class="approval-person">
         <img
-          class="header-image"
+          class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
         <p>我发起的申请</p>
@@ -74,7 +80,7 @@
     <ion-row padding-horizontal>
       <ion-col class="approval-person">
         <img
-          class="header-image"
+          class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
         <p>我发起的申请</p>
@@ -83,7 +89,7 @@
       </ion-col>
       <ion-col class="approval-person">
         <img
-          class="header-image"
+          class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
         <p>我发起的申请</p>
@@ -92,7 +98,7 @@
       </ion-col>
       <ion-col class="approval-person">
         <img
-          class="header-image"
+          class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
         <p>我发起的申请</p>
@@ -101,8 +107,9 @@
       </ion-col>
     </ion-row>
   </div>
-  <div class="bottom-view">
-        <button button ion-button  style="width: 48%;" >通过</button>
-        <button button ion-button  style="width: 48%;" >不通过</button>
-    </div>
 </ion-content>
+
+<div class="bottom-view">
+  <button button ion-button class="bottom-button">通过</button>
+  <button button ion-button class="bottom-button">不通过</button>
+</div>
