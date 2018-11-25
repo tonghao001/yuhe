@@ -1,9 +1,7 @@
 import { Injectable } from "@angular/core";
 import { LoadingController, Loading } from "ionic-angular";
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoadingService {
   constructor(public loadingCtrl: LoadingController) {
 
