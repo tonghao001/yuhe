@@ -32,12 +32,7 @@
                 line-height: 24px;
                 height: 24px;
             }
-            &.status.leave{
-                font-size: 14px;
-                line-height: 18px;
-                color: $color-danger;
-            }
-            &.status-description.absent{
+            &.status.leave, .status-description.absent{
                 font-size: 14px;
                 line-height: 18px;
                 color: $color-danger;

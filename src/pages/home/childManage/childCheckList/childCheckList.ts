@@ -1,4 +1,4 @@
-import { IonicPage } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 
@@ -12,7 +12,7 @@ export class ChildCheckList {
 
   list;
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
     this.list = [
       {
         name: '大一班',
@@ -35,6 +35,13 @@ export class ChildCheckList {
         noSignedCount: 0
       }
     ];
+  }
+
+
+  goToPage(pageName, id){
+    pageName = pageName || 'app-home-childCheckListItem';
+    console.log('id:',id);
+    this.navCtrl.push(pageName, { id: id });
   }
 
 }

@@ -28,7 +28,8 @@ export class ChildCheckOn {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
-          enabled: true
+          enabled: true,
+          format: '{point.percentage:.1f} %'
         },
         showInLegend: true
       }
