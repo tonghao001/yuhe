@@ -46,56 +46,20 @@
   <div class="appoval-person-list">
     <p>审批人：</p>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person">
+      <ion-col class="approval-person" *ngFor="let item of approvalPersons" >
         <img
           class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
-        <p>我发起的申请</p>
-        <p>2018-10-09</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
-      </ion-col>
-      <ion-col class="approval-person">
-        <img
-          class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-        <p>我发起的申请</p>
-        <p>2018-10-09</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
-      </ion-col>
-      <ion-col class="approval-person">
-        <img
-          class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-        <p>我发起的申请</p>
-        <p>2018-10-09</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
+        <p>{{item.name}}</p>
+        <p>{{item.date}}</p>
+        <ion-icon name="arrow-round-forward" class="arrow-right" [ngClass]="item.last"></ion-icon>
       </ion-col>
     </ion-row>
   </div>
-  <div class="appoval-person-list">
+  <div class="appoval-person-list end">
     <p>抄送人：</p>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person">
-        <img
-          class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-        <p>我发起的申请</p>
-        <p>2018-10-09</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
-      </ion-col>
-      <ion-col class="approval-person">
-        <img
-          class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-        <p>我发起的申请</p>
-        <p>2018-10-09</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
-      </ion-col>
       <ion-col class="approval-person">
         <img
           class="person-image"
@@ -110,6 +74,6 @@
 </ion-content>
 
 <div class="bottom-view">
-  <button button ion-button class="bottom-button">通过</button>
-  <button button ion-button class="bottom-button">不通过</button>
+  <button button ion-button (click)="approvalClick()" class="bottom-button">通过</button>
+  <button button ion-button (click)="disApprovalClick()" class="bottom-button">不通过</button>
 </div>
