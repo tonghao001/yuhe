@@ -11,6 +11,8 @@ import { ChildManageModule } from "./childManage/childManage.module";
 import { FeedbackEmailPageModule } from './feedbackEmail/feedbackEmail.module';
 import {ChartModule} from 'angular-highcharts';
 import { ApprovalDetailsPageModule } from './approval/approvalDetails/approvalDetails.module';
+import { MessageService } from '../../service/message.service';
+import { ConfirmService } from '../../service/confirm.service';
 
 
 
@@ -29,9 +31,12 @@ import { ApprovalDetailsPageModule } from './approval/approvalDetails/approvalDe
     PrincipalEmailPageModule,
     MyApprovalPageModule,
     ApprovalDetailsPageModule,
-    SalaryPageModule,
+    SalaryPageModule
   ],
-  
+  providers:[
+    MessageService,
+    ConfirmService
+  ],
   entryComponents:[
     HomePage,
   ]
