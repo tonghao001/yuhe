@@ -1,4 +1,5 @@
 import { MyApprovalPageModule } from './approval/myApproval/myApproval.module';
+import { SalaryPageModule } from './salary/salary.module';
 import { PrincipalEmailPageModule } from './principalEmail/principalEmail.module';
 import { EditAnnouncementPageModule } from './editAnnouncement/editAnnouncement.module';
 import { AnnounceDetailsPageModule } from './announcement/announce-details.module';
@@ -10,6 +11,7 @@ import { ChildManageModule } from "./childManage/childManage.module";
 import { FeedbackEmailPageModule } from './feedbackEmail/feedbackEmail.module';
 import {ChartModule} from 'angular-highcharts';
 import { ApprovalDetailsPageModule } from './approval/approvalDetails/approvalDetails.module';
+
 
 
 @NgModule({
@@ -27,6 +29,7 @@ import { ApprovalDetailsPageModule } from './approval/approvalDetails/approvalDe
     PrincipalEmailPageModule,
     MyApprovalPageModule,
     ApprovalDetailsPageModule,
+    SalaryPageModule,
   ],
   
   entryComponents:[

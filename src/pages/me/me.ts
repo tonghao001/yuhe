@@ -18,4 +18,8 @@ export class MePage {
   myApprovalClick() {
     this.nav.push('app-home-my-approval');
   }
+  salaryButtonClick() {
+    this.nav.push('app-home-salary');
+
+  }
 }
