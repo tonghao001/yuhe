@@ -1,0 +1,31 @@
+@import "../../theme/variables.scss";
+
+.me-page{
+    background: $color-background;
+    
+
+    .my-panel{
+        margin: 0 10px;
+        background: #fff;
+        padding: 0  10px;
+        border-radius: 10px;
+    
+        ion-item{
+            &:nth-last-child(1) {
+                border: none;
+                .item-inner{
+                    border: none;
+                }
+            }
+            
+            span{
+                color: $color-text;    
+            }
+            strong{
+                float: right;
+                font-weight: normal;
+                color: $color-icon;
+            }
+        }
+    }
+}
