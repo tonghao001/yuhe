@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavParams, NavController, IonicPage } from "ionic-angular";
+import { IonicPage } from "ionic-angular";
 
 @IonicPage({
   name: "app-home-salary"
