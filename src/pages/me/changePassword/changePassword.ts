@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 import { LoadingService } from '../../../service/loading.service';
 
 @IonicPage({
@@ -11,7 +11,7 @@ import { LoadingService } from '../../../service/loading.service';
   templateUrl: 'changePassword.html'
 })
 export class ChangePasswordPage {
-  constructor(private loadingService: LoadingService) {
+  constructor(private navCtrl: NavController, private loadingService: LoadingService) {
 
   }
 
@@ -23,5 +23,7 @@ export class ChangePasswordPage {
     console.log(this.oldPassword, this.newPassword, this.confirmPassword);
     this.loadingService.show({content:'请稍后'});
   }
-
+  onForgetPassword():void{
+    this.navCtrl.push('app-forget-password');
+  }
 }
