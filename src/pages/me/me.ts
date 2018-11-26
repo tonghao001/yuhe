@@ -9,7 +9,8 @@ import { ActionSheetService } from '../../service/actionSheet.service';
 export class MePage {
   constructor(
     private navCtrl: NavController,
-    private actionSheetService: ActionSheetService) {}
+    private actionSheetService: ActionSheetService) {
+    }
 
   showActionSheet(): void {
     this.actionSheetService.show({

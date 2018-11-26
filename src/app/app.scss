@@ -23,3 +23,13 @@ div,p {
   padding: 0;
   margin:0;
 }
+ion-header {
+  padding-top: -$cordova-md-statusbar-padding;
+  background-color: color($colors, primary);
+}
+// .platform-ios {
+//   ion-header {
+//     padding-top: $cordova-md-statusbar-padding;
+//     background-color: color($colors, primary);
+//   }
+// }
