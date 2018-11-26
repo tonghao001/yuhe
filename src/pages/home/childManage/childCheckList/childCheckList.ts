@@ -37,7 +37,6 @@ export class ChildCheckList {
     ];
   }
 
-
   goToPage(pageName, id){
     pageName = pageName || 'app-home-childCheckListItem';
     console.log('id:',id);
