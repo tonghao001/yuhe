@@ -18,18 +18,19 @@
     <div class="my-list">
       <div class="my-item">
           <span>修改密码</span>
-          <strong>></strong>
+          <strong (click)="goToPage('app-me-changePassword')"><ion-icon name="arrow-forward"></ion-icon></strong>
       </div>
       <div class="my-item">
           <span>关于雨荷</span>
-          <strong>></strong>
+          
+          <strong (click)="goToPage('app-me-about')"><ion-icon name="arrow-forward"></ion-icon></strong>
       </div>
     </div>
   </div>
 
 
   <ion-row justify-content-center class="bottom-login">
-      <button ion-button color="default" default block (click)="presentActionSheet()">退出</button>
+      <button ion-button color="default" default block (click)="showActionSheet()">退出</button>
   </ion-row>
 
 </ion-content>
