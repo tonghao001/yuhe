@@ -77,7 +77,7 @@ export class HomePage {
         {
           text: 'Delete',
           role: 'destructive',
-          // icon: !this.platform.is('ios') ? 'trash' : null,
+          icon: !this.platform.is('ios') ? 'trash' : null,
           handler: () => {
             console.log('Delete clicked');
           }
@@ -114,5 +114,9 @@ export class HomePage {
       ]
     })
   }
+
+
+
+
 
 }

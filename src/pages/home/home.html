@@ -2,19 +2,14 @@
 
   <div class="header-back">
     <div>
-        <ion-searchbar
-        [(ngModel)]="searchText"
-        [showCancelButton]="true"
-        (ionInput)="onSearch($event)"
-        (ionCancel)="onClearSearchText($event)"
-      >
+      <ion-searchbar [(ngModel)]="searchText" [showCancelButton]="true" (ionInput)="onSearch($event)" (ionCancel)="onClearSearchText($event)">
       </ion-searchbar>
     </div>
   </div>
 
   <ion-row class="message-view" justify-content-start align-items-center>
     <ion-col col-auto>
-        <ion-icon color="primary" name="volume-up"></ion-icon>
+      <ion-icon color="primary" name="volume-up"></ion-icon>
     </ion-col>
     <ion-col style="overflow: hidden">
       <p class="message">关于2018年中秋节、国庆节放假安排的通知</p>
@@ -26,8 +21,114 @@
   <button ion-button color="primary" (click)="showConfirm()">确认删除</button>
   <button ion-button color="primary" (click)="showActionSheet()">底部弹框</button>
 
+  <!-- 园情总览 -->
+  <div class="detail-block">
+    <div class="block-title">园情总览</div>
 
-  <div [chart]="chart"></div>
+    <ion-row justify-content-around align-items-center>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">职工出勤</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">疾病情况</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">财务报表</div>
+      </div>
+    </ion-row>
+  </div>
+  <div class="chart-view">
+      <div class="chart-item" [chart]="chart"></div>
+  </div>
+
+
+
+  <!-- 园长管理	 -->
+  <div class="detail-block">
+    <div class="block-title">园长管理</div>
+
+    <ion-row justify-content-around align-items-center>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">园长信箱</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">通知公告</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">审批</div>
+      </div>
+    </ion-row>
+  </div>
+
+  <!-- 幼儿管理 -->
+  <div class="detail-block">
+    <div class="block-title">幼儿管理</div>
+
+    <ion-row justify-content-around align-items-center>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">班级管理</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">幼儿考情</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">时光轴</div>
+      </div>
+    </ion-row>
+  </div>
+
+  <!-- 个人小助理 -->
+  <div class="detail-block">
+    <div class="block-title">个人小助理</div>
+
+    <ion-row justify-content-around align-items-center>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">工资查询</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">考勤打卡</div>
+      </div>
+      <div class="block-item">
+        <ion-row class="item-image primary" justify-content-center align-items-center>
+          <ion-icon name="contact" color="white"></ion-icon>
+        </ion-row>
+        <div class="item-text">日程安排</div>
+      </div>
+    </ion-row>
+  </div>
 
 
 </ion-content>

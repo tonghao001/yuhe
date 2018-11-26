@@ -41,7 +41,9 @@ $colors: (
   icon:       #666666,
   grey:       #aaaaaa,
   dark:       #444444,
-  background: #f7f7f7
+  border:     #ededed,
+  background: #f7f7f7,
+  white:      #ffffff
 );
 
 $color-primary:    #03ccc6;
@@ -54,6 +56,7 @@ $color-grey:       #aaaaaa;
 $color-dark:       #444444;
 $color-background: #f7f7f7;
 $color-border: #ededed;
+$color-white: #ffffff;
 
 
 // App iOS Variables
