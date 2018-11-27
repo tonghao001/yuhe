@@ -46,7 +46,7 @@
       </div>
     </ion-row>
   </div>
-  <div class="chart-view">
+  <div class="chart-view" (click)="goToPage('app-home-staffAttendance')">
       <div class="chart-item" [chart]="chart"></div>
   </div>
 
@@ -83,17 +83,17 @@
     <div class="block-title">幼儿管理</div>
 
     <ion-row justify-content-around align-items-center>
-      <div class="block-item">
+      <div class="block-item" (click)="goToPage('app-home-classManage')">
         <ion-row class="item-image primary" justify-content-center align-items-center>
           <ion-icon name="contact" color="white"></ion-icon>
         </ion-row>
-        <div class="item-text">班级管理</div>
+        <div class="item-text" >班级管理</div>
       </div>
-      <div class="block-item">
+      <div class="block-item" (click)="goToPage('app-home-childCheckOnManage')">
         <ion-row class="item-image primary" justify-content-center align-items-center>
           <ion-icon name="contact" color="white"></ion-icon>
         </ion-row>
-        <div class="item-text">幼儿考情</div>
+        <div class="item-text" >幼儿考情</div>
       </div>
       <div class="block-item">
         <ion-row class="item-image primary" justify-content-center align-items-center>
