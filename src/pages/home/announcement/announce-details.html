@@ -3,56 +3,58 @@
 </ion-header>
 
 <ion-content class="announce-details-body">
-  <ion-item>
+  <ion-item no-lines>
     <ion-avatar item-start>
       <img src=".././../assets/icon/thumbnail-puppy-1.jpg" />
     </ion-avatar>
-    <h2>张晓明  院长</h2>
-        <p>发布时间 2012-11-12</p>
+    <h2>张晓明 院长</h2>
+    <p>发布时间 2012-11-12</p>
   </ion-item>
   <div>
-    <p class="details-content" >加夫里什大家福利开始的范老师打几分 \n
-      了大煞风景啦三等奖\n
-      了多久啊了房间\n
-      家啦三等奖疯了\n
-      见风使舵理解\n
-  
-      加夫里什大家福利开始的范老师打几分 \n
-      了大煞风景啦三等奖\n
-      了多久啊了房间\n
-      家啦三等奖疯了\n
-      见风使舵理解\n</p>
+    <p class="details-content">
+      加夫里什大家福利开始的范老师打几分 \n 了大煞风景啦三等奖\n
+      了多久啊了房间\n 家啦三等奖疯了\n 见风使舵理解\n
+      加夫里什大家福利开始的范老师打几分 \n 了大煞风景啦三等奖\n
+      了多久啊了房间\n 家啦三等奖疯了\n 见风使舵理解\n
+    </p>
   </div>
   <div>
-      <p class="center-text-label">
-    20人以查阅，30人未查阅
-  </p>
-  <p class="header-title-label">
-    已查阅 （20/50）
-  </p>
-  <ion-row  padding-horizontal >
-    <ion-col *ngFor="let user of users" >
-      <ion-avatar item-start>
-        <img class="header-image" src=".././../assets/icon/thumbnail-puppy-1.jpg" />
-      </ion-avatar>
-    </ion-col>
-  </ion-row>
-  <p class="center-text-label">
-    20人以查阅，30人未查阅
-  </p>
-  <p class="header-title-label">
-    未查阅 （30/50）
-  </p>
-  <ion-row padding-horizontal>
-    <ion-col *ngFor="let user of users" >
-      <ion-avatar item-start>
-        <img class="header-image" src=".././../assets/icon/thumbnail-puppy-1.jpg" />
-      </ion-avatar>
-    </ion-col>
-  </ion-row>
-  <p padding-horizontal>
-    <button ion-button block (click)="presentAlertConfirm()" >一键提醒</button>
-  </p>
+    <div class="read-title">
+        <p class="center-text-label">20人以查阅，30人未查阅</p>
+        <p class="header-title-label">已查阅 （20/50）</p>
+        <button (click)="readOpenClick()" class="read-fold">
+          <ion-icon name="{{isReadOpen ? 'arrow-dropdown' : 'arrow-dropup'}}"></ion-icon>
+        </button>
+    </div>
+    <ion-row class="read-list" [hidden]="isReadOpen" >
+      <ion-col *ngFor="let user of users">
+        <ion-avatar item-start>
+          <img
+            class="header-image"
+            src="assets/icon/thumbnail-puppy-1.jpg"
+          />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+    <div class="read-title">
+        <p class="center-text-label">20人以查阅，30人未查阅</p>
+        <p class="header-title-label">未查阅 （30/50）</p>
+        <button (click)="unReadOpenClick()" class="read-fold">
+            <ion-icon name="{{unReadOpen ? 'arrow-dropdown' : 'arrow-dropup'}}"></ion-icon>
+          </button>
+    </div>
+    <ion-row class="read-list" [hidden]="unReadOpen">
+      <ion-col *ngFor="let user of users">
+        <ion-avatar item-start>
+          <img
+            class="header-image"
+            src="assets/icon/thumbnail-puppy-1.jpg"
+          />
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+    <p padding-horizontal>
+      <button ion-button block (click)="presentAlertConfirm()">一键提醒</button>
+    </p>
   </div>
-
 </ion-content>
