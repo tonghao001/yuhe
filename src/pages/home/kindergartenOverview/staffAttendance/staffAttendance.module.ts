@@ -1,16 +1,18 @@
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
 import { StaffAttendancePage } from "./staffAttendance";
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
-  declarations:[
+  declarations: [
     StaffAttendancePage
   ],
-  imports:[
-    IonicPageModule.forChild(StaffAttendancePage)
+  imports: [
+    IonicPageModule.forChild(StaffAttendancePage),
+    ChartModule
   ],
-  entryComponents:[
+  entryComponents: [
     StaffAttendancePage
   ]
 })
-export class StaffAttendancePageModule {};
+export class StaffAttendancePageModule { };
