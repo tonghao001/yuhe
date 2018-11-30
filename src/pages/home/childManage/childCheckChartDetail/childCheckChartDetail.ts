@@ -29,9 +29,18 @@ export class ChildCheckChartDetail {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '{point.percentage:.1f} %'
+          distance:-60,
+          formatter:function(){
+            return '<b>'+this.point.name+'</b>:'+this.point.percentage.toFixed(2)+"%";
+          },
         },
-        showInLegend: true
+        events: {
+          click: (e)=>{
+            console.log(e.point.name);
+              this.navCtrl.push('app-home-chartDetailList', {name: '', status: ''});
+          }
+        },
+        showInLegend: false
       }
     },
     series: [{
