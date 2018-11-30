@@ -71,7 +71,6 @@ export class ChildCheckChartDetail {
   selectTime(event){
     console.log(event.value);
     this.timeString = event.value;
-    console.log('time');
   }
 
 }
