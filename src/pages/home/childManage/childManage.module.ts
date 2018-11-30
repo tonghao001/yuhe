@@ -5,6 +5,7 @@ import { StudentDetailPageModule } from "./studentDetail/studentDetail.module";
 import { ChildCheckOnPageModule } from "./childCheckOn/childCheckOn.module";
 import { ChildCheckListPageModule } from "./childCheckList/childCheckList.module";
 import { ChildCheckListItemPageModule } from "./childCheckListItem/childCheckListItem.module";
+import { ChildCheckChartDetailPageModule } from "./childCheckChartDetail/childCheckChartDetail.module";
 
 @NgModule({
   declarations:[
@@ -15,7 +16,8 @@ import { ChildCheckListItemPageModule } from "./childCheckListItem/childCheckLis
     StudentManagePageModule,
     StudentDetailPageModule,
     ChildCheckListPageModule,
-    ChildCheckListItemPageModule
+    ChildCheckListItemPageModule,
+    ChildCheckChartDetailPageModule
   ],
   entryComponents:[
   ]
