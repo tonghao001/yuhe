@@ -14,6 +14,8 @@ import { NavParams, IonicPage, AlertController } from "ionic-angular";
 export class AnnounceDetails {
   item;
   users;
+  isReadOpen = false;
+  unReadOpen = false;
   constructor(public alertController: AlertController, params: NavParams) {
     this.item = params.data;
     this.users = [
@@ -45,4 +47,11 @@ export class AnnounceDetails {
     await alert.present();
   }
 
+  readOpenClick() {
+    this.isReadOpen = !this.isReadOpen;
+  }
+
+  unReadOpenClick() {
+    this.unReadOpen = !this.unReadOpen;
+  }
 }

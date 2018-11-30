@@ -57,19 +57,19 @@
     <div class="block-title">园长管理</div>
 
     <ion-row justify-content-around align-items-center>
-      <div class="block-item">
+      <div class="block-item" (click)="goToPage('app-home-principal-email')">
         <ion-row class="item-image primary" justify-content-center align-items-center>
           <ion-icon name="contact" color="white"></ion-icon>
         </ion-row>
         <div class="item-text">园长信箱</div>
       </div>
-      <div class="block-item">
+      <div class="block-item" (click)="goToPage('app-home-announcement')">
         <ion-row class="item-image primary" justify-content-center align-items-center>
           <ion-icon name="contact" color="white"></ion-icon>
         </ion-row>
         <div class="item-text">通知公告</div>
       </div>
-      <div class="block-item">
+      <div class="block-item" (click)="goToPage('app-home-my-approval')">
         <ion-row class="item-image primary" justify-content-center align-items-center>
           <ion-icon name="contact" color="white"></ion-icon>
         </ion-row>
@@ -109,7 +109,7 @@
     <div class="block-title">个人小助理</div>
 
     <ion-row justify-content-around align-items-center>
-      <div class="block-item">
+      <div class="block-item" (click)="goToPage('app-home-salary')">
         <ion-row class="item-image primary" justify-content-center align-items-center>
           <ion-icon name="contact" color="white"></ion-icon>
         </ion-row>
