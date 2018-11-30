@@ -1,6 +1,5 @@
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController,NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { Chart } from 'angular-highcharts';
 
 @IonicPage({
   name: 'app-home-chartDetailList'
@@ -9,7 +8,8 @@ import { Chart } from 'angular-highcharts';
   templateUrl: 'chartDetailList.html'
 })
 export class ChartDetailList {
-  constructor(public navCtrl: NavController) {
+  constructor(private navCtrl: NavController, private navParams: NavParams) {
+    console.log(navParams.data);
     this.list = [
       {
         className: '小二班',
