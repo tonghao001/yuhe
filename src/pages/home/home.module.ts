@@ -16,7 +16,7 @@ import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
-
+import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
 
 @NgModule({
   declarations:[
@@ -35,7 +35,8 @@ import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
     ApprovalDetailsPageModule,
     SalaryPageModule,
     kindergartenOverviewModule,
-    CheckInPageModule
+    CheckInPageModule,
+    ApprovalPageModule,
   ],
   providers:[
     MessageService,
