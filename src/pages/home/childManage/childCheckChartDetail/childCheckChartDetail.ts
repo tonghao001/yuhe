@@ -37,7 +37,7 @@ export class ChildCheckChartDetail {
         events: {
           click: (e)=>{
             console.log(e.point.name);
-              this.navCtrl.push('app-home-chartDetailList', {name: e.point.name, status: e.point.status});
+              this.navCtrl.push('app-home-chartDetailList', {name: e.point.name});
           }
         },
         showInLegend: true
