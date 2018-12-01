@@ -22,6 +22,8 @@ import { ActionSheetService } from '../../service/actionSheet.service';
 import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
 import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
 import { ProcurementApplyPageModule } from './apply/procurementApply/procurementApply.module';
+import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApply.module';
+
 
 @NgModule({
   declarations:[
@@ -47,6 +49,7 @@ import { ProcurementApplyPageModule } from './apply/procurementApply/procurement
     RestApplyPageModule,
     ProcurementApplyPageModule,
     ResignApplyPageModule,
+    StationeryApplyPageModule,
   ],
   providers:[
     MessageService,
