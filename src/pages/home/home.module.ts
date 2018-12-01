@@ -1,3 +1,5 @@
+import { CopyToMePageModule } from './approval/copyToMe/copyToMe.module';
+import { StartByMePageModule } from './approval/startByMe/startByMe.module';
 import { MyApprovalPageModule } from './approval/myApproval/myApproval.module';
 import { SalaryPageModule } from './salary/salary.module';
 import { PrincipalEmailPageModule } from './principalEmail/principalEmail.module';
@@ -18,6 +20,7 @@ import { ActionSheetService } from '../../service/actionSheet.service';
 import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
 import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
 
+
 @NgModule({
   declarations:[
     HomePage,
@@ -37,6 +40,8 @@ import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module'
     kindergartenOverviewModule,
     CheckInPageModule,
     ApprovalPageModule,
+    StartByMePageModule,
+    CopyToMePageModule,
   ],
   providers:[
     MessageService,

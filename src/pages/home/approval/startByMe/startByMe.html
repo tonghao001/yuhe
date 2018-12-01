@@ -1,15 +1,8 @@
 <ion-header>
-  <ion-navbar>
-     <ion-title> 公告通知 </ion-title> 
-     <ion-buttons end>
-       <button ion-button icon-only (click)="editAnnouncemnetClick()" > 
-          <ion-icon item-end name="create"></ion-icon>
-       </button>
-      </ion-buttons>
-  </ion-navbar>
+  <ion-navbar> <ion-title> 我发起的 </ion-title> </ion-navbar>
 </ion-header>
 
-<ion-content class="announcement-body">
+<ion-content class="start-me-body">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -20,14 +13,8 @@
     </ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-list-header>
-      <ion-segment [(ngModel)]="isRead">
-        <ion-segment-button class="segment-button-one" [ngClass]="isRead"   value="false"> 未读 </ion-segment-button>
-        <ion-segment-button class="segment-button-two" [ngClass]="isRead" value="true"> 已读 </ion-segment-button>
-      </ion-segment>
-    </ion-list-header>
     <ion-item *ngFor="let item of items" (click)="clickItem(item)">
-      <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
+      <ion-badge class="badge-icon">{{
         item.badage
       }}</ion-badge>
       <ion-avatar item-start>

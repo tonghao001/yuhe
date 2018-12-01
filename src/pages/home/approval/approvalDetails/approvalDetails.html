@@ -73,7 +73,12 @@
   </div>
 </ion-content>
 
-<div class="bottom-view">
-  <button button ion-button (click)="approvalClick()" class="bottom-button">通过</button>
-  <button button ion-button (click)="disApprovalClick()" class="bottom-button">不通过</button>
+<div>
+  <div class="bottom-view" [hidden]="! item.type == 2 || item.type == 1 ? true : false">
+      <button button ion-button (click)="approvalClick()" class="bottom-button">通过</button>
+      <button button ion-button (click)="disApprovalClick()" class="bottom-button">不通过</button>
+  </div>
+  <div class="bottom-view" [hidden]="! item.type == 2 || item.type == 0 ? true : false">
+      <button button ion-button (click)="withDrow()" class="center-button">撤回</button>
+  </div>
 </div>

@@ -15,33 +15,38 @@ export class MyApproval {
     this.items = [
       {
         name: "肥妹仔",
-        type: "类型：请假（婚假）",
+        typeString: "类型：请假（婚假）",
         statusString: "待审批",
-        status: "one"
+        status: "one",
+        type: 0,
       },
       {
         name: "肥妹仔",
-        type: "类型：请假（婚假）",
+        typeString: "类型：请假（婚假）",
         statusString: "已审批",
-        status: "two"
+        status: "two",
+        type: 0,
       },
       {
         name: "肥妹仔",
-        type: "类型：请假（婚假）",
+        typeString: "类型：请假（婚假）",
         statusString: "未通过",
-        status: "three"
+        status: "three",
+        type: 0,
       },
       {
         name: "肥妹仔",
-        type: "类型：请假（婚假）",
+        typeString: "类型：请假（婚假）",
         statusString: "未审批",
-        status: "one"
+        status: "one",
+        type: 0,
       },
       {
+        type: 0,
         name: "肥妹仔",
-        type: "类型：请假（婚假）",
+        typeString: "类型：请假（婚假）",
         statusString: "未审批",
-        status: "one"
+        status: "one",
       }
     ];
   }
