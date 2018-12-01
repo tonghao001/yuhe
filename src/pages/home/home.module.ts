@@ -1,3 +1,4 @@
+import { RestApplyPageModule } from './apply/restApply/restApply.module';
 import { CopyToMePageModule } from './approval/copyToMe/copyToMe.module';
 import { StartByMePageModule } from './approval/startByMe/startByMe.module';
 import { MyApprovalPageModule } from './approval/myApproval/myApproval.module';
@@ -19,6 +20,7 @@ import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
 import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
+import { ProcurementApplyPageModule } from './apply/procurementApply/procurementApply.module';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module'
     ApprovalPageModule,
     StartByMePageModule,
     CopyToMePageModule,
+    RestApplyPageModule,
+    ProcurementApplyPageModule,
   ],
   providers:[
     MessageService,
