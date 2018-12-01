@@ -15,8 +15,8 @@ import { kindergartenOverviewModule } from "./kindergartenOverview/kindergartenO
 import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
-
-
+import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
+import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
 
 @NgModule({
   declarations:[
@@ -34,7 +34,9 @@ import { ActionSheetService } from '../../service/actionSheet.service';
     MyApprovalPageModule,
     ApprovalDetailsPageModule,
     SalaryPageModule,
-    kindergartenOverviewModule
+    kindergartenOverviewModule,
+    CheckInPageModule,
+    ApprovalPageModule,
   ],
   providers:[
     MessageService,
