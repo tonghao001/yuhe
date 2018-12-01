@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 
 @IonicPage({
-  name: 'app-home-staffAttendance'
+  name: 'app-home-childCheckChartDetail'
 })
 @Component({
-  templateUrl: 'staffAttendance.html'
+  templateUrl: 'childCheckChartDetail.html'
 })
-export class StaffAttendancePage {
-  constructor(private navCtrl: NavController) {
+export class ChildCheckChartDetail {
+  constructor(public navCtrl: NavController) {
   }
 
   chart: Chart = new Chart({
@@ -19,6 +19,7 @@ export class StaffAttendancePage {
     title: {
       text: ''
     },
+
     credits: {
       enabled: false
     },
@@ -28,7 +29,16 @@ export class StaffAttendancePage {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '{point.percentage:.1f} %'
+          distance:-60,
+          formatter:function(){
+            return '<b>'+this.point.name+'</b>:'+this.point.percentage.toFixed(2)+"%";
+          },
+        },
+        events: {
+          click: (e)=>{
+            console.log(e.point.name);
+              this.navCtrl.push('app-home-chartDetailList', {name: e.point.name, status: e.point.status});
+          }
         },
         showInLegend: true
       }
@@ -58,6 +68,8 @@ export class StaffAttendancePage {
     }]
   });
 
+  timeString: 'day';
+
 
   goToPage(pageName, id){
     pageName = pageName || 'app-home-childCheckList';
@@ -65,5 +77,9 @@ export class StaffAttendancePage {
     this.navCtrl.push(pageName, { id: id });
   }
 
+  selectTime(event){
+    console.log(event.value);
+    this.timeString = event.value;
+  }
 
 }

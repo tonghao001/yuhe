@@ -3,13 +3,14 @@ import { Chart } from 'angular-highcharts';
 import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
-import { Platform } from 'ionic-angular';
+import { Platform,NavController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'home.html'
 })
 export class HomePage {
   constructor(
+    private navCtrl: NavController,
     private messageService: MessageService,
     private confirmService: ConfirmService,
     private actionSheetService: ActionSheetService,
@@ -115,8 +116,8 @@ export class HomePage {
     })
   }
 
-
-
-
-
+  goToPage(pageName): void{
+    pageName = pageName || 'app-home-classManage';
+    this.navCtrl.push(pageName);
+  }
 }
