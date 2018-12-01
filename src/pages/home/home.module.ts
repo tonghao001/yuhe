@@ -1,3 +1,4 @@
+import { ResignApplyPageModule } from './apply/resignApply/resignApply.module';
 import { RestApplyPageModule } from './apply/restApply/restApply.module';
 import { CopyToMePageModule } from './approval/copyToMe/copyToMe.module';
 import { StartByMePageModule } from './approval/startByMe/startByMe.module';
@@ -22,7 +23,6 @@ import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
 import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
 import { ProcurementApplyPageModule } from './apply/procurementApply/procurementApply.module';
 
-
 @NgModule({
   declarations:[
     HomePage,
@@ -46,6 +46,7 @@ import { ProcurementApplyPageModule } from './apply/procurementApply/procurement
     CopyToMePageModule,
     RestApplyPageModule,
     ProcurementApplyPageModule,
+    ResignApplyPageModule,
   ],
   providers:[
     MessageService,
