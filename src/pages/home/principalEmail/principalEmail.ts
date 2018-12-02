@@ -123,6 +123,6 @@ export class PrincipalEmail {
   }
 
   editEmail() {
-    this.navCtrl.push("app-home-edit-announcement", {type: 1});
+    this.navCtrl.push("app-home-edit-email");
   }
 }

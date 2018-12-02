@@ -2,19 +2,22 @@ import { Component } from "@angular/core";
 import { NavParams, IonicPage, AlertController } from "ionic-angular";
 
 @IonicPage({
-  name: "app-home-edit-announcement"
+  name: "app-home-edit-email"
 })
 @Component({
-  templateUrl: "editAnnouncement.html",
-  selector: "editAnnouncement.ts"
+  templateUrl: "editEmail.html",
+  selector: "editEmail.ts"
 })
 
 // todo 复用
-export class EditAnnouncement {
+export class EditEmail {
+  // 0 通知， 1 邮件
+  type;
   title;
   content;
   reciverList = [];
   constructor(params: NavParams, public alert: AlertController) {
+    this.type = params.data.type;
   }
 
   addNewReciver() {
