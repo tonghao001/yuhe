@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { IonicPage, AlertController } from "ionic-angular";
+import { IonicPage, AlertController, NavParams } from "ionic-angular";
 
 @IonicPage({
   name: "app-home-approval-details"
@@ -9,9 +9,11 @@ import { IonicPage, AlertController } from "ionic-angular";
   selector: "approvalDetails.ts"
 })
 export class ApprovalDetails {
-  approvalPersons;
+  item;
 
-  constructor(public alertCtrl: AlertController) {
+  approvalPersons;
+  constructor(public alertCtrl: AlertController, params: NavParams) {
+    this.item = params;
     this.approvalPersons = [
       {
         image: "",
@@ -74,5 +76,9 @@ export class ApprovalDetails {
       ]
     });
     confirm.present();
+  }
+
+  withDrow() {
+    
   }
 }

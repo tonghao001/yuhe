@@ -123,6 +123,6 @@ export class Announcement {
   }
 
   editAnnouncemnetClick() {
-    this.navCtrl.push("app-home-edit-announcement", {type: 0});
+    this.navCtrl.push("app-home-edit-announcement");
   }
 }

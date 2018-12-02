@@ -12,4 +12,9 @@ export class ApprovalPage {
     constructor(public navCtrl: NavController, params: NavParams) {
 
     }
+
+    goToPage(pageName): void{
+        pageName = pageName || 'app-home-classManage';
+        this.navCtrl.push(pageName);
+   }
 }

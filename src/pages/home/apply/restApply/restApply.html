@@ -1,31 +1,36 @@
 <ion-header>
-  <ion-navbar> <ion-title> 审批详情 </ion-title> </ion-navbar>
+  <ion-navbar> <ion-title> 请假申请 </ion-title> </ion-navbar>
 </ion-header>
 
-<ion-content class="approval-detail-body">
+<ion-content class="rest-apply-body">
   <div class="block-view">
     <div class="info-cell">
       <p class="left">请假类型</p>
-      <p class="right">事假</p>
+      <p class="right" (click)="selectRestType()" >请选择</p>
     </div>
     <div class="info-cell">
       <p class="left">开始时间</p>
-      <p class="right">2018-10-09 10:30</p>
+      <p class="right">请选择</p>
     </div>
     <div class="info-cell">
       <p class="left">结束时间</p>
-      <p class="right">2018-10-09 12:30</p>
+      <p class="right">请选择</p>
     </div>
     <div class="info-cell">
       <p class="left">时长</p>
-      <p class="right">2</p>
+      <p class="right">请输入</p>
     </div>
   </div>
 
   <div class="block-view">
     <div class="title-view">
       <p class="left title">事由</p>
-      <p class="right">在此向领导请婚假。</p>
+      <ion-textarea
+        placeholder="请输入通知内容"
+        rows="10"
+        [(ngModel)]="content"
+      >
+      </ion-textarea>
     </div>
   </div>
 
@@ -46,14 +51,18 @@
   <div class="appoval-person-list">
     <p>审批人：</p>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person" *ngFor="let item of approvalPersons" >
+      <ion-col class="approval-person" *ngFor="let item of approvalPersons">
         <img
           class="person-image"
           src=".././../assets/icon/thumbnail-puppy-1.jpg"
         />
-        <p>{{item.name}}</p>
-        <p>{{item.date}}</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right" [ngClass]="item.last"></ion-icon>
+        <p>{{ item.name }}</p>
+        <p>{{ item.date }}</p>
+        <ion-icon
+          name="arrow-round-forward"
+          class="arrow-right"
+          [ngClass]="item.last"
+        ></ion-icon>
       </ion-col>
     </ion-row>
   </div>
@@ -74,11 +83,11 @@
 </ion-content>
 
 <div>
-  <div class="bottom-view" [hidden]="! item.type == 2 || item.type == 1 ? true : false">
-      <button button ion-button (click)="approvalClick()" class="bottom-button">通过</button>
-      <button button ion-button (click)="disApprovalClick()" class="bottom-button">不通过</button>
-  </div>
-  <div class="bottom-view" [hidden]="! item.type == 2 || item.type == 0 ? true : false">
-      <button button ion-button (click)="withDrow()" class="center-button">撤回</button>
+  <div
+    class="bottom-view"
+  >
+    <button button ion-button (click)="resetApply()" class="center-button">
+      申请
+    </button>
   </div>
 </div>

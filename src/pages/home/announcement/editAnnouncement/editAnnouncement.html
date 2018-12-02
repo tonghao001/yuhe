@@ -1,15 +1,15 @@
 <ion-header>
   <ion-navbar>
-    <ion-title> {{ type == 0 ? "编辑通知" : "编辑邮件" }} </ion-title>
+    <ion-title> 编辑通知 </ion-title>
     <ion-buttons end>
       <button (click)="sendAnnounceMent()" color="clear">发送</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="edit-page-body">
+<ion-content class="edit-announcement-body">
   <ion-item>
-    <p class="left-title"> {{ type == 0 ? "通知人" : "收件人" }} </p>
+    <p class="left-title"> 通知人 </p>
     <button item-end (click)="addNewReciver()">
       <ion-icon name="add"></ion-icon>
     </button>

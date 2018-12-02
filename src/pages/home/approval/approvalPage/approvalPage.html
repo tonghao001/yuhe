@@ -5,19 +5,19 @@
   <ion-grid style="background: #ffffff" >
     <ion-row class="title-row">
       <ion-col col-4>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('app-home-my-approval')">
           <img src="assets/image/home/approval/my-approval.png" />
           <p>我的审批</p>
         </div>
       </ion-col>
       <ion-col col-4>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('start-byMe-page')">
           <img src="assets/image/home/approval/my-start.png" />
           <p>我发起的</p>
         </div>
       </ion-col>
       <ion-col col-4>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('app-home-copyTome')">
           <img src="assets/image/home/approval/copy-me.png" />
           <p>抄送我的</p>
         </div>
@@ -30,25 +30,27 @@
   <ion-grid style="background: #ffffff" >
     <ion-row class="content-row">
       <ion-col col-3>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('app-home-rest-apply')">
           <img src="assets/image/home/approval/my-approval.png" />
           <p>发起审批</p>
         </div>
       </ion-col>
+
       <ion-col col-3>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('app-home-procurement-apply')">
           <img src="assets/image/home/approval/my-approval.png" />
           <p>采购申请</p>
         </div>
       </ion-col>
+      
       <ion-col col-3>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('app-home-resign-apply')">
           <img src="assets/image/home/approval/my-approval.png" />
           <p>离职申请</p>
         </div>
       </ion-col>
       <ion-col col-3>
-        <div class="center-center">
+        <div class="center-center" (click)="goToPage('app-home-stationery-apply')">
           <img src="assets/image/home/approval/my-approval.png" />
           <p>物品领用</p>
         </div>
