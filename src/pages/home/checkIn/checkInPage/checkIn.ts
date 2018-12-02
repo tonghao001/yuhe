@@ -4,8 +4,6 @@ import { NavParams, IonicPage, NavController } from "ionic-angular";
 @IonicPage({
     name: "app-home-checkIn",
 })
-
-
 @Component({
   templateUrl: "checkIn.html",
   selector: "checkIn.ts"

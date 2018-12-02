@@ -1,16 +1,12 @@
 <ion-header>
-  <ion-navbar> <ion-title> 物品领用 </ion-title> </ion-navbar>
+  <ion-navbar> <ion-title> 工单申请 </ion-title> </ion-navbar>
 </ion-header>
 
-<ion-content class="stationery-apply-body">
+<ion-content class="workorder-apply-body">
   <div class="block-view">
     <div class="info-cell">
-      <p class="left">领用类型</p>
+      <p class="left">保修类型</p>
       <p class="right" (click)="selectRestType()">请选择</p>
-    </div>
-    <div class="info-cell">
-      <p class="left">领用事件</p>
-      <p class="right">请选择</p>
     </div>
     <div class="title-view">
       <p class="left-title">物品用途</p>
@@ -21,24 +17,35 @@
 
   <div class="block-view">
     <div class="info-cell">
-      <p class="left">名称</p>
+      <p class="left">项目名称</p>
       <ion-input class="right-input" placeholder="请输入"></ion-input>
     </div>
     <div class="info-cell">
-      <p class="left">规格</p>
+      <p class="left">项目描述</p>
       <ion-input class="right-input" placeholder="请输入"></ion-input>
     </div>
     <div class="info-cell">
-      <p class="left">单价</p>
+      <p class="left">供应商</p>
       <ion-input class="right-input" placeholder="请输入"></ion-input>
     </div>
     <div class="info-cell">
-      <p class="left">数量</p>
+      <p class="left">维修电话</p>
       <ion-input class="right-input" placeholder="请输入"></ion-input>
     </div>
     <div class="info-cell">
-      <p class="left">总价</p>
+      <p class="left">预计金额</p>
       <ion-input class="right-input" placeholder="请输入"></ion-input>
+    </div>
+  </div>
+
+  <div class="block-view">
+    <div class="info-cell">
+      <p class="left">维修人</p>
+      <ion-input class="right-input" placeholder="请输入"></ion-input>
+    </div>
+    <div class="info-cell">
+      <p class="left">维修日期</p>
+      <p class="right" (click)="selectRestType()">请选择</p>
     </div>
   </div>
 
