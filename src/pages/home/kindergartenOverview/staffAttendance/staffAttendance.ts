@@ -1,4 +1,4 @@
-import { IonicPage,NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 
@@ -22,13 +22,17 @@ export class StaffAttendancePage {
     credits: {
       enabled: false
     },
+    legend: {
+      labelFormat: '{name}<br/>{y}人'
+    },
     plotOptions: {
       pie: {
         allowPointSelect: true,
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '{point.percentage:.1f} %'
+          format: '{point.percentage:.1f} %',
+          distance: -40
         },
         showInLegend: true
       }
@@ -38,10 +42,7 @@ export class StaffAttendancePage {
       data: [{
         name: '实到',
         y: 20,
-        sliced: true,
-        selected: true,
         color: '#df56ff',
-        description: '20%'
       }, {
         name: '应到',
         y: 25,
@@ -59,9 +60,9 @@ export class StaffAttendancePage {
   });
 
 
-  goToPage(pageName, id){
+  goToPage(pageName, id) {
     pageName = pageName || 'app-home-childCheckList';
-    console.log('id:',id);
+    console.log('id:', id);
     this.navCtrl.push(pageName, { id: id });
   }
 
