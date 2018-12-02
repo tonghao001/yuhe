@@ -3,7 +3,7 @@ import { Chart } from 'angular-highcharts';
 import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
-import { Platform,NavController } from 'ionic-angular';
+import { Platform, NavController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'home.html'
@@ -15,33 +15,179 @@ export class HomePage {
     private confirmService: ConfirmService,
     private actionSheetService: ActionSheetService,
     private platform: Platform
-  ) {
+  ) { }
 
-  }
+  searchText: string = '';
+  chartName = '';
 
-  chart: Chart = new Chart({
+  chart1: Chart = new Chart({
     chart: {
-      type: 'line'
+      type: 'pie'
     },
     title: {
-      text: 'Linechart'
+      text: ''
     },
     credits: {
       enabled: false
     },
+    legend: {
+      labelFormat: '{name}<br/>{y}人'
+    },
+    loading: {
+      showDuration: 100,
+      hideDuration: 100
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: true,
+          format: '{percentage:.1f}%',
+          distance: -20
+        },
+        showInLegend: true,
+        events: {
+          click: (e) => {
+            this.goToPage('app-home-staffAttendance');
+          }
+        },
+        tooltip: {
+        }
+      }
+    },
     series: [
       {
-        name: 'Line 1',
-        data: [1, 2, 3]
+        name: '出勤',
+        data: [
+          {
+            name: '应到',
+            y: 25
+          },
+          {
+            name: '实到',
+            y: 12
+          },
+          {
+            name: '缺勤',
+            y: 6
+          },
+          {
+            name: '其他',
+            y: 7
+          }
+        ]
+      }
+    ]
+  });
+  chart2: Chart = new Chart({
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: ''
+    },
+    credits: {
+      enabled: false
+    },
+    xAxis: {
+      type: 'category'
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: '总数：165'
+      }
+    },
+    legend: {
+      enabled: false
+    },
+    plotOptions: {
+      series: {
+        dataLabels: {
+          enabled: true,
+          format: '{point.y}'
+        }
+      }
+    },
+    series: [{
+      name: '浏览器',
+      data: [
+        {
+          name: '情况1',
+          y: 55,
+          color: 'green'
+        },
+        {
+          name: '情况2',
+          y: 25,
+          color: 'blue'
+        },
+        {
+          name: '情况3',
+          y: 85,
+          color: 'yellow'
+        }
+      ]
+    }]
+
+  });
+  chart3: Chart = new Chart({
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: ''
+    },
+    credits: {
+      enabled:false
+    },
+    legend: {
+      enabled: true
+    },
+    xAxis: {
+      categories: [
+        '一月', '二月', '三月', '四月'
+      ],
+      crosshair: true
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: ''
+      }
+    },
+    plotOptions: {
+      column: {
+        borderWidth: 0,
+        dataLabels: {
+          enabled: true,
+          format: '{y}'
+          // formatter: function () {
+          //   console.log(this);
+          //   return this.y;
+          // }
+
+        }
+      }
+    },
+    series: [
+      {
+        name: '学费',
+        data: [10, 20, 30, 40]
       },
       {
-        name: 'Line 2',
-        data: [4, 5, 6]
+        name: '政府拨款',
+        data: [30, 40, 50, 60]
       }
     ]
   });
 
-  searchText: string = '';
+  onSelectChart(chartName) {
+    if (chartName === this.chartName) return;
+    console.log('onclick',chartName);
+    this.chartName = chartName;
+  }
 
   onSearch(e): void {
     console.log(e, this.searchText);
@@ -49,7 +195,7 @@ export class HomePage {
   onClearSearchText(e): void {
     console.log('cancel', e, this.searchText);
   }
-  showAlert():void {
+  showAlert(): void {
     this.messageService.show({
       subTitle: '新年快乐!!!'
     });
@@ -116,8 +262,16 @@ export class HomePage {
     })
   }
 
-  goToPage(pageName): void{
+  goToPage(pageName): void {
     pageName = pageName || 'app-home-classManage';
     this.navCtrl.push(pageName);
   }
+
+
+  ionViewWillEnter(){
+    this.onSelectChart('chart1');
+  }
+
+
+
 }

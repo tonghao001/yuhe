@@ -5,7 +5,7 @@
     height: 200px;
     background: url('../assets/image/home/page_home_back.png') no-repeat;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
 
     .searchbar.searchbar-md {
       position: relative;
@@ -93,7 +93,7 @@
 
   .chart-view {
     width: 100%;
-    height: 200px;
+    height: 300px;
     .chart-item {
       height: 100%;
     }
