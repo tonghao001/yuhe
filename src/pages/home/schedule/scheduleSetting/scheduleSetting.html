@@ -4,76 +4,106 @@
       日程安排
     </ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="goToPage('app-home-newSchedule')"> 
-            <ion-icon name="add" color="text"></ion-icon>
-        </button>
+      <button ion-button icon-only (click)="goToPage('app-home-newSchedule')">
+        <ion-icon name="add" color="text"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="child-check-page" color="background">
-  <div class="attenance-statistic">
-    <!-- <div class="box-title-nav"><span class="left">全教职工出勤</span><span class="right" ><ion-icon name="arrow-forward"></ion-icon></span></div> -->
-    <div class="box-content">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <span>应到</span>
-            <strong class="secondary" color="secondary">500</strong>
-          </ion-col>
-          <ion-col>
-            <span>实到</span>
-            <strong>440</strong>
-          </ion-col>
-          <ion-col>
-            <span>请假</span>
-            <strong>60</strong>
-          </ion-col>
-          <ion-col>
-            <span>未签到</span>
-            <strong>0</strong>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+<ion-content class="schedule-setting-page" color="background">
+  <div class="calendar-area">
+    <p>2018-10</p>
+
+    <ion-row>
+      <ion-col>
+        <span>一</span>
+        <div>
+          <strong class="secondary" color="secondary">1</strong>
+          <span>初三</span>
+        </div>
+        <span class="status">*</span>
+      </ion-col>
+      <ion-col>
+        <span>二</span>
+        <div>
+          <strong class="secondary" color="secondary">2</strong>
+          <span>初四</span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <span>三</span>
+        <div>
+          <strong class="secondary" color="secondary">3</strong>
+          <span>初五</span>
+        </div>
+        <span class="status">*</span>
+      </ion-col>
+      <ion-col>
+        <span>四</span>
+        <div>
+          <strong class="secondary" color="secondary">4</strong>
+          <span>初六</span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <span>五</span>
+        <div class="current">
+            <strong class="secondary" color="secondary">5</strong>
+            <span>初七</span>
+        </div>
+      </ion-col>
+      <ion-col>
+        <span>六</span>
+        <div>
+            <strong class="secondary" color="secondary">6</strong>
+            <span>初八</span>
+        </div>
+        <span class="status">*</span>
+      </ion-col>
+      <ion-col>
+        <span>日</span>
+        <div>
+            <strong class="secondary" color="secondary">7</strong>
+            <span>初九</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div class="schedule-content">
+    <p class="label-tip">
+      您今天需要做：
+    </p>
+    <div class="schedule-item" *ngFor="let item of list.today" (click)="goToPage('app-home-scheduleDetail', item.id)">
+      <div class="schedule-time">
+        <time>{{item.time | date: 'HH:mm' }}</time>
+      </div>
+      <div class="schedule-detail">
+        <span>{{item.scheduleTitle}}</span>
+      </div>
+
+    </div>
+    <div class="blank" *ngIf="list.today.length === 0">
+      <p>您还没有添加任何日程</p>
     </div>
   </div>
 
-  <div class="attenance-statistic">
-    <div class="box-title-nav"><span class="left">全教职工出勤率</span>
-      <span class="right">
-        <ion-icon name="arrow-forward"></ion-icon>
-      </span>
-    </div>
-    <div class="box-content chart-box">
-      <div class="date-picker-area">
-        <ion-icon name="arrow-back"></ion-icon>
-        <span>2018-10</span>
-        <ion-icon name="arrow-forward"></ion-icon>
+  <div class="schedule-content">
+    <p class="label-tip">
+      您明天需要做：
+    </p>
+    <div class="schedule-item" *ngFor="let item of list.tomorrow" (click)="goToPage('app-home-scheduleDetail', item.id)">
+      <div class="schedule-time">
+        <time>{{item.time| date: 'HH:mm' }}</time>
       </div>
-      <div class="chart-area">
-        
+      <div class="schedule-detail">
+        <p>{{item.scheduleTitle}}</p>
       </div>
     </div>
-  </div>
 
-
-  <div class="attenance-statistic">
-    <div class="box-title-nav"><span class="left">全教职工出勤率</span></div>
-    <div class="box-content">
-      <ion-list>
-        <ion-item>
-          <label class="color-1">1</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-2">2</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-3">3</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-4">4</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-      </ion-list>
+    <div class="blank" *ngIf="list.tomorrow.length === 0">
+      <p>您还没有添加任何日程</p>
     </div>
   </div>
 </ion-content>
