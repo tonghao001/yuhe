@@ -25,6 +25,7 @@ import { ApprovalPageModule } from './approval/approvalPage.module';
 import { ProcurementApplyPageModule } from './apply/procurementApply/procurementApply.module';
 import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApply.module';
 import { WorkOrderApplyPageModule } from './apply/workOrderApply/workOrderApply.module';
+import { ScheduleManageModule } from './schedule/schedule.module';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { WorkOrderApplyPageModule } from './apply/workOrderApply/workOrderApply.
     StationeryApplyPageModule,
     EditEmailPageModule,
     WorkOrderApplyPageModule,
+    ScheduleManageModule
   ],
   providers:[
     MessageService,
