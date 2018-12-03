@@ -16,7 +16,9 @@ import { TabPageModule } from '../pages/tab/tab.module';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: 'true'         //隐藏全部子页面tabs
+    }),
     TabPageModule,
     ForgetPasswordPageModule
   ],
