@@ -13,15 +13,21 @@ import { setInterval } from "timers";
 
 export class CheckInPage {
     user;
-    today = new Date();
-    nowTime = new Date();
+    today:any = Date.now();//或者today:any = new Date();
+    timer:any;
     constructor(params: NavParams, public nav: NavController) {
         this.user = {
             name: '小肉丸',
             team: '考勤组: 技术部',
         }
-        setInterval(this.timerRun, 1000)
+        this.timer=setInterval(()=> {
+            this.today = Date.now();// 或者this.today = new Date();
+        }, 1000)
+
     }
+    ngOnDestroy(){
+        clearInterval(this.timer);
+     }
 
     attendanceRecord() {
         this.nav.push('app-home-attendance-rank');
@@ -33,9 +39,5 @@ export class CheckInPage {
 
     reloadLocation() {
 
-    }
-
-    timerRun() {
-       this.nowTime = new Date();
     }
 }

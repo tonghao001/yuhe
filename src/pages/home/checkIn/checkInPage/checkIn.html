@@ -14,7 +14,7 @@
     </ion-avatar>
     <h2>{{ user.name }}</h2>
     <p class="sub-Title-label">{{ user.team }}</p>
-    <p class="current-date">{{today | date:'yyyy-MM-dd'}}</p>
+    <p class="current-date">{{ today | date: 'yyyy-MM-dd'}}</p>
   </ion-item>
   <div class="checkIn-time-line">
     <div class="left-margin-16">
@@ -36,7 +36,7 @@
   <div class="checkIn-area">
         <div class="checkIn-button" (click)="checkInClick()">
             <p>下班打卡</p>
-            <p>{{nowTime | date:'hh:mm:ss'}}</p>
+            <p>{{ today | date: 'HH:mm:ss'}}</p>
         </div>
         <div class="checkIn-tip">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
