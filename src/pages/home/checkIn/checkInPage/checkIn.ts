@@ -30,7 +30,7 @@ export class CheckInPage {
      }
 
     attendanceRecord() {
-        this.nav.push('app-home-attendance-rank');
+        this.nav.push('app-home-attendanceReport');
     }
 
     checkInClick() {

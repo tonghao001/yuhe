@@ -21,6 +21,7 @@ import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
+import { AttendanceReportPageModule } from "./checkIn/attendanceReport/attendanceReport.module";
 import { ApprovalPageModule } from './approval/approvalPage.module';
 import { ProcurementApplyPageModule } from './apply/procurementApply/procurementApply.module';
 import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApply.module';
@@ -46,6 +47,7 @@ import { ScheduleManageModule } from './schedule/schedule.module';
     SalaryPageModule,
     kindergartenOverviewModule,
     CheckInPageModule,
+    AttendanceReportPageModule,
     ApprovalPageModule,
     StartByMePageModule,
     CopyToMePageModule,
