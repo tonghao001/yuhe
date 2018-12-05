@@ -12,7 +12,7 @@ import { TabPageModule } from '../pages/tab/tab.module';
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +25,7 @@ import { TabPageModule } from '../pages/tab/tab.module';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
   ],
   providers: [
     StatusBar,
