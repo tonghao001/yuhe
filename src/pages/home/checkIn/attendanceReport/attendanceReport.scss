@@ -71,6 +71,9 @@
                 >strong{
                     display: block;
                     line-height: 10px;
+                    &.flag{
+                        color: $color-primary;
+                    }
                 }
                 &.active{
                     >span{

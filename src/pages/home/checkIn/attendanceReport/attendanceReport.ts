@@ -16,7 +16,7 @@ export class AttendanceReportPage {
       weekNames: ['一', '二', '三', '四', '五', '六', '日'],
       now: new Date(),
       dates: [],
-      init: ()=>{
+      init: () => {
         let now = new Date();
         this.calendar.now = now;
         let currentDate = now.getDate();
@@ -24,26 +24,26 @@ export class AttendanceReportPage {
         let firstWeekdayOfCurrentMonth = new Date(new Date().setDate(1)).getDay() || 7;//本月第一天为周几
         this.calendar.dates = [];
         console.log('firstWeekdayOfCurrentMonth:', firstWeekdayOfCurrentMonth);
-        for(let i = 1; i < firstWeekdayOfCurrentMonth; i++){
-          this.calendar.dates.push({number: ''});//本月第一天为周几，前面补空
+        for (let i = 1; i < firstWeekdayOfCurrentMonth; i++) {
+          this.calendar.dates.push({ number: '' });//本月第一天为周几，前面补空
         }
-        console.log('dates:',this.calendar.dates);
+        console.log('dates:', this.calendar.dates);
 
         let totalDayCountThisMonth = this.getDayCount();
         console.log('totalDayCountThisMonth:', totalDayCountThisMonth);
-        for(let i = 1; i <= totalDayCountThisMonth; i++){
-          this.calendar.dates.push({number: i, active: false, today: currentDate === i, extra: {}});
+        for (let i = 1; i <= totalDayCountThisMonth; i++) {
+          this.calendar.dates.push({ number: i, active: false, today: currentDate === i, flag: currentDate + 1 === i, extra: {} });
         }
       },
-      toggleDate: (date)=>{
-          date.active = !date.active;
+      toggleDate: (date) => {
+        date.active = !date.active;
       },
       currentActiveDate: null,
-      changeCurrentActive: (date)=>{
-        if(!date.number){
+      changeCurrentActive: (date) => {
+        if (!date.number) {
           return;
         }
-        if(this.calendar.currentActiveDate){
+        if (this.calendar.currentActiveDate) {
           this.calendar.currentActiveDate.active = false;
         }
         date.active = !date.active;
@@ -61,46 +61,46 @@ export class AttendanceReportPage {
 
 
   //判断是否是闰年
-  isLeapYear(year){
-      if (year % 100 == 0 && year % 400 == 0){
-          return true;
-      }else if (year % 100 != 0 && year % 4==0){
-          return true;
-      }
-      return false;
+  isLeapYear(year) {
+    if (year % 100 == 0 && year % 400 == 0) {
+      return true;
+    } else if (year % 100 != 0 && year % 4 == 0) {
+      return true;
+    }
+    return false;
   }
 
   //得到某月多少天
-  getDaysOfMonth(isLeapYear,month){
-      let days=0;
-      switch (month){
-          case 1:
-          case 3:
-          case 5:
-          case 7:
-          case 8:
-          case 10:
-          case 12:
-              days=31;
-              break;
-          case 4:
-          case 6:
-          case 9:
-          case 11:
-              days=30;
-              break;
-          case 2:
-              if (isLeapYear){
-                  days=29;
-              }else{
-                  days=28;
-              }
-      }
-      return days;
+  getDaysOfMonth(isLeapYear, month) {
+    let days = 0;
+    switch (month) {
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+        days = 31;
+        break;
+      case 4:
+      case 6:
+      case 9:
+      case 11:
+        days = 30;
+        break;
+      case 2:
+        if (isLeapYear) {
+          days = 29;
+        } else {
+          days = 28;
+        }
+    }
+    return days;
   }
 
-  getDayCount(){
-    let now  = new Date();
+  getDayCount() {
+    let now = new Date();
     let isLeapYear = this.isLeapYear(now.getFullYear());
     let month = now.getMonth() + 1;
     return this.getDaysOfMonth(isLeapYear, month);

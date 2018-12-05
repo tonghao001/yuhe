@@ -36,7 +36,7 @@
         <ul>
           <li *ngFor="let date of calendar.dates" (click)="calendar.changeCurrentActive(date)" [ngClass]="{'active':date.active, 'today': date.today}">
             <span>{{date.number}}</span>
-            <strong class="status">*</strong>
+            <strong class="flag" *ngIf="date.flag">*</strong>
           </li>
         </ul>
       </div>
