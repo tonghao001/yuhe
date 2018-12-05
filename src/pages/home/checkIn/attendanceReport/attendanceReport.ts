@@ -8,16 +8,19 @@ import { Component } from '@angular/core';
   templateUrl: 'attendanceReport.html'
 })
 export class AttendanceReportPage {
-  constructor(private navCtrl: NavController) {
+  constructor(private navCtrl: NavController, private calendar: Calendar) {
     this.currentReport = 'day';
   }
 
+
+
   currentReport;
 
-  goToRankPage():void{
+
+  goToRankPage(): void {
     this.navCtrl.push('app-home-attendance-rank');
   }
-  changeCurrentReport(reportType){
+  changeCurrentReport(reportType) {
     this.currentReport = reportType;
   }
 }

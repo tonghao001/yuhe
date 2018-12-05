@@ -112,43 +112,82 @@
     }
 
     .month-report-area{
-        background: #fff;
         overflow:hidden;
         .stastics{
-            padding: 16px;
-            ion-item{
-                padding:0;
-                .item-inner{
+            overflow:hidden;
+            background: #fff;
+            .stastics-wrapper{
+                padding: 16px;
+                ion-item{
                     padding:0;
-                }
-
-                
-
-                ion-label{
-                    margin-right: 0;
-                    &.report-info{
-                        display: flex;
-
+                    .item-inner{
+                        padding:0;
+                    }
+    
+    
+                    .report-info{
+                        overflow: hidden;
+                        >div{
+                            display: inline-block;
+                            float: left;
+                            overflow: hidden;
+                        }
                         .photo-img{ 
                             width: 50px;
                             height: 50px;
                             border-radius: 25px;
                             background: $color-primary;
                         }
+                        .name{
+                            >span{
+                                display: block;
+                                padding: 0 0 0 10px;
+                                text-align: left;
+                                &:nth-child(1){
+                                    color: $color-text;
+                                    font-weight: bolder;
+                                }
+                            }
+                        }
+                        .time{
+                            float: right;
+                        }
                     }
-
-                }
-                &:nth-child(1) .item-inner{
-                    border-bottom:none;
-                }
-                ion-label{
-                    color: $color-text;
-                    &:nth-last-child(1){
-                        text-align: right;
-                        color: $color-grey;
+    
+                    
+                    
+    
+                    ion-label{
+                        margin-right: 0;
+                        &.report-info{
+                            display: flex;
+        
+                            .photo-img{ 
+                                width: 50px;
+                                height: 50px;
+                                border-radius: 25px;
+                                background: $color-primary;
+                            }
+                        }
+                    }
+                    &:nth-child(1) .item-inner{
+                        border-bottom:none;
+                    }
+                    ion-label{
+                        color: $color-text;
+                        &:nth-last-child(1){
+                            text-align: right;
+                            color: $color-grey;
+                        }
                     }
                 }
             }
+        }
+        .stastics-footer{
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: $color-text;
         }
     }
 }

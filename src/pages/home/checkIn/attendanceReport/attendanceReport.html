@@ -27,7 +27,8 @@
   </div>
   <div class="day-report-area" *ngIf="currentReport === 'day'">
     <div class="calendar-panel">
-
+        <h2>Calendar</h2>
+        <button (click)="getcalender()" ion-button half>calender</button>
     </div>
     <div class="check-in-info">
       <p>班次：A 09:00-18:00 考勤组：技术部</p>
@@ -65,55 +66,59 @@
 
   <div class="month-report-area" *ngIf="currentReport === 'month'">
     <div class="stastics">
-      <ion-item >
-     
-        <ion-label class="report-info">
-          <div class="photo-img"></div>
-          
-          <div class="name">
-            <p> 小肉团</p>
-            <span> 考勤组：技术部</span>
+        <div class="stastics-wrapper">
+            <ion-item>
+              <div class="report-info">
+                <div class="photo-img"></div>
+                <div class="name">
+                  <span>小肉丸</span>
+                  <span>考勤组：技术部</span>
+                </div>
+                <div class="time"><span>2019-10-12</span></div>
+              </div>
+            </ion-item>
+            <ion-item>
+              <ion-label>出勤天数</ion-label>
+              <ion-label>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>出勤班次</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>休息天数</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>迟到</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>缺卡</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>早退</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>矿工</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>外勤</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>加班</ion-label>
+              <ion-label right>100</ion-label>
+            </ion-item>
           </div>
-        </ion-label>
-        <ion-label>2017-9-13</ion-label>
+    </div>
 
-      </ion-item>
-      <ion-item>
-        <ion-label>出勤天数</ion-label>
-        <ion-label>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>出勤班次</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>休息天数</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>迟到</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>缺卡</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>早退</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>矿工</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>外勤</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-label>加班</ion-label>
-        <ion-label right>100</ion-label>
-      </ion-item>
+    <div class="stastics-footer">
+      <span>本月平均工时 8.5 小时</span>
     </div>
   </div>
+
 </ion-content>
