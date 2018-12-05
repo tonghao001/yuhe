@@ -20,7 +20,7 @@ import { TabPageModule } from '../pages/tab/tab.module';
       tabsHideOnSubPages: 'true'         //隐藏全部子页面tabs
     }),
     TabPageModule,
-    ForgetPasswordPageModule
+    ForgetPasswordPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
