@@ -1,0 +1,15 @@
+<div class="calendar-panel">
+    <div class="week-names">
+        <ul>
+            <li *ngFor="let name of calendar.weekNames">{{name}}</li>
+        </ul>
+    </div>
+    <div class="dates">
+        <ul>
+            <li *ngFor="let date of calendar.dates" (click)="calendar.changeCurrentActive(date)" [ngClass]="{'active':date.active, 'today': date.today}">
+                <span>{{date.number}}</span>
+                <strong class="flag" *ngIf="date.flag">*</strong>
+            </li>
+        </ul>
+    </div>
+</div>

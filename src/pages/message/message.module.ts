@@ -1,17 +1,22 @@
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
 import { MessagePage } from "./message";
+import { CalendarComponent } from '../../components/calendar/calendar';
 
 @NgModule({
   declarations:[
-    MessagePage
+    MessagePage,
+    CalendarComponent
   ],
   imports:[
     IonicPageModule.forChild(MessagePage)
   ],
   entryComponents:[
-    MessagePage
-  ]
+    MessagePage,
+  ],
+  providers:[
+    CalendarComponent
+  ],
 })
 export class MessagePageModule {
   
