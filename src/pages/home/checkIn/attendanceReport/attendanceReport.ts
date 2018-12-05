@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   templateUrl: 'attendanceReport.html'
 })
 export class AttendanceReportPage {
-  constructor(private navCtrl: NavController, private calendar: Calendar) {
+  constructor(private navCtrl: NavController) {
     this.currentReport = 'day';
   }
 
