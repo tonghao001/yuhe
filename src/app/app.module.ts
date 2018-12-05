@@ -9,10 +9,11 @@ import { LoginPage } from '../pages/login/login';
 import { ForgetPasswordPageModule } from '../pages/forgetPassword/forgetPassword.module';
 import { TabPageModule } from '../pages/tab/tab.module';
 
+
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
