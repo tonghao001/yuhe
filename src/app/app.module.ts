@@ -9,11 +9,13 @@ import { LoginPage } from '../pages/login/login';
 import { ForgetPasswordPageModule } from '../pages/forgetPassword/forgetPassword.module';
 import { TabPageModule } from '../pages/tab/tab.module';
 
+import { ComponentsModule } from '../components/components.module';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { TabPageModule } from '../pages/tab/tab.module';
     }),
     TabPageModule,
     ForgetPasswordPageModule,
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,6 +34,7 @@ import { TabPageModule } from '../pages/tab/tab.module';
   providers: [
     StatusBar,
     SplashScreen,
+    ComponentsModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

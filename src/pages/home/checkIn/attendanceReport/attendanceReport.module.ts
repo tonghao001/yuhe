@@ -2,22 +2,24 @@ import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
 import { AttendanceReportPage } from "./attendanceReport";
 
-import { CalendarComponent } from '../../../../components/calendar/calendar';
+import { MessagePageModule } from "../../../message/message.module";
+import { ComponentsModule } from "../../../../components/components.module";
 
 @NgModule({
   declarations: [
-    AttendanceReportPage,
-    CalendarComponent
+    AttendanceReportPage
   
   ],
   imports: [
-    IonicPageModule.forChild(AttendanceReportPage)
+    IonicPageModule.forChild(AttendanceReportPage),
+    MessagePageModule,
+    ComponentsModule
   ],
   entryComponents: [
     AttendanceReportPage
   ],
   providers:[
-    CalendarComponent
+    
   ],
 })
 export class AttendanceReportPageModule { };

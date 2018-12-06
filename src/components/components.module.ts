@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
+import { IonicModule } from 'ionic-angular';
 import { CalendarComponent } from './calendar/calendar';
+
+
 @NgModule({
 	declarations: [
-		CalendarComponent],
-	imports: [],
+		CalendarComponent
+	],
+	imports: [IonicModule],
 	exports: [
 		CalendarComponent]
 })
