@@ -14,23 +14,21 @@ export class CalendarComponent{
   private calendar;
 
   constructor(public changeDetectorRef: ChangeDetectorRef) { /*构造函数*/
+    let now = new Date();
     this.calendar = {
       weekNames: ['一', '二', '三', '四', '五', '六', '日'],
-      now: new Date(),
+      now: now,
       dates: [],
-      toggleDate: (date) => {
-        date.active = !date.active;
-      },
-      currentActiveDate: null,
-      currentMonthFirstDay: this.getFirstDateOfTheDate(new Date()),
+      currentActiveDate: null,//选中当日日期块（number，date，active，today，flag，extra）
+      currentMonthFirstDay: this.getFirstDateOfTheDate(now),//默认选中当前日期所在月的第一天
       changeCurrentActive: (date) => {
         if (!date || !date.number) {
           return;
         }
-        if (this.calendar.currentActiveDate) {
+        if (this.calendar.currentActiveDate) {//上次选择去掉
           this.calendar.currentActiveDate.active = false;
         }
-        date.active = !date.active;
+        date.active = true;//这次选择选中
         this.calendar.currentActiveDate = date;
       }
     };
@@ -57,35 +55,39 @@ export class CalendarComponent{
     this.calendar.currentMonthFirstDay = new Date(this.calendar.currentMonthFirstDay);//重新赋值，界面才会发生变化
   }
 
-  //面板数据
+  //面板数据更新
   private loadCalendarBoard(theDate) {
-
+    //** start 当月第一天为周几，面板第一天之前补空*/
     let firstDayWeekdayTheMonth = this.getFirstDayWeekdayByTheDate(theDate);//当月第一天为周几
     this.calendar.dates = [];
     for (let i = 1; i < firstDayWeekdayTheMonth; i++) {
       this.calendar.dates.push({ number: '' });//当月第一天为周几，前面补空
-    }//当月第一天为周几，面板第一天之前补空
+    }
+    //** end 当月第一天为周几，面板第一天之前补空*/
     
-    let now = new Date();
-    let theFirstDateTimestamp = this.getFirstDateOfTheDate(theDate).getTime();
-    let totalDayCountThisMonth = this.getDayCount(theDate);
+    //** start 从当月第一天开始填空，填到当月最后一天*/
+    let now = new Date();//目前时间
+    let theFirstDateTimestamp = this.getFirstDateOfTheDate(theDate).getTime();//获取当月第一天时间戳，用于之后生成每天的日期
+    let totalDayCountThisMonth = this.getDayCount(theDate);//获取当月总共的天数
     for (let i = 1; i <= totalDayCountThisMonth; i++) {
-      let currentDate = new Date(new Date(theFirstDateTimestamp).setDate(i));
+      let currentDate = new Date(new Date(theFirstDateTimestamp).setDate(i));//当日的日期date
       let actived = this.calendar.currentActiveDate && this.calendar.currentActiveDate.date.getTime() === currentDate.getTime();//已选日期是否是这个日期一致
       let date = {
         number: i, 
-        active:  actived,
-        today: this.isSameYearMonthOfTheTwoDate(theDate, now) && now.getDate() === i, 
+        active:  actived,//是否选中该项
+        today: this.isSameYearMonthOfTheTwoDate(theDate, now) && now.getDate() === i, //同一个月同号认为是today
         flag: false, 
         date: currentDate,
         extra: {} 
       }
       if(actived){
-        this.calendar.currentActiveDate = date;
+        this.calendar.currentActiveDate = date;//注意：已选日期要更新！！！因为dates数组里的元素每次切换面板都会更新，即使同日，数据也是新的
       }
       this.calendar.dates.push(date);
     }
-    this.calendar.now = now;
+    //** end 从当月第一天开始填空，填到当月最后一天*/
+
+    this.calendar.now = now;//更新目前时间
   }
 
   //两个日期是否是同年同月
