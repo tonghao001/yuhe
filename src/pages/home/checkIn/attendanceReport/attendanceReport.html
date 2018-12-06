@@ -18,18 +18,8 @@
       <ion-label justify-content-center [ngClass]="{'active':currentReport === 'month'}" (click)="changeCurrentReport('month')">月报</ion-label>
     </ion-row>
   </div>
-  <div class="month-select">
-    <div class="date-picker-area">
-      <ion-icon name="arrow-back"></ion-icon>
-      <span>2018-10</span>
-      <ion-icon name="arrow-forward"></ion-icon>
-    </div>
-  </div>
   <div class="day-report-area" *ngIf="currentReport === 'day'">
-      <!-- <sl-user></sl-user> -->
-
-      <calendar></calendar>
-
+    <calendar></calendar>
     <div class="check-in-info">
       <p>班次：A 09:00-18:00 考勤组：技术部</p>
     </div>

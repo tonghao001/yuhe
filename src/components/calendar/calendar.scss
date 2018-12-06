@@ -4,8 +4,9 @@
         background: #fff;
         overflow:hidden;
 
-        height: 300px;
+        height: 330px;
         ul{
+            overflow:hidden;
             margin: 0;
             padding: 0 1%;
             li{
@@ -17,23 +18,43 @@
                 
                 width: 14%;
                 height: 40px;
-
-                line-height: 30px;
                 text-decoration: none;
                 text-align: center;
                 color: $color-text;
             }
         }
 
+
+        .month-select{
+            border-bottom: 1px solid $color-border;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            background: #fff;
+            font-size: 16px;
+            color: $color-text;
+            span{
+                margin: 0 20px;
+            }
+            ion-icon{
+                width: 30px;
+                height: 25px;
+            }
+        }
+
         .week-names{
             display: block;
+            overflow: hidden;
             ul li{
                 font-size: 12px;
+                line-height: 40px;
             }
         }
         .dates{
+            overflow: hidden;
             ul li{
                 font-size: 14px;
+                line-height: 30px;
                 >span{
                     display: block;
                     line-height: 30px;
