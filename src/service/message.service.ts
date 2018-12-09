@@ -10,9 +10,9 @@ export class MessageService {
 
   show(opt?: any): void {
     this.alert = this.alertCtrl.create({
-      title: opt.title||'消息',
-      subTitle: opt.subTitle||'消息提示',
-      buttons: [opt.okText||'好的','no']
+      title: opt.title || '消息',
+      subTitle: opt.subTitle || '消息提示',
+      buttons: [opt.okText || '好的']
     });
     this.alert.present();
   }
