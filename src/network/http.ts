@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { extend } from 'lodash';
+import { debugOutputAstAsTypeScript } from '@angular/compiler';
 
 @Injectable()
 export class HttpNetwork {
@@ -9,7 +10,7 @@ export class HttpNetwork {
   fetch(url, options?) {
     const httpOptions = {
       body: undefined,
-      headers:{}
+      headers:{'Content-Type': 'application/json;charset=UTF-8'}
       // headers: new HttpHeaders({
       //   'Content-Type': 'application/json;charset=UTF-8',
       //   // responseType: 'json'
@@ -27,6 +28,12 @@ export class HttpNetwork {
       httpOptions.body = options.body;
     }
     return this.http.request(options.method, url, httpOptions);
+    
+    // .subscribe((data:{message?:string})=>{
+      
+    // },err=>{
+    //   return err;
+    // });
   }
 
   get(url, params?) {
