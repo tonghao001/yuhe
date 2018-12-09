@@ -1,15 +1,15 @@
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage,NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
 
 @IonicPage({
-  name: 'app-home-staffAttendance'
+  name: 'app-home-attendance-chart'
 })
 @Component({
-  templateUrl: 'staffAttendance.html'
+  templateUrl: 'attendanceChart.html'
 })
-export class StaffAttendancePage {
-  constructor(private navCtrl: NavController) {
+export class AttendanceChartPage {
+  constructor(public navCtrl: NavController) {
   }
 
   chart: Chart = new Chart({
@@ -23,7 +23,8 @@ export class StaffAttendancePage {
       enabled: false
     },
     legend: {
-      labelFormat: '{name}<br/>{y}人'
+      enabled:true,
+      labelFormat:'{name}<br/>{y}人'
     },
     plotOptions: {
       pie: {
@@ -31,15 +32,18 @@ export class StaffAttendancePage {
         cursor: 'pointer',
         dataLabels: {
           enabled: true,
-          format: '{point.percentage:.1f} %',
-          distance: -40
+          distance:-60,
+          formatter:function(){
+            return '<b>'+this.point.name+'</b>:'+this.point.percentage.toFixed(1)+"%";
+          },
         },
-        showInLegend: true,
         events: {
-          click: () => {
-            this.goToPage('app-home-attendance-chart',null);
+          click: (e)=>{
+            console.log(e.point.name);
+              this.navCtrl.push('app-home-attendance-chart-detail', {name: e.point.name});
           }
-        }
+        },
+        showInLegend: true
       }
     },
     series: [{
@@ -48,6 +52,7 @@ export class StaffAttendancePage {
         name: '实到',
         y: 20,
         color: '#df56ff',
+        description: '20%'
       }, {
         name: '应到',
         y: 25,
@@ -64,12 +69,18 @@ export class StaffAttendancePage {
     }]
   });
 
+  timeString: 'day';
 
-  goToPage(pageName, id) {
-    pageName = pageName || 'app-home-attendance-list';
-    console.log('id:', id);
+
+  goToPage(pageName, id){
+    pageName = pageName || 'app-home-childCheckList';
+    console.log('id:',id);
     this.navCtrl.push(pageName, { id: id });
   }
 
+  selectTime(event){
+    console.log(event.value);
+    this.timeString = event.value;
+  }
 
 }

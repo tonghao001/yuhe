@@ -3,13 +3,16 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app';
 import { LoginPage } from '../pages/login/login';
 import { ForgetPasswordPageModule } from '../pages/forgetPassword/forgetPassword.module';
 import { TabPageModule } from '../pages/tab/tab.module';
-
 import { ComponentsModule } from '../components/components.module';
+import { UserNetwork } from '../network/user.network';
+import { HttpNetwork } from '../network/http';
+import { ToastService } from '../service/toast.service';
 
 
 @NgModule({
@@ -25,6 +28,7 @@ import { ComponentsModule } from '../components/components.module';
     TabPageModule,
     ForgetPasswordPageModule,
     ComponentsModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,6 +39,9 @@ import { ComponentsModule } from '../components/components.module';
     StatusBar,
     SplashScreen,
     ComponentsModule,
+    HttpNetwork,
+    UserNetwork,
+    ToastService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
