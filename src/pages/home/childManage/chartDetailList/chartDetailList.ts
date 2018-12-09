@@ -1,4 +1,4 @@
-import { IonicPage, NavController,NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 @IonicPage({
@@ -8,8 +8,11 @@ import { Component } from '@angular/core';
   templateUrl: 'chartDetailList.html'
 })
 export class ChartDetailList {
-  constructor(private navCtrl: NavController, private navParams: NavParams) {
-    console.log(navParams.data);
+  constructor( ) {
+    // private navParams: NavParams
+    // private navCtrl: NavController,
+    // navParams.data
+    // console.log(navParams.data);
     this.list = [
       {
         className: '小二班',

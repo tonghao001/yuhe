@@ -265,6 +265,7 @@ export class HomePage {
   goToPage(pageName): void {
     pageName = pageName || 'app-home-classManage';
     this.navCtrl.push(pageName);
+    return;
   }
 
 

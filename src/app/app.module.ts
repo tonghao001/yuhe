@@ -9,25 +9,32 @@ import { LoginPage } from '../pages/login/login';
 import { ForgetPasswordPageModule } from '../pages/forgetPassword/forgetPassword.module';
 import { TabPageModule } from '../pages/tab/tab.module';
 
+import { ComponentsModule } from '../components/components.module';
+
+
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: 'true'         //隐藏全部子页面tabs
+    }),
     TabPageModule,
-    ForgetPasswordPageModule
+    ForgetPasswordPageModule,
+    ComponentsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    ComponentsModule,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

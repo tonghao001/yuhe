@@ -5,7 +5,7 @@ import { IonicPageModule } from "ionic-angular";
 @NgModule({
   declarations: [AttendanceRank],
   imports: [
-      IonicPageModule.forChild(AttendanceRank),
+      IonicPageModule.forChild(AttendanceRank)
     ],
   entryComponents: [AttendanceRank]
 })

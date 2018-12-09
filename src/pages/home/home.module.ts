@@ -1,3 +1,4 @@
+import { EditEmailPageModule } from './principalEmail/editEmail/editEmail.module';
 import { ResignApplyPageModule } from './apply/resignApply/resignApply.module';
 import { RestApplyPageModule } from './apply/restApply/restApply.module';
 import { CopyToMePageModule } from './approval/copyToMe/copyToMe.module';
@@ -20,9 +21,13 @@ import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { CheckInPageModule } from './checkIn/checkInPage/checkIn.module';
-import { ApprovalPageModule } from './approval/approvalPage/approvalPage.module';
+import { AttendanceReportPageModule } from "./checkIn/attendanceReport/attendanceReport.module";
+import { ApprovalPageModule } from './approval/approvalPage.module';
 import { ProcurementApplyPageModule } from './apply/procurementApply/procurementApply.module';
 import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApply.module';
+import { WorkOrderApplyPageModule } from './apply/workOrderApply/workOrderApply.module';
+import { ScheduleManageModule } from './schedule/schedule.module';
+
 
 @NgModule({
   declarations:[
@@ -42,6 +47,7 @@ import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApp
     SalaryPageModule,
     kindergartenOverviewModule,
     CheckInPageModule,
+    AttendanceReportPageModule,
     ApprovalPageModule,
     StartByMePageModule,
     CopyToMePageModule,
@@ -49,6 +55,9 @@ import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApp
     ProcurementApplyPageModule,
     ResignApplyPageModule,
     StationeryApplyPageModule,
+    EditEmailPageModule,
+    WorkOrderApplyPageModule,
+    ScheduleManageModule
   ],
   providers:[
     MessageService,
