@@ -11,7 +11,7 @@
       <button ion-button color="primary" (click)="goToChildCheckOnManage()">幼儿考勤</button>
     </ion-item>
   </ion-list>
-  <calendar></calendar>
-
+  <calendar  [defaultSelectToday]="defaultSelectToday"  (selectDateChange)="selectDateChange($event)"></calendar>
+  <div>currentSelectDate: {{currentSelectDate}}</div>
   
-</ion-content>
+</ion-content>  

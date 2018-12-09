@@ -8,8 +8,17 @@ import { Component } from '@angular/core';
   templateUrl: 'message.html'
 })
 export class MessagePage {
+  private currentSelectDate;
+  private defaultSelectToday;
   constructor(public navCtrl: NavController) {
+    this.currentSelectDate = null;
+    this.defaultSelectToday =true;
+  }
 
+  
+  selectDateChange(newDate){
+    this.currentSelectDate = newDate;
+    console.log('change');
   }
 
   goToClassManage() {

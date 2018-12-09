@@ -5,8 +5,7 @@ import { ComponentsModule } from "../../components/components.module";
 
 @NgModule({
   declarations:[
-    MessagePage,
-    // CalendarComponent
+    MessagePage
   ],
   imports:[
     IonicPageModule.forChild(MessagePage),
@@ -14,9 +13,6 @@ import { ComponentsModule } from "../../components/components.module";
   ],
   entryComponents:[
     MessagePage
-  ],
-  exports:[
-    // CalendarComponent
   ]
 })
 export class MessagePageModule {
