@@ -68,7 +68,7 @@ export class SicknessCasePage {
 
 
   goToPage(pageName, id){
-    pageName = pageName || 'app-home-childCheckList';
+    pageName = pageName || 'app-home-sickness-case-list';
     console.log('id:',id);
     this.navCtrl.push(pageName, { id: id });
   }

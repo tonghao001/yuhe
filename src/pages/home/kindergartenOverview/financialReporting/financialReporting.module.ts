@@ -1,18 +1,18 @@
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
-import { SicknessCasePage } from "./sicknessCase";
+import { FinancialReportingPage } from "./financialReporting";
 import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
-    SicknessCasePage
+    FinancialReportingPage
   ],
   imports: [
-    IonicPageModule.forChild(SicknessCasePage),
+    IonicPageModule.forChild(FinancialReportingPage),
     ChartModule
   ],
   entryComponents: [
-    SicknessCasePage
+    FinancialReportingPage
   ]
 })
-export class SicknessCasePageModule { };
+export class FinancialReportingPageModule { };
