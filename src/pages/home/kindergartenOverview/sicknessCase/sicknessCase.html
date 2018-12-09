@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      疾病情况
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="child-check-page child-check-cart-detail-page" color="background">
+  <div class="time-nav">
+    <ion-segment (ionChange)="selectTime($event)" color="primary">
+      <ion-segment-button value="day">
+        日
+      </ion-segment-button>
+      <ion-segment-button value="month">
+        月
+      </ion-segment-button>
+      <ion-segment-button value="season">
+        季
+      </ion-segment-button>
+      <ion-segment-button value="year">
+        年
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="attenance-statistic">
+    <div class="box-content chart-box">
+      <div class="date-picker-area">
+        <ion-icon name="arrow-back"></ion-icon>
+        <span>2018-10</span>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </div>
+      <div class="chart-area">
+        <div [chart]="chart" class="chart-content"></div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</ion-content>
