@@ -6,26 +6,27 @@ import { extend } from 'lodash';
 export class HttpNetwork {
   constructor(private http: HttpClient) { }
 
-  fetch(url, data) {
+  fetch(url, options?) {
     const httpOptions = {
       body: undefined,
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json;charset=UTF-8',
-        // responseType: 'json'
-      })
+      headers:{}
+      // headers: new HttpHeaders({
+      //   'Content-Type': 'application/json;charset=UTF-8',
+      //   // responseType: 'json'
+      // })
     };
 
 
     if (url.indexOf('http') !== 0) {
       url = `${HTTP_URL.MAIN}${url}`;
     }
-    data.options = data.options || {};
+    options = options || {};
 
-    extend(httpOptions.headers, data.options.headers || {});
-    if (data.options.body) {
-      httpOptions.body = data.options.body;
+    extend(httpOptions.headers, options.headers || {});
+    if (options.body) {
+      httpOptions.body = options.body;
     }
-    return this.http.request(data.method, url, httpOptions);
+    return this.http.request(options.method, url, httpOptions);
   }
 
   get(url, params?) {
@@ -44,9 +45,66 @@ export class HttpNetwork {
     params = params || {};
     return this.fetch(url, {method:'post',body:JSON.stringify(params)});
   }
+  postForm(url, params?) {
+    params = params || {};
+    let options = {
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' 
+      },
+      body: json2form(params)
+    }
+    return this.fetch(url, options);
+  }
+  
 }
 
+// var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /** @module json2formData */
+
+export function json2form (a) {
+  var s = [],
+      rbracket = /\[\]$/,
+      isArray = function isArray(obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+  },
+      add = function add(k, v) {
+    v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
+    s[s.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
+  },
+      buildParams = function buildParams(prefix, obj) {
+    var i, len, key;
+
+    if (prefix) {
+      if (isArray(obj)) {
+        for (i = 0, len = obj.length; i < len; i++) {
+          if (rbracket.test(prefix)) {
+            add(prefix, obj[i]);
+          } else {
+            buildParams(prefix + '[' + (typeof(obj[i]) === 'object' ? i : '') + ']', obj[i]);
+          }
+        }
+      } else if (obj && String(obj) === '[object Object]') {
+        for (key in obj) {
+          buildParams(prefix + '[' + key + ']', obj[key]);
+        }
+      } else {
+        add(prefix, obj);
+      }
+    } else if (isArray(obj)) {
+      for (i = 0, len = obj.length; i < len; i++) {
+        add(obj[i].name, obj[i].value);
+      }
+    } else {
+      for (key in obj) {
+        buildParams(key, obj[key]);
+      }
+    }
+    return s;
+  };
+
+  return buildParams('', a).join('&').replace(/%20/g, '+');
+};
 
 export const HTTP_URL = {
-  MAIN: 'http://idp.tezign.com'
+  MAIN: 'http://www.yuhe.insighthink.com'
 }
