@@ -9,7 +9,7 @@ import { ChartModule } from 'angular-highcharts';
   ],
   imports: [
     IonicPageModule.forChild(SicknessCasePage),
-    ChartModule,
+    ChartModule
   ],
   entryComponents: [
     SicknessCasePage
