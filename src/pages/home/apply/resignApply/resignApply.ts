@@ -16,6 +16,8 @@ import {
 })
 export class ResignApply {
   approvalPersons;
+  applyTime;
+  resignTime;
   constructor(
     public alertCtrl: AlertController,
     params: NavParams,

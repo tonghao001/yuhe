@@ -8,7 +8,6 @@ import {
 
 @IonicPage({
   name: "app-home-rest-apply",
-
 })
 @Component({
   templateUrl: "RestApply.html",
@@ -16,6 +15,8 @@ import {
 })
 export class RestApply {
   approvalPersons;
+  startTime;
+  endTime;
   constructor(
     public alertCtrl: AlertController,
     params: NavParams,

@@ -15,7 +15,7 @@ import {
 })
 export class WorkOrderApply {
   approvalPersons;
-  content;
+  fixTime;
   constructor(
     public alertCtrl: AlertController,
     params: NavParams,

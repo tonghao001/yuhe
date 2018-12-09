@@ -4,42 +4,47 @@
 
 <ion-content class="procurement-apply-body">
   <div class="block-view">
-    <div class="info-cell">
-      <p class="left">采购类型</p>
-      <p class="right" (click)="selectRestType()">请选择</p>
-    </div>
-    <div class="info-cell">
-      <p class="left">预购事假</p>
-      <p class="right">请选择</p>
-    </div>
-    <div class="title-view">
-      <p class="left-title">事由</p>
-      <ion-input placeholder="请输入通知内容" [(ngModel)]="content">
-      </ion-input>
-    </div>
+    <ion-item>
+      <ion-label class="left">采购类型</ion-label>
+      <button item-end class="right" (click)="selectRestType()">请选择</button>
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">预购时间</ion-label>
+      <ion-datetime
+        class="right"
+        placeholder="请选择"
+        displayFormat="YYYY-MM-DD HH:mm"
+        [(ngModel)]="stationeryTime"
+        >{{ stationeryTime }}</ion-datetime
+      >
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">申请事由</ion-label>
+      <ion-input class="right" item-end placeholder="请输入事由"></ion-input>
+    </ion-item>
   </div>
 
   <div class="block-view">
-    <div class="info-cell">
-      <p class="left">名称</p>
-      <ion-input class="right-input" placeholder="请输入"></ion-input>
-    </div>
-    <div class="info-cell">
-      <p class="left">规格</p>
-      <ion-input class="right-input" placeholder="请输入"></ion-input>
-    </div>
-    <div class="info-cell">
-      <p class="left">单价</p>
-      <ion-input class="right-input" placeholder="请输入"></ion-input>
-    </div>
-    <div class="info-cell">
-      <p class="left">数量</p>
-      <ion-input class="right-input" placeholder="请输入"></ion-input>
-    </div>
-    <div class="info-cell">
-      <p class="left">总价</p>
-      <ion-input class="right-input" placeholder="请输入"></ion-input>
-    </div>
+    <ion-item>
+      <ion-label class="left">名称</ion-label>
+      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">规格</ion-label>
+      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">单价</ion-label>
+      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">数量</ion-label>
+      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">总价</ion-label>
+      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+    </ion-item>
   </div>
 
   <div class="appoval-person-list">

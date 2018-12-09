@@ -13,7 +13,8 @@ export class ApprovalDetails {
 
   approvalPersons;
   constructor(public alertCtrl: AlertController, params: NavParams) {
-    this.item = params;
+
+    this.item = params.data;
     this.approvalPersons = [
       {
         image: "",

@@ -4,14 +4,26 @@
       
       <ion-content class="resign-apply-body">
         <div class="block-view">
-          <div class="info-cell">
-            <p class="left">申请时间</p>
-            <p class="right">请选择</p>
-          </div>
-          <div class="info-cell">
-            <p class="left">离职时间</p>
-            <p class="right">请选择</p>
-          </div>
+            <ion-item>
+                <ion-label class="left">申请时间</ion-label>
+                <ion-datetime
+                  class="right"
+                  placeholder="请选择"
+                  displayFormat="YYYY-MM-DD HH:mm"
+                  [(ngModel)]="applyTime"
+                  >{{ applyTime }}</ion-datetime
+                >
+              </ion-item>
+              <ion-item>
+                <ion-label class="left">离职时间</ion-label>
+                <ion-datetime
+                  class="right"
+                  placeholder="请选择"
+                  displayFormat="YYYY-MM-DD HH:mm"
+                  [(ngModel)]="resignTime"
+                  >{{ resignTime }}</ion-datetime
+                >
+              </ion-item>
         </div>
       
         <div class="block-view">

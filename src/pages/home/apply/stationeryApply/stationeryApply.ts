@@ -16,6 +16,7 @@ import {
 export class StationeryApply {
   approvalPersons;
   content;
+  stationeryTime;
   constructor(
     public alertCtrl: AlertController,
     params: NavParams,
