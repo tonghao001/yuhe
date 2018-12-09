@@ -21,11 +21,16 @@ export class MessagePage {
     console.log('begin getFile()');
     console.log(this.imageChooser);
     console.log('image chooser ');
+    try {
+      
     this.imageChooser.getFile('image/gif')
     .then(file => {
       console.log(file ? file.name : 'canceled')
     })
     .catch((error: any) => console.error(error));
+    } catch (error) {
+      alert(error);
+    }
   }
 
   
