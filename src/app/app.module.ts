@@ -13,7 +13,7 @@ import { ComponentsModule } from '../components/components.module';
 import { UserNetwork } from '../network/user.network';
 import { HttpNetwork } from '../network/http';
 import { ToastService } from '../service/toast.service';
-
+import {StorageService} from '../service/storage.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { ToastService } from '../service/toast.service';
     HttpNetwork,
     UserNetwork,
     ToastService,
+    StorageService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

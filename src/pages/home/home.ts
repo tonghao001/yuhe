@@ -4,6 +4,7 @@ import { MessageService } from '../../service/message.service';
 import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { Platform, NavController } from 'ionic-angular';
+import { StorageService, STORAGE_KEY } from '../../service/storage.service';
 
 @Component({
   templateUrl: 'home.html'
@@ -14,8 +15,13 @@ export class HomePage {
     private messageService: MessageService,
     private confirmService: ConfirmService,
     private actionSheetService: ActionSheetService,
-    private platform: Platform
-  ) { }
+    private platform: Platform,
+    private storage: StorageService
+  ) {
+    
+    let user = this.storage.get(STORAGE_KEY.USER_INFO);
+    console.log(user);
+   }
 
   searchText: string = '';
   chartName = '';

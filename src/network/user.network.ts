@@ -8,6 +8,9 @@ export class UserNetwork {
 
   }
   login(data) {
-    return this.http.post('/user/login/bip', data);
+    return this.http.postForm('/yh_YEManager/app/login/signIn', data);
+  }
+  getSMSCode(data) {
+    return this.http.postForm('/yh_YEManager/app/login/getSMSCode', data);
   }
 }

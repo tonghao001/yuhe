@@ -27,6 +27,7 @@ import { ProcurementApplyPageModule } from './apply/procurementApply/procurement
 import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApply.module';
 import { WorkOrderApplyPageModule } from './apply/workOrderApply/workOrderApply.module';
 import { ScheduleManageModule } from './schedule/schedule.module';
+import { SicknessCasePageModule } from './kindergartenOverview/sicknessCase/sicknessCase.module';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { ScheduleManageModule } from './schedule/schedule.module';
     StationeryApplyPageModule,
     EditEmailPageModule,
     WorkOrderApplyPageModule,
-    ScheduleManageModule
+    ScheduleManageModule,
+    SicknessCasePageModule
   ],
   providers:[
     MessageService,
