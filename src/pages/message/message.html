@@ -14,4 +14,8 @@
   <calendar  [defaultSelectToday]="defaultSelectToday"  (selectDateChange)="selectDateChange($event)"></calendar>
   <div>currentSelectDate: {{currentSelectDate}}</div>
   
+  <div>
+    <button (click)="getFile()">选照片</button>
+  </div>
+  <input type="file"  accept="audio/*;capture=microphone"/>input选文件
 </ion-content>  

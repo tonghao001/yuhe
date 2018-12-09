@@ -1,6 +1,7 @@
 
 import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
+import { Chooser } from '@ionic-native/chooser/ngx';
 
 
 @Component({
@@ -10,9 +11,21 @@ import { Component } from '@angular/core';
 export class MessagePage {
   private currentSelectDate;
   private defaultSelectToday;
-  constructor(public navCtrl: NavController) {
+  
+  constructor(public navCtrl: NavController,private imageChooser: Chooser) {
     this.currentSelectDate = null;
     this.defaultSelectToday =true;
+  }
+
+  getFile(){
+    console.log('begin getFile()');
+    console.log(this.imageChooser);
+    console.log('image chooser ');
+    this.imageChooser.getFile('image/gif')
+    .then(file => {
+      console.log(file ? file.name : 'canceled')
+    })
+    .catch((error: any) => console.error(error));
   }
 
   

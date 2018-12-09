@@ -14,6 +14,8 @@ import { UserNetwork } from '../network/user.network';
 import { HttpNetwork } from '../network/http';
 import { ToastService } from '../service/toast.service';
 
+import { Chooser } from '@ionic-native/chooser/ngx';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { ToastService } from '../service/toast.service';
     HttpNetwork,
     UserNetwork,
     ToastService,
+    Chooser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
