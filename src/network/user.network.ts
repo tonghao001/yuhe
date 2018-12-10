@@ -1,6 +1,5 @@
 import { HttpNetwork } from "./http";
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class UserNetwork {
@@ -12,5 +11,8 @@ export class UserNetwork {
   }
   getSMSCode(data) {
     return this.http.postForm('/yh_YEManager/app/login/getSMSCode', data);
+  }
+  logout(){
+    return this.http.get('/yh_YEManager/app/login/signOut');
   }
 }
