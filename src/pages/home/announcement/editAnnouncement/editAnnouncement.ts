@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavParams, IonicPage, AlertController } from "ionic-angular";
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @IonicPage({
   name: "app-home-edit-announcement"
@@ -14,7 +15,7 @@ export class EditAnnouncement {
   title;
   content;
   reciverList = [];
-  constructor(params: NavParams, public alert: AlertController) {
+  constructor(params: NavParams, public alert: AlertController, private geolocation: Geolocation) {
   }
 
   addNewReciver() {
@@ -48,7 +49,12 @@ export class EditAnnouncement {
   }
 
   addPicture() {
-
+    this.geolocation.getCurrentPosition().then((resp) => {
+      resp.coords.latitude
+      resp.coords.longitude
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
   }
 
   sendAnnounceMent() {
