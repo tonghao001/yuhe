@@ -15,7 +15,7 @@ import { Component, Input, Output,EventEmitter } from '@angular/core';
 export class CalendarComponent {
   private calendar;
 
-  @Input() defaultSelectToday: boolean=true;
+  @Input() defaultSelectToday: boolean;
   @Output() selectDateChange: EventEmitter<Date> = new EventEmitter();
 
   constructor() { /*构造函数*/

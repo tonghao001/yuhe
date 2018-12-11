@@ -5,6 +5,10 @@ import { MePage } from "./me";
 import { AboutPageModule } from "./about/about.module";
 import { ChangePasswordPageModule } from "./changePassword/changePassword.module";
 
+import { UserNetwork } from '../../network/user.network';
+import { HttpNetwork } from '../../network/http';
+import { ToastService } from '../../service/toast.service';
+
 
 @NgModule({
   declarations:[
@@ -17,6 +21,11 @@ import { ChangePasswordPageModule } from "./changePassword/changePassword.module
   ],
   entryComponents:[
     MePage
+  ],
+  providers:[
+    HttpNetwork,
+    UserNetwork,
+    ToastService
   ]
 })
 export class MePageModule {};

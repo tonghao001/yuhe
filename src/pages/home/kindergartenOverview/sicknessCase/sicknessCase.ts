@@ -14,7 +14,7 @@ export class SicknessCasePage {
 
   chart: Chart = new Chart({
     chart: {
-      type: 'pie'
+      type: 'column'
     },
     title: {
       text: ''
@@ -22,50 +22,45 @@ export class SicknessCasePage {
     credits: {
       enabled: false
     },
+    xAxis: {
+      type: 'category'
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: '总数：165'
+      }
+    },
     legend: {
-      enabled:true,
-      labelFormat:'{name}<br/>{y}人'
+      enabled: false
     },
     plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
+      series: {
         dataLabels: {
           enabled: true,
-          distance:-60,
-          formatter:function(){
-            return '<b>'+this.point.name+'</b>:'+this.point.percentage.toFixed(1)+"%";
-          },
-        },
-        events: {
-          click: (e)=>{
-            console.log(e.point.name);
-              this.navCtrl.push('app-home-attendance-chart-detail', {name: e.point.name});
-          }
-        },
-        showInLegend: true
+          format: '{point.y}'
+        }
       }
     },
     series: [{
-      name: 'Brands',
-      data: [{
-        name: '实到',
-        y: 20,
-        color: '#df56ff',
-        description: '20%'
-      }, {
-        name: '应到',
-        y: 25,
-        color: '#08f8f5'
-      }, {
-        name: '请假',
-        y: 12,
-        color: '#71b9fd'
-      }, {
-        name: '未签到',
-        y: 43,
-        color: '#7d81ff'
-      }]
+      name: '浏览器',
+      data: [
+        {
+          name: '情况1',
+          y: 55,
+          color: 'green'
+        },
+        {
+          name: '情况2',
+          y: 25,
+          color: 'blue'
+        },
+        {
+          name: '情况3',
+          y: 85,
+          color: 'yellow'
+        }
+      ]
     }]
   });
 
@@ -73,7 +68,7 @@ export class SicknessCasePage {
 
 
   goToPage(pageName, id){
-    pageName = pageName || 'app-home-childCheckList';
+    pageName = pageName || 'app-home-sickness-case-list';
     console.log('id:',id);
     this.navCtrl.push(pageName, { id: id });
   }
