@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavParams, NavController, IonicPage } from "ionic-angular";
+import { NoticeNetWork } from './../../../network/notice.network';
 
 @IonicPage({
   name: "app-home-announcement"
@@ -10,97 +11,30 @@ import { NavParams, NavController, IonicPage } from "ionic-angular";
 })
 export class Announcement {
   props;
-  items;
+  readNotiList;
+  unReadNotiList;
   isRead: string = "false";
 
-  constructor(public navCtrl: NavController, params: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    params: NavParams,
+    private notiNetWork: NoticeNetWork
+    ) {
     this.props = params.data;
-    this.items = [
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      }
-    ];
+
+    this.notiNetWork.getReadNoticeList().subscribe((data: {result}) => {
+      console.log(data);
+      this.readNotiList = data.result;
+    }, err => {
+      console.log(err)
+    })
+
+    this.notiNetWork.getunReadNoticeList().subscribe((data: {result}) => {
+      console.log(data);
+      this.unReadNotiList = data.result;
+    }, err => {
+      console.log(err)
+    })
   }
 
   clickItem(item) {

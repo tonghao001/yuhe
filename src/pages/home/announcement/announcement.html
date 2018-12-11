@@ -26,15 +26,25 @@
         <ion-segment-button class="segment-button-two" [ngClass]="isRead" value="true"> 已读 </ion-segment-button>
       </ion-segment>
     </ion-list-header>
-    <ion-item *ngFor="let item of items" (click)="clickItem(item)">
+    <ion-item [hidden]="isRead==='true'" *ngFor="let item of readNotiList" (click)="clickItem(item)" >
       <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
-        item.badage
+        item.ggbt
       }}</ion-badge>
       <ion-avatar item-start>
         <img src="assets/icon/thumbnail-puppy-1.jpg" />
       </ion-avatar>
-      <h2>{{ item.title }}</h2>
-      <p>{{ item.subTitle }}</p>
+      <h2>{{ item.zgxm }}</h2>
+      <p>{{ item.nr }}</p>
+    </ion-item>
+    <ion-item [hidden]="isRead==='false'" *ngFor="let item of unReadNotiList" (click)="clickItem(item)">
+      <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
+        item.ggbt
+      }}</ion-badge>
+      <ion-avatar item-start>
+        <img src="assets/icon/thumbnail-puppy-1.jpg" />
+      </ion-avatar>
+      <h2>{{ item.zgxm }}</h2>
+      <p>{{ item.nr }}</p>
     </ion-item>
   </ion-list>
 

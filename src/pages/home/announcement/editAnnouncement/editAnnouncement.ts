@@ -52,7 +52,21 @@ export class EditAnnouncement {
     this.geolocation.getCurrentPosition().then((resp) => {
       resp.coords.latitude
       resp.coords.longitude
+
+      const prompt = this.alert.create({
+        title: "请求成功",
+        message: resp.coords.latitude + ", " + resp.coords.longitude
+      });
+
+      prompt.present();
+      
      }).catch((error) => {
+      const prompt = this.alert.create({
+        title: "请求失败",
+        message: error
+      });
+
+      prompt.present();
        console.log('Error getting location', error);
      });
   }
