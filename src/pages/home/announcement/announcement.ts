@@ -11,8 +11,16 @@ import { NoticeNetWork } from './../../../network/notice.network';
 })
 export class Announcement {
   props;
-  readNotiList;
-  unReadNotiList;
+  readNotiList = [{
+    "ggbt": "",
+    "zgxm": "费在美",
+    "nr": "你好院长，我是费在美的家长",
+  }];
+  unReadNotiList = [{
+    "ggbt": "",
+    "zgxm": "费在美",
+    "nr": "你好院长，我是费在美的家长",
+  }];
   isRead: string = "false";
 
   constructor(
@@ -24,21 +32,23 @@ export class Announcement {
 
     this.notiNetWork.getReadNoticeList().subscribe((data: {result}) => {
       console.log(data);
-      this.readNotiList = data.result;
+      // this.readNotiList = data.result;
     }, err => {
       console.log(err)
     })
 
     this.notiNetWork.getunReadNoticeList().subscribe((data: {result}) => {
       console.log(data);
-      this.unReadNotiList = data.result;
+      // this.unReadNotiList = data.result;
     }, err => {
       console.log(err)
     })
   }
 
   clickItem(item) {
-    this.navCtrl.push("app-home-announce-details", item);
+    /// 是否阅读
+    item.irRead = this.isRead;
+    this.navCtrl.push("app-home-announce-details", item,);
   }
 
   doRefresh(event) {
