@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { IonicPage, AlertController, NavParams } from "ionic-angular";
+import { ApprovalNetwork } from './../../../../network/approval.network';
 
 @IonicPage({
   name: "app-home-approval-details"
@@ -12,9 +13,13 @@ export class ApprovalDetails {
   item;
 
   approvalPersons;
-  constructor(public alertCtrl: AlertController, params: NavParams) {
-
+  constructor(
+    public alertCtrl: AlertController, 
+    params: NavParams,
+    public approvalNetWork: ApprovalNetwork,
+    ) {
     this.item = params.data;
+
     this.approvalPersons = [
       {
         image: "",

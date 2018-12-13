@@ -1,4 +1,3 @@
-import { UserNetwork } from './../../../../network/user.network';
 import { NoticeNetWork } from './../../../../network/notice.network';
 import { Component } from "@angular/core";
 import { NavParams, IonicPage, AlertController } from "ionic-angular";

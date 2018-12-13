@@ -1,3 +1,4 @@
+import { ApprovalNetwork } from './../../../../network/approval.network';
 import { MyApproval } from "./myApproval";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
@@ -7,6 +8,7 @@ import { IonicPageModule } from "ionic-angular";
   imports: [
       IonicPageModule.forChild(MyApproval),
     ],
-  entryComponents: [MyApproval]
+  entryComponents: [MyApproval],
+  providers: [ApprovalNetwork]
 })
 export class MyApprovalPageModule {}
