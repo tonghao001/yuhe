@@ -39,14 +39,14 @@ export class LoginPage {
     this.userNetwork.login({
       account: this.username,
       password: this.password
-    }).subscribe((data:{message?:string}) => {
+    }).subscribe((data: { message?: string }) => {
       console.log(data);
       if (data.message) {
         return this.toastService.show(data.message);
       }
 
       this.storage.set(STORAGE_KEY.USER_INFO, data);
-      this.navCtrl.push('app-tab', { id: 123 });
+      this.navCtrl.push('app-tab', { id: 2 });
     }, err => {
       this.toastService.show(err.message || '登录失败');
     })

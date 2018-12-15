@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { extend } from 'lodash';
+import {DatePipe} from '@angular/common'
+
 import { debugOutputAstAsTypeScript } from '@angular/compiler';
 
 @Injectable()
@@ -61,7 +63,6 @@ export class HttpNetwork {
     return this.fetch(url, { method: 'get' });
   }
 
-
   post(url, params?) {
     params = params || {};
     return this.fetch(url, {method:'post',body:JSON.stringify(params)});
@@ -78,9 +79,12 @@ export class HttpNetwork {
     return this.fetch(url, options);
   }
   
+
 }
 
-// var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; /** @module json2formData */
+export function formatDate(date:number|Date|string,format:string) {
+  return new DatePipe('en-US').transform(date,format);
+}
 
 export function json2form (a) {
   var s = [],

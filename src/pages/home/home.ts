@@ -5,6 +5,8 @@ import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { Platform, NavController } from 'ionic-angular';
 import { StorageService, STORAGE_KEY } from '../../service/storage.service';
+import { StaffAttendanceNetwork } from '../../network/staffAttendance.network';
+import { formatDate } from '../../network/http';
 
 @Component({
   templateUrl: 'home.html'
@@ -16,7 +18,8 @@ export class HomePage {
     private confirmService: ConfirmService,
     private actionSheetService: ActionSheetService,
     private platform: Platform,
-    private storage: StorageService
+    private storage: StorageService,
+    private staffAttendanceNetwork: StaffAttendanceNetwork
   ) {
     
     let user = this.storage.get(STORAGE_KEY.USER_INFO);
@@ -277,8 +280,13 @@ export class HomePage {
 
   ionViewWillEnter(){
     this.onSelectChart('chart1');
+
+    this.staffAttendanceNetwork.getStaffAttendanceList({
+      startDate:formatDate('2018-1-1 00:00:00', 'yyyy-MM-dd HH:mm:ss'),
+      endDate:formatDate('2018-12-15 00:00:00', 'yyyy-MM-dd HH:mm:ss'),
+    }).subscribe(data=>{
+      console.log(data);
+    })
   }
-
-
 
 }

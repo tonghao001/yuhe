@@ -28,6 +28,8 @@ import { StationeryApplyPageModule } from './apply/stationeryApply/stationeryApp
 import { WorkOrderApplyPageModule } from './apply/workOrderApply/workOrderApply.module';
 import { ScheduleManageModule } from './schedule/schedule.module';
 import { SicknessCasePageModule } from './kindergartenOverview/sicknessCase/sicknessCase.module';
+import { HttpNetwork } from '../../network/http';
+import { StaffAttendanceNetwork } from '../../network/staffAttendance.network';
 
 
 @NgModule({
@@ -64,7 +66,9 @@ import { SicknessCasePageModule } from './kindergartenOverview/sicknessCase/sick
   providers:[
     MessageService,
     ConfirmService,
-    ActionSheetService
+    ActionSheetService,
+    HttpNetwork,
+    StaffAttendanceNetwork,
   ],
   entryComponents:[
     HomePage,
