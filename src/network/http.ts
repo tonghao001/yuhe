@@ -114,5 +114,5 @@ export function json2form (a) {
 };
 
 export const HTTP_URL = {
-  MAIN: 'http://www.yuhe.insighthink.com'
+  MAIN: 'http://www.yuhe.insighthink.com/yh_YEManager'
 }
