@@ -10,7 +10,8 @@ export class HttpNetwork {
   fetch(url, options?) {
     const httpOptions = {
       body: undefined,
-      headers:{'Content-Type': 'application/json;charset=UTF-8'}
+      headers:{'Content-Type': 'application/json;charset=UTF-8'},
+      'withCredentials': true
       // headers: new HttpHeaders({
       //   'Content-Type': 'application/json;charset=UTF-8',
       //   // responseType: 'json'
