@@ -11,7 +11,7 @@ export class HttpNetwork {
     const httpOptions = {
       body: undefined,
       headers:{'Content-Type': 'application/json;charset=UTF-8'},
-      'withCredentials': true
+      withCredentials: true
       // headers: new HttpHeaders({
       //   'Content-Type': 'application/json;charset=UTF-8',
       //   // responseType: 'json'
@@ -114,5 +114,5 @@ export function json2form (a) {
 };
 
 export const HTTP_URL = {
-  MAIN: 'http://www.yuhe.insighthink.com'
+  MAIN: 'http://www.yuhe.insighthink.com/yh_YEManager'
 }
