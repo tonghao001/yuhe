@@ -49,6 +49,19 @@ export class HttpNetwork {
     return this.fetch(url, { method: 'get' });
   }
 
+  getConcat(url, params?) {
+    params = params || {};
+    let str = Object.keys(params).map(key => {
+      return params[key];
+    }).join('/');
+
+    if (str) {
+      url = `${url}/${str}`;
+    }
+    return this.fetch(url, { method: 'get' });
+  }
+
+
   post(url, params?) {
     params = params || {};
     return this.fetch(url, {method:'post',body:JSON.stringify(params)});
