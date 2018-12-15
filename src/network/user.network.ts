@@ -15,10 +15,10 @@ export class UserNetwork {
   logout() {
     return this.http.postForm('/app/login/signOut');
   }
-  modifyPassword() {
-    return this.http.postForm('/app/login/modifyPassword');
+  modifyPassword(data) {
+    return this.http.postForm('/app/login/modifyPassword', data);
   }
-  resetPassword() {
-    return this.http.postForm('/app/login/resetPassword');
+  resetPassword(data) {
+    return this.http.postForm('/app/login/resetPassword', data);
   }
 }
