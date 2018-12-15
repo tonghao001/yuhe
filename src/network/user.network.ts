@@ -12,10 +12,13 @@ export class UserNetwork {
   getSMSCode(data) {
     return this.http.postForm('/app/login/getSMSCode', data);
   }
-  logout(){
+  logout() {
     return this.http.postForm('/app/login/signOut');
   }
-  modifyPassword(){
+  modifyPassword() {
     return this.http.postForm('/app/login/modifyPassword');
+  }
+  resetPassword() {
+    return this.http.postForm('/app/login/resetPassword');
   }
 }
