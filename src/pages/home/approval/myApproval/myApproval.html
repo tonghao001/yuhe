@@ -3,15 +3,6 @@
 </ion-header>
 
 <ion-content class="my-approval-body">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="下拉刷新"
-      refreshingSpinner="circles"
-      refreshingText="加载中......"
-    >
-    </ion-refresher-content>
-  </ion-refresher>
   <ion-list>
     <ion-list-header>
       <ion-segment [(ngModel)]="isApproval">
@@ -31,36 +22,29 @@
         </ion-segment-button>
       </ion-segment>
     </ion-list-header>
-    <div [hidden]="isApproval==='true'">
+    <div [hidden]="isApproval==='false'">
         <ion-item *ngFor="let item of approavlList" (click)="clickItem(item)">
             <ion-avatar item-start>
               <img src="assets/icon/thumbnail-puppy-1.jpg" />
             </ion-avatar>
             <h2>{{ item.initiatorName }}</h2>
-            <p>{{ item.billType }}</p>
-            <!-- <p class="status-label" [ngClass]="item.approvalStatus">
-              {{ item.approvalStatus }}
-            </p> -->
+            <p>类型：{{ item.billTypeName }}</p>
+            <p class="status-label" [ngClass]="'status' + item.approvalStatus">
+              {{ item.approvalStatusName }}
+            </p>
           </ion-item>
     </div>
-    <div *ngIf="isApproval==='true'">
+    <div *ngIf="isApproval==='false'">
         <ion-item *ngFor="let item of unApprovalList" (click)="clickItem(item)">
             <ion-avatar item-start>
               <img src="assets/icon/thumbnail-puppy-1.jpg" />
             </ion-avatar>
             <h2>{{ item.initiatorName }}</h2>
-            <p>{{ item.billType }}</p>
-            <!-- <p class="status-label" [ngClass]="item.approvalStatus">
-              {{ item.approvalStatus }}
-            </p> -->
+            <p>类型：{{ item.billTypeName }}</p>
+            <p class="status-label" [ngClass]="'status' + item.approvalStatus">
+              {{ item.approvalStatusName }}
+            </p>
           </ion-item>
     </div>
   </ion-list>
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="加载更多..."
-    >
-    </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
 </ion-content>

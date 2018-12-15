@@ -10,80 +10,30 @@ import { ApprovalNetwork } from './../../../../network/approval.network';
   selector: "myApproval.ts"
 })
 export class MyApproval {
-  approavlList = [{"initiatorName": "费在美", "billType": "类型：请假（婚假）"}];
-  unApprovalList = [{"initiatorName": "费在美", "billType": "类型：请假（婚假）"}];
+  approavlList:any = [];
+  unApprovalList:any = [];
   isApproval: string = "false";
   constructor(
     public navCtrl: NavController, 
     params: NavParams,
     public approavlNetWork: ApprovalNetwork
     ) {
-    // this.items = [
-    //   {
-    //     name: "肥妹仔",
-    //     typeString: "类型：请假（婚假）",
-    //     statusString: "待审批",
-    //     status: "one",
-    //     type: 0,
-    //   },
-    //   {
-    //     name: "肥妹仔",
-    //     typeString: "类型：请假（婚假）",
-    //     statusString: "已审批",
-    //     status: "two",
-    //     type: 0,
-    //   },
-    //   {
-    //     name: "肥妹仔",
-    //     typeString: "类型：请假（婚假）",
-    //     statusString: "未通过",
-    //     status: "three",
-    //     type: 0,
-    //   },
-    //   {
-    //     name: "肥妹仔",
-    //     typeString: "类型：请假（婚假）",
-    //     statusString: "未审批",
-    //     status: "one",
-    //     type: 0,
-    //   },
-    //   {
-    //     type: 0,
-    //     name: "肥妹仔",
-    //     typeString: "类型：请假（婚假）",
-    //     statusString: "未审批",
-    //     status: "one",
-    //   }
-    // ];
-
-    this.approavlNetWork.getApprovalList().subscribe((data) => {
+    this.approavlNetWork.getApprovalList().subscribe((data:any) => {
       console.log(data)
+      if(data) {
+        this.approavlList = data;
+      }
     }, error => {
       console.log(error)
     })
-    this.approavlNetWork.getUnApprovalList().subscribe((data) => {
+    this.approavlNetWork.getUnApprovalList().subscribe((data: any) => {
       console.log(data)
+      this.unApprovalList = data;
     }, error => {
       console.log(error)
     })
   }
-
   clickItem(item) {
     this.navCtrl.push('app-home-approval-details', item);
-  }
-
-  doRefresh(event) {
-    console.log("Begin async operation");
-    setTimeout(() => {
-      console.log("Async operation has ended");
-      event.complete();
-    }, 2000);
-  }
-
-  loadData(event) {
-    setTimeout(() => {
-      console.log("Done");
-      event.complete();
-    }, 500);
   }
 }
