@@ -34,6 +34,6 @@ export class MyApproval {
     })
   }
   clickItem(item) {
-    this.navCtrl.push('app-home-approval-details', item);
+    this.navCtrl.push('app-home-approval-details', {params: item, type: 1});
   }
 }

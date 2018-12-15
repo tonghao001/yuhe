@@ -18,13 +18,13 @@ export class ApprovalNetwork {
   getUnApprovalList() {
     return this.http.get('/app/approval/myApprovals/getWaitingList');  
   }
-  // 获取违阅读列表
-  getReadUserList(data) {
-    return this.http.postForm('/app/approval/myReception/getReadList', data);
+  // 获取违阅读列表 抄送
+  getReadCopyList() {
+    return this.http.get('/app/approval/myReception/getReadList');
   }
-  // 获取已阅读列表
-  getUnReadUserList(data) {
-    return this.http.postForm('/app/approval/myReception/getUnreadList', data);
+  // 获取已阅读列表 抄送
+  getUnReadCopyList() {
+    return this.http.get('/app/approval/myReception/getUnreadList');
   }
   // 审核通过
   approvalSucceed(data) {
@@ -40,22 +40,22 @@ export class ApprovalNetwork {
   }
   // 请假
   applyRestDetail(data) {
-    return this.http.get('/app/approval/viewApproval/billType1', data);
+    return this.http.getConcat('/app/approval/viewApproval/billType1', data);
   }
   // 采购
   applyBuyDetail(data) {
-    return this.http.get('/app/approval/viewApproval/billType2', data);
+    return this.http.getConcat('/app/approval/viewApproval/billType2', data);
   }
   // 离职
   applyLeaveDetail(data) {
-    return this.http.get('/app/approval/viewApproval/billType3', data);
+    return this.http.getConcat('/app/approval/viewApproval/billType3', data);
   }
   // 物品领用
   applyGoodDetail(data) {
-    return this.http.get('/app/approval/viewApproval/billType4', data);
+    return this.http.getConcat('/app/approval/viewApproval/billType4', data);
   }
   // 工单
   applyOrderDetail(data) {
-    return this.http.get('/app/approval/viewApproval/billType5', data);
+    return this.http.getConcat('/app/approval/viewApproval/billType5', data);
   }
 }

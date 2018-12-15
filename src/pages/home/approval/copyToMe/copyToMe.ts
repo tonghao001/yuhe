@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { NavParams, NavController, IonicPage } from "ionic-angular";
+import { ApprovalNetwork } from './../../../../network/approval.network';
 
 @IonicPage({
   name: "app-home-copyTome"
@@ -10,49 +11,38 @@ import { NavParams, NavController, IonicPage } from "ionic-angular";
 })
 export class CopyToMe {
   props;
-  items;
+  readList: any = [];
+  unReadList: any = [];
   isRead: string = "false";
 
-  constructor(public navCtrl: NavController, params: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+     params: NavParams,
+     public approvalNetWork: ApprovalNetwork,
+     ) {
     this.props = params.data;
-    this.items = [
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 2,
+
+    this.approvalNetWork.getReadCopyList().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.readList = data;
       },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 2,
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 2,
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 2,
-      }
-    ];
+      error => {
+        console.log(error);
+      })
+
+      this.approvalNetWork.getUnReadCopyList().subscribe(
+        (data: any) => {
+          console.log(data);
+          this.unReadList = data;
+        },
+        error => {
+          console.log(error);
+        })
   }
 
   clickItem(item) {
-    this.navCtrl.push("app-home-approval-details", item);
+    this.navCtrl.push("app-home-approval-details", {params: item, type: 3});
   }
 
   doRefresh(event) {

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { IonicPage, AlertController, NavParams } from "ionic-angular";
-import { ApprovalNetwork } from './../../../../network/approval.network';
+import { IonicPage, AlertController, NavParams, NavController } from "ionic-angular";
+import { ApprovalNetwork } from "./../../../../network/approval.network";
 
 @IonicPage({
   name: "app-home-approval-details"
@@ -10,34 +10,120 @@ import { ApprovalNetwork } from './../../../../network/approval.network';
   selector: "approvalDetails.ts"
 })
 export class ApprovalDetails {
-  item;
+  params: any = {};
+  type = 1;
+  buyDetail: any = { csxq: {}, cgqds: [], cgsq: {}};
+  restDetail: any = { qjsq: {} };
+  levelDetail: any = { lzsq: {} };
+  goodDetail: any = { lymxs: [], lysqb:{} };
+  orderDetail: any = { bxqds: [], gdsq: {} };
 
-  approvalPersons;
+  csr: any = [];
+  spr: any = [];
+  picture: any = [];
   constructor(
-    public alertCtrl: AlertController, 
+    public navCtrl: NavController, 
+    public alertCtrl: AlertController,
     params: NavParams,
-    public approvalNetWork: ApprovalNetwork,
-    ) {
-    this.item = params.data;
+    public approvalNetWork: ApprovalNetwork
+  ) {
+    this.params = params.data.params;
+    this.type = params.data.type;
 
-    this.approvalPersons = [
-      {
-        image: "",
-        name: "我发起的审批",
-        date: "2018-2-12"
-      },
-      {
-        image: "",
-        name: "小名",
-        date: "2018-2-12"
-      },
-      {
-        image: "",
-        name: "小绿",
-        date: "2018-2-12",
-        last: "last"
-      }
-    ];
+    switch (this.params.billType) {
+      case 1:
+      this.approvalNetWork
+          .applyRestDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.restDetail = data;
+              this.csr = data.csr;
+              this.spr = data.spr;
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
+      case 2:
+        this.approvalNetWork
+          .applyBuyDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.buyDetail = data;
+              this.csr = data.csr;
+              this.spr = data.sps;
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
+      case 3:
+      this.approvalNetWork
+          .applyLeaveDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.levelDetail = data;
+              this.csr = data.csr;
+              this.spr = data.spr;
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
+      case 4:
+      this.approvalNetWork
+          .applyGoodDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.goodDetail = data;
+              this.csr = data.csr;
+              this.spr = data.spr;
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
+      case 5:
+      this.approvalNetWork
+          .applyOrderDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.orderDetail = data;
+              this.csr = data.csr;
+              this.spr = data.sps;
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
+      default:
+        break;
+    }
   }
 
   approvalClick() {
@@ -46,15 +132,29 @@ export class ApprovalDetails {
       message: "你确定要通过审批吗?",
       buttons: [
         {
-          text: "不通过",
+          text: "取消",
           handler: () => {
-            console.log("Disagree clicked");
           }
         },
         {
           text: "通过",
           handler: () => {
-            console.log("Agree clicked");
+            this.approvalNetWork
+              .approvalSucceed({
+                billType: this.params.billType,
+                id: this.params.id
+              })
+              .subscribe(
+                (data: any) => {
+                  console.log(data);
+                  if (data.status === 0) {
+                    this.navCtrl.pop();
+                  }
+                },
+                error => {
+                  console.log(error);
+                }
+              );
           }
         }
       ]
@@ -76,7 +176,22 @@ export class ApprovalDetails {
         {
           text: "确定",
           handler: () => {
-            console.log("Agree clicked");
+            this.approvalNetWork
+              .approvalFaild({
+                billType: this.params.billType,
+                id: this.params.id
+              })
+              .subscribe(
+                (data: any) => {
+                  console.log(data);
+                  if (data.status === 0) {
+                    this.navCtrl.pop();
+                  }
+                },
+                error => {
+                  console.log(error);
+                }
+              );
           }
         }
       ]
@@ -85,6 +200,39 @@ export class ApprovalDetails {
   }
 
   withDrow() {
-    
+    const confirm = this.alertCtrl.create({
+      title: "",
+      message: "你确定要撤回审批吗?",
+      buttons: [
+        {
+          text: "取消",
+          handler: () => {
+            console.log("Disagree clicked");
+          }
+        },
+        {
+          text: "确定",
+          handler: () => {
+            this.approvalNetWork
+              .withdrowApplay({
+                billType: this.params.billType,
+                id: this.params.id
+              })
+              .subscribe(
+                (data: any) => {
+                  console.log(data);
+                  if (data.status === 0) {
+                    this.navCtrl.pop();
+                  }
+                },
+                error => {
+                  console.log(error);
+                }
+              );
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }

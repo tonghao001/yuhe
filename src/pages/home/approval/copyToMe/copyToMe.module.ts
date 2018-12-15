@@ -1,3 +1,4 @@
+import { ApprovalNetwork } from './../../../../network/approval.network';
 import { CopyToMe } from "./copyToMe";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
@@ -7,6 +8,7 @@ import { IonicPageModule } from "ionic-angular";
   imports: [
       IonicPageModule.forChild(CopyToMe),
     ],
-  entryComponents: [CopyToMe]
+  entryComponents: [CopyToMe],
+  providers: [ApprovalNetwork]
 })
 export class CopyToMePageModule {}

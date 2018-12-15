@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NavParams, NavController, IonicPage } from "ionic-angular";
-
+import { ApprovalNetwork } from "./../../../../network/approval.network";
 @IonicPage({
   name: "start-byMe-page"
 })
@@ -10,109 +10,27 @@ import { NavParams, NavController, IonicPage } from "ionic-angular";
 })
 export class StartByMe {
   props;
-  items;
- 
-  constructor(public navCtrl: NavController, params: NavParams) {
+  list: any = [];
+
+  constructor(
+    public navCtrl: NavController,
+    params: NavParams,
+    public approvalNetWork: ApprovalNetwork
+  ) {
     this.props = params.data;
-    this.items = [
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
+    this.approvalNetWork.getApplayApprovalList().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.list = data;
       },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-3.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
-      },
-      {
-        picture: "assets/icon/thumbnail-puppy-4.jpg",
-        title: "肥仔美",
-        subTitle:
-          "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
-        badage: 10,
-        type: 1
+      error => {
+        console.log(error);
       }
-    ];
+    );
   }
 
   clickItem(item) {
-    this.navCtrl.push("app-home-approval-details", item);
+    this.navCtrl.push("app-home-approval-details", {params: item, type: 2});
   }
 
   doRefresh(event) {

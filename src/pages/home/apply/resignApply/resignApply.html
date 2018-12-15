@@ -1,97 +1,90 @@
 <ion-header>
-        <ion-navbar> <ion-title> 离职申请 </ion-title> </ion-navbar>
-      </ion-header>
-      
-      <ion-content class="resign-apply-body">
-        <div class="block-view">
-            <ion-item>
-                <ion-label class="left">申请时间</ion-label>
-                <ion-datetime
-                  class="right"
-                  placeholder="请选择"
-                  displayFormat="YYYY-MM-DD HH:mm"
-                  [(ngModel)]="applyTime"
-                  >{{ applyTime }}</ion-datetime
-                >
-              </ion-item>
-              <ion-item>
-                <ion-label class="left">离职时间</ion-label>
-                <ion-datetime
-                  class="right"
-                  placeholder="请选择"
-                  displayFormat="YYYY-MM-DD HH:mm"
-                  [(ngModel)]="resignTime"
-                  >{{ resignTime }}</ion-datetime
-                >
-              </ion-item>
-        </div>
-      
-        <div class="block-view">
-          <div class="title-view">
-            <p class="left title">事由</p>
-            <ion-textarea
-              placeholder="请输入通知内容"
-              rows="10"
-            >
-            </ion-textarea>
-          </div>
-        </div>
-      
-        <div class="block-view">
-          <div class="title-view">
-            <p class="left title">图片</p>
-            <ion-row>
-              <ion-col class="reason-img">
-                <img
-                  class="header-image"
-                  src=".././../assets/icon/thumbnail-puppy-1.jpg"
-                />
-              </ion-col>
-            </ion-row>
-          </div>
-        </div>
-      
-        <div class="appoval-person-list">
-          <p>审批人：</p>
-          <ion-row padding-horizontal>
-            <ion-col class="approval-person" *ngFor="let item of approvalPersons">
-              <img
-                class="person-image"
-                src=".././../assets/icon/thumbnail-puppy-1.jpg"
-              />
-              <p>{{ item.name }}</p>
-              <p>{{ item.date }}</p>
-              <ion-icon
-                name="arrow-round-forward"
-                class="arrow-right"
-                [ngClass]="item.last"
-              ></ion-icon>
-            </ion-col>
-          </ion-row>
-        </div>
-        <div class="appoval-person-list end">
-          <p>抄送人：</p>
-          <ion-row padding-horizontal>
-            <ion-col class="approval-person">
-              <img
-                class="person-image"
-                src=".././../assets/icon/thumbnail-puppy-1.jpg"
-              />
-              <p>我发起的申请</p>
-              <p>2018-10-09</p>
-              <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
-            </ion-col>
-          </ion-row>
-        </div>
-      </ion-content>
-      
-      <div>
-        <div
-          class="bottom-view"
-        >
-          <button button ion-button (click)="resetApply()" class="center-button">
-            申请
-          </button>
-        </div>
-      </div>
-      
+  <ion-navbar> <ion-title> 离职申请 </ion-title> </ion-navbar>
+</ion-header>
+
+<ion-content class="resign-apply-body">
+  <div class="block-view">
+    <ion-item>
+      <ion-label class="left">申请时间</ion-label>
+      <ion-datetime
+        class="right"
+        placeholder="请选择"
+        displayFormat="YYYY-MM-DD HH:mm"
+        [(ngModel)]="applyTime"
+        >{{ applyTime }}</ion-datetime
+      >
+    </ion-item>
+    <ion-item>
+      <ion-label class="left">离职时间</ion-label>
+      <ion-datetime
+        class="right"
+        placeholder="请选择"
+        displayFormat="YYYY-MM-DD HH:mm"
+        [(ngModel)]="resignTime"
+        >{{ resignTime }}</ion-datetime
+      >
+    </ion-item>
+  </div>
+
+  <div class="block-view">
+    <div class="title-view">
+      <p class="left title">事由</p>
+      <ion-textarea placeholder="请输入通知内容" rows="10"> </ion-textarea>
+    </div>
+  </div>
+
+  <div class="block-view">
+    <div class="title-view">
+      <p class="left title">图片</p>
+      <ion-row>
+        <ion-col class="reason-img">
+          <img
+            class="header-image"
+            src=".././../assets/icon/thumbnail-puppy-1.jpg"
+          />
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div class="appoval-person-list">
+    <p>审批人：</p>
+    <ion-row padding-horizontal>
+      <ion-col class="approval-person" *ngFor="let item of approvalPersons">
+        <img
+          class="person-image"
+          src=".././../assets/icon/thumbnail-puppy-1.jpg"
+        />
+        <p>{{ item.name }}</p>
+        <p>{{ item.date }}</p>
+        <ion-icon
+          name="arrow-round-forward"
+          class="arrow-right"
+          [ngClass]="item.last"
+        ></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+  <div class="appoval-person-list end">
+    <p>抄送人：</p>
+    <ion-row padding-horizontal>
+      <ion-col class="approval-person">
+        <img
+          class="person-image"
+          src=".././../assets/icon/thumbnail-puppy-1.jpg"
+        />
+        <p>我发起的申请</p>
+        <p>2018-10-09</p>
+        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<div>
+  <div class="bottom-view">
+    <button button ion-button (click)="resetApply()" class="center-button">
+      申请
+    </button>
+  </div>
+</div>
