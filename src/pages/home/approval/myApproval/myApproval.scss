@@ -23,13 +23,13 @@
     }
 
     .status-label {
-        &.one {
+        &.status0 {
             color: $color-primary;
         }
-        &.two {
+        &.status1 {
             color: $color-secondary;
         }
-        &.three {
+        &.status-1 {
             color: $color-danger;
         }
     }

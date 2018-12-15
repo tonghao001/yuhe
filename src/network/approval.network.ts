@@ -38,4 +38,24 @@ export class ApprovalNetwork {
   withdrowApplay(data) {
     return this.http.postForm('/app/approval/myApplication/revoke', data);
   }
+  // 请假
+  applyRestDetail(data) {
+    return this.http.get('/app/approval/viewApproval/billType1', data);
+  }
+  // 采购
+  applyBuyDetail(data) {
+    return this.http.get('/app/approval/viewApproval/billType2', data);
+  }
+  // 离职
+  applyLeaveDetail(data) {
+    return this.http.get('/app/approval/viewApproval/billType3', data);
+  }
+  // 物品领用
+  applyGoodDetail(data) {
+    return this.http.get('/app/approval/viewApproval/billType4', data);
+  }
+  // 工单
+  applyOrderDetail(data) {
+    return this.http.get('/app/approval/viewApproval/billType5', data);
+  }
 }
