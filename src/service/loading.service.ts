@@ -9,6 +9,7 @@ export class LoadingService {
   loading: Loading = null;
 
   show(opt?: any): void {
+    opt = opt || {};
     this.loading = this.loadingCtrl.create({
       spinner: 'circles',
       content: opt.content || 'Waiting',

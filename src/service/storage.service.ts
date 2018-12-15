@@ -15,11 +15,11 @@ export class StorageService {
           value = JSON.parse(value);
         }
         catch (e) {
-          console.error('json parse error',e);
+          console.error('json parse error', e);
         }
       }
     }
-    
+
     return value;
   }
   set(key, value) {
@@ -30,5 +30,6 @@ export class StorageService {
 const Cache = {};
 
 export const STORAGE_KEY = {
-  USER_INFO: 'yh_user_info'
+  USER_INFO: 'yh_user_info',
+  GET_VALID_CODE_TIME: 'get_valid_code_time' //获取验证码的时间,毫秒数
 }
