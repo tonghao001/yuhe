@@ -14,38 +14,51 @@ import { StorageService, STORAGE_KEY } from '../../service/storage.service';
   templateUrl: 'forgetPassword.html'
 })
 export class ForgetPasswordPage {
-  constructor(
-    private loadingService: LoadingService,
-    private toastService: ToastService,
-    private userNetwork: UserNetwork,
-    private storage: StorageService
-  ) {
-
-  }
-
-  timer = null;
+  // timer = null;
   codeTime: number = 0; //读秒
-  validCodeTip: string = "请输入验证码";
   username: string = '';
   validCode: string = '';
   newPassword: string = '';
   confirmPassword: string = '';
   isOnHttp = false;
 
+  constructor(
+    private loadingService: LoadingService,
+    private toastService: ToastService,
+    private userNetwork: UserNetwork,
+    private storage: StorageService
+  ) {
+    this.codeTime=0;
+  }
+
+
+  // ngOnInit() {
+  //   this.codeTime = 0;
+  //   let time = this.storage.get(STORAGE_KEY.GET_VALID_CODE_TIME);
+  //   if (time > 0) {
+  //     console.log(time, 2);
+  //     time = Date.now() - time;
+  //     if (time >= 0 && time <= (60 * 1000)) {
+  //       this.codeTime = Math.ceil(time / 1000);
+  //     }
+  //   }
+  //   if (this.codeTime > 0) {
+  //     this.startTimer();
+  //   }
+  // }
+
   ionViewDidEnter(){
-    //获取本地数据
+    // 获取本地数据
     this.codeTime = 0;
     let time = this.storage.get(STORAGE_KEY.GET_VALID_CODE_TIME);
-    console.log(time,2);
 
-    if (time>0) {
+    if (time > 0) {
       console.log(time,2);
       time = Date.now() - time;
-      if (time >= 0 && time <= 60 * 1000) {
-        this.codeTime = Math.ceil(time / 1000);
-      }
+        if (time >= 0 && time <= (60 * 1000)) {
+            this.codeTime = Math.ceil(time / 1000);
+        }
     }
-
     if (this.codeTime > 0) {
       this.startTimer();
     }
