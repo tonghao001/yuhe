@@ -14,7 +14,7 @@ import { StorageService, STORAGE_KEY } from '../../service/storage.service';
   templateUrl: 'forgetPassword.html'
 })
 export class ForgetPasswordPage {
-  // timer = null;
+  timer = null;
   codeTime: number = 0; //读秒
   username: string = '';
   validCode: string = '';
@@ -53,6 +53,7 @@ export class ForgetPasswordPage {
     let time = this.storage.get(STORAGE_KEY.GET_VALID_CODE_TIME);
 
     if (time > 0) {
+      debugger
       console.log(time,2);
       time = Date.now() - time;
         if (time >= 0 && time <= (60 * 1000)) {

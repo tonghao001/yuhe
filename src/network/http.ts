@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { extend } from 'lodash';
-import {DatePipe} from '@angular/common'
+import { DatePipe } from '@angular/common'
 
 import { debugOutputAstAsTypeScript } from '@angular/compiler';
 
@@ -12,7 +12,7 @@ export class HttpNetwork {
   fetch(url, options?) {
     const httpOptions = {
       body: undefined,
-      headers:{'Content-Type': 'application/json;charset=UTF-8'},
+      headers: { 'Content-Type': 'application/json;charset=UTF-8' },
       withCredentials: true
       // headers: new HttpHeaders({
       //   'Content-Type': 'application/json;charset=UTF-8',
@@ -31,9 +31,14 @@ export class HttpNetwork {
       httpOptions.body = options.body;
     }
     return this.http.request(options.method, url, httpOptions);
-    
+    // return this.http.request(options.method, url, httpOptions).subscribe({
+    //   next: (value) => { console.log(value); return value; },
+    //   error: (err) => { console.log('Error: ' + err); },
+    //   complete: () => { console.log('complete'); }
+    // });
+
     // .subscribe((data:{message?:string})=>{
-      
+
     // },err=>{
     //   return err;
     // });
@@ -65,67 +70,67 @@ export class HttpNetwork {
 
   post(url, params?) {
     params = params || {};
-    return this.fetch(url, {method:'post',body:JSON.stringify(params)});
+    return this.fetch(url, { method: 'post', body: JSON.stringify(params) });
   }
   postForm(url, params?) {
     params = params || {};
     let options = {
-      method:'POST',
-      headers:{
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' 
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
       },
       body: json2form(params)
     }
     return this.fetch(url, options);
   }
-  
+
 
 }
 
-export function formatDate(date:number|Date|string,format:string) {
-  return new DatePipe('en-US').transform(date,format);
+export function formatDate(date: number | Date | string, format: string) {
+  return new DatePipe('en-US').transform(date, format);
 }
 
-export function json2form (a) {
+export function json2form(a) {
   var s = [],
-      rbracket = /\[\]$/,
-      isArray = function isArray(obj) {
-    return Object.prototype.toString.call(obj) === '[object Array]';
-  },
-      add = function add(k, v) {
-    v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
-    s[s.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
-  },
-      buildParams = function buildParams(prefix, obj) {
-    var i, len, key;
+    rbracket = /\[\]$/,
+    isArray = function isArray(obj) {
+      return Object.prototype.toString.call(obj) === '[object Array]';
+    },
+    add = function add(k, v) {
+      v = typeof v === 'function' ? v() : v === null ? '' : v === undefined ? '' : v;
+      s[s.length] = encodeURIComponent(k) + '=' + encodeURIComponent(v);
+    },
+    buildParams = function buildParams(prefix, obj) {
+      var i, len, key;
 
-    if (prefix) {
-      if (isArray(obj)) {
-        for (i = 0, len = obj.length; i < len; i++) {
-          if (rbracket.test(prefix)) {
-            add(prefix, obj[i]);
-          } else {
-            buildParams(prefix + '[' + (typeof(obj[i]) === 'object' ? i : '') + ']', obj[i]);
+      if (prefix) {
+        if (isArray(obj)) {
+          for (i = 0, len = obj.length; i < len; i++) {
+            if (rbracket.test(prefix)) {
+              add(prefix, obj[i]);
+            } else {
+              buildParams(prefix + '[' + (typeof (obj[i]) === 'object' ? i : '') + ']', obj[i]);
+            }
           }
+        } else if (obj && String(obj) === '[object Object]') {
+          for (key in obj) {
+            buildParams(prefix + '[' + key + ']', obj[key]);
+          }
+        } else {
+          add(prefix, obj);
         }
-      } else if (obj && String(obj) === '[object Object]') {
-        for (key in obj) {
-          buildParams(prefix + '[' + key + ']', obj[key]);
+      } else if (isArray(obj)) {
+        for (i = 0, len = obj.length; i < len; i++) {
+          add(obj[i].name, obj[i].value);
         }
       } else {
-        add(prefix, obj);
+        for (key in obj) {
+          buildParams(key, obj[key]);
+        }
       }
-    } else if (isArray(obj)) {
-      for (i = 0, len = obj.length; i < len; i++) {
-        add(obj[i].name, obj[i].value);
-      }
-    } else {
-      for (key in obj) {
-        buildParams(key, obj[key]);
-      }
-    }
-    return s;
-  };
+      return s;
+    };
 
   return buildParams('', a).join('&').replace(/%20/g, '+');
 };
