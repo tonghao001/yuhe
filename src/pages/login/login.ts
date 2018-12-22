@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { UserNetwork } from '../../network/user.network';
 import { ToastService } from '../../service/toast.service';
 import { StorageService, STORAGE_KEY } from '../../service/storage.service';
+import { LoadingService } from '../../service/loading.service';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class LoginPage {
     public navCtrl: NavController,
     private userNetwork: UserNetwork,
     private toastService: ToastService,
-    private storage: StorageService
+    private storage: StorageService,
+    private loading: LoadingService,
   ) {
 
   }
@@ -22,10 +24,18 @@ export class LoginPage {
   username = '';
   password = '';
 
+
+  ionViewDidEnter() {
+    let loginInfo = this.storage.get(STORAGE_KEY.LOGIN_INFO);
+    if (loginInfo && typeof loginInfo === "object") {
+      this.username = loginInfo.username;
+      this.password = loginInfo.password;
+      this.isRememberPassword = true;
+    }
+  }
+
   onRememberPassword(): void {
     console.log(this.isRememberPassword);
-
-    this.onSmsCode();
   }
 
   onLogin(): void {
@@ -36,18 +46,27 @@ export class LoginPage {
       return this.toastService.show('请输入密码');
     }
 
+    this.loading.show();
     this.userNetwork.login({
       account: this.username,
       password: this.password
     }).subscribe((data: { message?: string }) => {
+      this.loading.hide();
       console.log(data);
       if (data.message) {
         return this.toastService.show(data.message);
+      }
+      if (this.isRememberPassword) {
+        this.storage.set(STORAGE_KEY.LOGIN_INFO, { username: this.username, password: this.password });
+      }
+      else {
+        this.storage.set(STORAGE_KEY.LOGIN_INFO, null);
       }
 
       this.storage.set(STORAGE_KEY.USER_INFO, data);
       this.navCtrl.push('app-tab', { id: 2 });
     }, err => {
+      this.loading.hide();
       this.toastService.show(err.message || '登录失败');
     })
 

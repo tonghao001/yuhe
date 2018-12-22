@@ -21,10 +21,10 @@ export class HomePage {
     private storage: StorageService,
     private staffAttendanceNetwork: StaffAttendanceNetwork
   ) {
-    
+
     let user = this.storage.get(STORAGE_KEY.USER_INFO);
     console.log(user);
-   }
+  }
 
   searchText: string = '';
   chartName = '';
@@ -149,7 +149,7 @@ export class HomePage {
       text: ''
     },
     credits: {
-      enabled:false
+      enabled: false
     },
     legend: {
       enabled: true
@@ -194,7 +194,7 @@ export class HomePage {
 
   onSelectChart(chartName) {
     if (chartName === this.chartName) return;
-    console.log('onclick',chartName);
+    console.log('onclick', chartName);
     this.chartName = chartName;
   }
 
@@ -277,14 +277,25 @@ export class HomePage {
     return;
   }
 
+  // ionViewWillEnter() {
+  //   console.log('home, ionViewWillEnter1')
+  // }
+  // ionViewDidEnter() {
+  //   console.log('home, ionViewDidEnter2')
 
-  ionViewWillEnter(){
+  // }
+  // ionViewDidLoad() {
+  //   console.log('home, ionViewDidLoad3-------------------------')
+
+  // }
+
+  ionViewDidEnter() {
     this.onSelectChart('chart1');
 
     this.staffAttendanceNetwork.getStaffAttendanceList({
-      startDate:formatDate('2018-1-1 00:00:00', 'yyyy-MM-dd HH:mm:ss'),
-      endDate:formatDate('2018-12-15 00:00:00', 'yyyy-MM-dd HH:mm:ss'),
-    }).subscribe(data=>{
+      startDate: formatDate('2018-12-22 00:00:00', 'yyyy-MM-dd HH:mm:ss'),
+      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd HH:mm:ss'),
+    }).subscribe(data => {
       console.log(data);
     })
   }

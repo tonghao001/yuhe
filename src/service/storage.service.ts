@@ -30,6 +30,7 @@ export class StorageService {
 const Cache = {};
 
 export const STORAGE_KEY = {
+  LOGIN_INFO: 'yh_login_info',
   USER_INFO: 'yh_user_info',
-  GET_VALID_CODE_TIME: 'get_valid_code_time' //获取验证码的时间,毫秒数
+  GET_VALID_CODE_TIME: 'yh_get_valid_code_time' //获取验证码的时间,毫秒数
 }
