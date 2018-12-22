@@ -1,8 +1,7 @@
-import { UserNetwork } from './../../../../network/user.network';
 import { NoticeNetWork } from "./../../../../network/notice.network";
 import { Component } from "@angular/core";
 import { NavParams, IonicPage, AlertController } from "ionic-angular";
-import { Geolocation } from "@ionic-native/geolocation/ngx";
+// import { Geolocation } from "@ionic-native/geolocation/ngx";
 
 @IonicPage({
   name: "app-home-edit-announcement"
@@ -20,7 +19,7 @@ export class EditAnnouncement {
   constructor(
     params: NavParams,
     public alert: AlertController,
-    private geolocation: Geolocation,
+    // private geolocation: Geolocation,
     private notiNetWork: NoticeNetWork
   ) {
 
@@ -56,28 +55,28 @@ export class EditAnnouncement {
   }
 
   addPicture() {
-    this.geolocation
-      .getCurrentPosition()
-      .then(resp => {
-        resp.coords.latitude;
-        resp.coords.longitude;
+    // this.geolocation
+    //   .getCurrentPosition()
+    //   .then(resp => {
+    //     resp.coords.latitude;
+    //     resp.coords.longitude;
 
-        const prompt = this.alert.create({
-          title: "请求成功",
-          message: resp.coords.latitude + ", " + resp.coords.longitude
-        });
+    //     const prompt = this.alert.create({
+    //       title: "请求成功",
+    //       message: resp.coords.latitude + ", " + resp.coords.longitude
+    //     });
 
-        prompt.present();
-      })
-      .catch(error => {
-        const prompt = this.alert.create({
-          title: "请求失败",
-          message: error
-        });
+    //     prompt.present();
+    //   })
+    //   .catch(error => {
+    //     const prompt = this.alert.create({
+    //       title: "请求失败",
+    //       message: error
+    //     });
 
-        prompt.present();
-        console.log("Error getting location", error);
-      });
+    //     prompt.present();
+    //     console.log("Error getting location", error);
+    //   });
   }
 
   sendAnnounceMent() {

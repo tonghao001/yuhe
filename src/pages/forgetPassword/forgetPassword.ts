@@ -31,29 +31,12 @@ export class ForgetPasswordPage {
     this.codeTime=0;
   }
 
-
-  // ngOnInit() {
-  //   this.codeTime = 0;
-  //   let time = this.storage.get(STORAGE_KEY.GET_VALID_CODE_TIME);
-  //   if (time > 0) {
-  //     console.log(time, 2);
-  //     time = Date.now() - time;
-  //     if (time >= 0 && time <= (60 * 1000)) {
-  //       this.codeTime = Math.ceil(time / 1000);
-  //     }
-  //   }
-  //   if (this.codeTime > 0) {
-  //     this.startTimer();
-  //   }
-  // }
-
   ionViewDidEnter(){
     // 获取本地数据
     this.codeTime = 0;
     let time = this.storage.get(STORAGE_KEY.GET_VALID_CODE_TIME);
 
     if (time > 0) {
-      debugger
       console.log(time,2);
       time = Date.now() - time;
         if (time >= 0 && time <= (60 * 1000)) {
@@ -70,10 +53,6 @@ export class ForgetPasswordPage {
       this.storage.set(STORAGE_KEY.GET_VALID_CODE_TIME, Date.now()-this.codeTime*1000);
     }
     this.clearTimer();
-    debugger;
-  }
-  ionViewWillUnload(){
-   debugger;
   }
 
   startTimer() {

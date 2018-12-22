@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { extend } from 'lodash';
-import { DatePipe } from '@angular/common'
-
-import { debugOutputAstAsTypeScript } from '@angular/compiler';
+import { DatePipe } from '@angular/common';
 
 @Injectable()
 export class HttpNetwork {
@@ -14,10 +12,6 @@ export class HttpNetwork {
       body: undefined,
       headers: { 'Content-Type': 'application/json;charset=UTF-8' },
       withCredentials: true
-      // headers: new HttpHeaders({
-      //   'Content-Type': 'application/json;charset=UTF-8',
-      //   // responseType: 'json'
-      // })
     };
 
 
@@ -31,17 +25,6 @@ export class HttpNetwork {
       httpOptions.body = options.body;
     }
     return this.http.request(options.method, url, httpOptions);
-    // return this.http.request(options.method, url, httpOptions).subscribe({
-    //   next: (value) => { console.log(value); return value; },
-    //   error: (err) => { console.log('Error: ' + err); },
-    //   complete: () => { console.log('complete'); }
-    // });
-
-    // .subscribe((data:{message?:string})=>{
-
-    // },err=>{
-    //   return err;
-    // });
   }
 
   get(url, params?) {
