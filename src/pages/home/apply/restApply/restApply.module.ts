@@ -1,12 +1,15 @@
+import { ApprovalNetwork } from './../../../../network/approval.network';
 import { RestApply } from "./restApply";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
+
 
 @NgModule({
   declarations: [RestApply],
   imports: [
       IonicPageModule.forChild(RestApply),
     ],
-  entryComponents: [RestApply]
+  entryComponents: [RestApply],
+  providers: [ApprovalNetwork],
 })
 export class RestApplyPageModule {}
