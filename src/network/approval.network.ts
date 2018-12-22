@@ -58,4 +58,33 @@ export class ApprovalNetwork {
   applyOrderDetail(data) {
     return this.http.getConcat('/app/approval/viewApproval/billType5', data);
   }
+  // 请假
+  applyForReset(data) {
+    return this.http.postForm('/app/approval/application/postLeave', data);
+  }
+  // 采购
+  applyForBuy(data) {
+    return this.http.postForm('/app/approval/application/postPurchase', data);
+  }
+  // 工单
+  applyForOrder(data) {
+    return this.http.postForm('/app/approval/application/postRepair', data);
+  }
+  // 领用
+  applyForGood(data) {
+    return this.http.postForm('/app/approval/application/postRequestGoods', data);
+  }
+  // 离职
+  applyForLeave(data) {
+    return this.http.postForm('/app/approval/application/postResignation', data);
+  }
+  getRestApplayType() {
+    return this.http.get('/app/approval/application/getLeaveType');
+  }
+  getRestResginType() {
+    return this.http.get('/app/approval/application/getResignationType');
+  }
+  getStaffList() {
+    return this.http.get('/app/approval/application/getStaffList');
+  }
 }
