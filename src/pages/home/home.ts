@@ -5,8 +5,9 @@ import { ConfirmService } from '../../service/confirm.service';
 import { ActionSheetService } from '../../service/actionSheet.service';
 import { Platform, NavController } from 'ionic-angular';
 import { StorageService, STORAGE_KEY } from '../../service/storage.service';
-import { StaffAttendanceNetwork } from '../../network/staffAttendance.network';
+import { KindergartenOverviewNetwork } from '../../network/kindergartenOverview.network';
 import { formatDate } from '../../network/http';
+import { ToastService } from '../../service/toast.service';
 
 @Component({
   templateUrl: 'home.html'
@@ -15,11 +16,12 @@ export class HomePage {
   constructor(
     private navCtrl: NavController,
     private messageService: MessageService,
+    private toastService: ToastService,
     private confirmService: ConfirmService,
     private actionSheetService: ActionSheetService,
     private platform: Platform,
     private storage: StorageService,
-    private staffAttendanceNetwork: StaffAttendanceNetwork
+    private kindergartenOverviewNetwork: KindergartenOverviewNetwork
   ) {
 
     let user = this.storage.get(STORAGE_KEY.USER_INFO);
@@ -28,173 +30,212 @@ export class HomePage {
 
   searchText: string = '';
   chartName = '';
+  chart1 = null;
+  chart2 = null;
+  chart3: Chart = new Chart();
 
-  chart1: Chart = new Chart({
-    chart: {
-      type: 'pie'
-    },
-    title: {
-      text: ''
-    },
-    credits: {
-      enabled: false
-    },
-    legend: {
-      labelFormat: '{name}<br/>{y}人'
-    },
-    loading: {
-      showDuration: 100,
-      hideDuration: 100
-    },
-    plotOptions: {
-      pie: {
-        allowPointSelect: true,
-        cursor: 'pointer',
-        dataLabels: {
-          enabled: true,
-          format: '{percentage:.1f}%',
-          distance: -20
+  updateChart1 = (data: any) => {
+    this.kindergartenOverviewNetwork.getAllAttendanceInfo({
+      startDate: formatDate('2018-12-22 00:00:00', 'yyyy-MM-dd'),
+      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+    }).subscribe((data: any) => {
+      if (data.status) {
+        return this.toastService.show(data.message || '获取数据错误');
+      }
+      let options = {
+        chart: {
+          type: 'pie'
         },
-        showInLegend: true,
-        events: {
-          click: (e) => {
-            this.goToPage('app-home-staffAttendance');
+        title: {
+          text: ''
+        },
+        credits: {
+          enabled: false
+        },
+        legend: {
+          labelFormat: '{name}<br/>{y}人'
+        },
+        loading: {
+          showDuration: 100,
+          hideDuration: 100
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              format: '{percentage:.1f}%',
+              distance: -20
+            },
+            showInLegend: true,
+            events: {
+              click: (e) => {
+                this.goToPage('app-home-staffAttendance');
+              }
+            },
+            tooltip: {
+            }
           }
         },
-        tooltip: {
-        }
-      }
-    },
-    series: [
-      {
-        name: '出勤',
-        data: [
+        series: [
           {
-            name: '应到',
-            y: 25
-          },
-          {
-            name: '实到',
-            y: 12
-          },
-          {
-            name: '缺勤',
-            y: 6
-          },
-          {
-            name: '其他',
-            y: 7
+            name: '出勤',
+            data: [
+              {
+                name: '应到',
+                y: data.totalCount
+              },
+              {
+                name: '实到',
+                y: data.signCount
+              },
+              {
+                name: '缺勤',
+                y: data.leaveCount
+              },
+              {
+                name: '其他',
+                y: data.absenceCount
+              }
+            ]
           }
         ]
+      };
+      this.chart1 = new Chart(options);
+    });
+  }
+  updateChart2 = (data: any) => {
+    this.kindergartenOverviewNetwork.getAllSicknessCaseInfo({
+      startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
+      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+    }).subscribe((data: any) => {
+      if (data.status) {
+        return this.toastService.show(data.message || '获取数据错误');
       }
-    ]
-  });
-  chart2: Chart = new Chart({
-    chart: {
-      type: 'column'
-    },
-    title: {
-      text: ''
-    },
-    credits: {
-      enabled: false
-    },
-    xAxis: {
-      type: 'category'
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: '总数：165'
-      }
-    },
-    legend: {
-      enabled: false
-    },
-    plotOptions: {
-      series: {
-        dataLabels: {
-          enabled: true,
-          format: '{point.y}'
-        }
-      }
-    },
-    series: [{
-      name: '浏览器',
-      data: [
-        {
-          name: '情况1',
-          y: 55,
-          color: 'green'
-        },
-        {
-          name: '情况2',
-          y: 25,
-          color: 'blue'
-        },
-        {
-          name: '情况3',
-          y: 85,
-          color: 'yellow'
-        }
-      ]
-    }]
+      let seriesData=[];let total=0;
+      data.forEach(item=>{
+        seriesData.push({
+          name:item.bzm,
+          y:item.bzs
+        });
+        total+=item.bzs;
+      })
 
-  });
-  chart3: Chart = new Chart({
-    chart: {
-      type: 'column'
-    },
-    title: {
-      text: ''
-    },
-    credits: {
-      enabled: false
-    },
-    legend: {
-      enabled: true
-    },
-    xAxis: {
-      categories: [
-        '一月', '二月', '三月', '四月'
-      ],
-      crosshair: true
-    },
-    yAxis: {
-      min: 0,
-      title: {
-        text: ''
+      let options = {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: ''
+        },
+        credits: {
+          enabled: false
+        },
+        xAxis: {
+          type: 'category'
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: `总数：${total}`
+          }
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          series: {
+            dataLabels: {
+              enabled: true,
+              format: '{point.y}'
+            }
+          }
+        },
+        series: [{
+          name: '',
+          data: seriesData
+        }]
       }
-    },
-    plotOptions: {
-      column: {
-        borderWidth: 0,
-        dataLabels: {
-          enabled: true,
-          format: '{y}'
-          // formatter: function () {
-          //   console.log(this);
-          //   return this.y;
-          // }
 
-        }
+      this.chart2 = new Chart(options);
+
+    });
+
+  }
+  updateChart3 = (data: any) => {
+    this.kindergartenOverviewNetwork.getAllFinancialSourceInfo({
+      startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
+      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+    }).subscribe((data: any) => {
+      if (data.status) {
+        return this.toastService.show(data.message || '获取数据错误');
       }
-    },
-    series: [
-      {
-        name: '学费',
-        data: [10, 20, 30, 40]
-      },
-      {
-        name: '政府拨款',
-        data: [30, 40, 50, 60]
+
+      let seriesData=[];let total=0;
+      data.forEach(item=>{
+        seriesData.push({
+          name:item.name,
+          y:item.chargeSum
+        });
+        total+=item.chargeSum;
+      })
+
+      let options = {
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: ''
+        },
+        credits: {
+          enabled: false
+        },
+        xAxis: {
+          type: 'category'
+        },
+        yAxis: {
+          min: 0,
+          title: {
+            text: `总数：${total}`
+          }
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          series: {
+            dataLabels: {
+              enabled: true,
+              format: '{point.y}'
+            }
+          }
+        },
+        series: [{
+          name: '',
+          data: seriesData
+        }]
       }
-    ]
-  });
+      this.chart3 = new Chart(options);
+
+    });
+    // this.kindergartenOverviewNetwork.getAllFinancialSourceRankingInfo({
+    //   startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
+    //   endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+    // }).subscribe((data: any) => {
+
+    // })
+  }
 
   onSelectChart(chartName) {
     if (chartName === this.chartName) return;
     console.log('onclick', chartName);
+    let info = {
+      chart1: this.updateChart1,
+      chart2: this.updateChart2,
+      chart3: this.updateChart3,
+    };
+    info[chartName]();
     this.chartName = chartName;
   }
 
@@ -277,27 +318,8 @@ export class HomePage {
     return;
   }
 
-  // ionViewWillEnter() {
-  //   console.log('home, ionViewWillEnter1')
-  // }
-  // ionViewDidEnter() {
-  //   console.log('home, ionViewDidEnter2')
-
-  // }
-  // ionViewDidLoad() {
-  //   console.log('home, ionViewDidLoad3-------------------------')
-
-  // }
-
   ionViewDidEnter() {
     this.onSelectChart('chart1');
-
-    this.staffAttendanceNetwork.getStaffAttendanceList({
-      startDate: formatDate('2018-12-22 00:00:00', 'yyyy-MM-dd HH:mm:ss'),
-      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd HH:mm:ss'),
-    }).subscribe(data => {
-      console.log(data);
-    })
   }
 
 }

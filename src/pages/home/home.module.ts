@@ -29,7 +29,7 @@ import { WorkOrderApplyPageModule } from './apply/workOrderApply/workOrderApply.
 import { ScheduleManageModule } from './schedule/schedule.module';
 import { SicknessCasePageModule } from './kindergartenOverview/sicknessCase/sicknessCase.module';
 import { HttpNetwork } from '../../network/http';
-import { StaffAttendanceNetwork } from '../../network/staffAttendance.network';
+import { KindergartenOverviewNetwork } from '../../network/kindergartenOverview.network';
 
 
 @NgModule({
@@ -68,7 +68,7 @@ import { StaffAttendanceNetwork } from '../../network/staffAttendance.network';
     ConfirmService,
     ActionSheetService,
     HttpNetwork,
-    StaffAttendanceNetwork,
+    KindergartenOverviewNetwork,
   ],
   entryComponents:[
     HomePage,
