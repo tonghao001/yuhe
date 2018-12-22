@@ -28,20 +28,20 @@ export class ForgetPasswordPage {
     private userNetwork: UserNetwork,
     private storage: StorageService
   ) {
-    this.codeTime=0;
+    this.codeTime = 0;
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     // 获取本地数据
     this.codeTime = 0;
     let time = this.storage.get(STORAGE_KEY.GET_VALID_CODE_TIME);
 
     if (time > 0) {
-      console.log(time,2);
+      console.log(time, 2);
       time = Date.now() - time;
-        if (time >= 0 && time <= (60 * 1000)) {
-            this.codeTime = Math.ceil(time / 1000);
-        }
+      if (time >= 0 && time <= (60 * 1000)) {
+        this.codeTime = 60 - Math.ceil(time / 1000);
+      }
     }
     if (this.codeTime > 0) {
       this.startTimer();
@@ -49,8 +49,8 @@ export class ForgetPasswordPage {
   }
 
   ionViewWillLeave() {
-    if (this.codeTime>0) {
-      this.storage.set(STORAGE_KEY.GET_VALID_CODE_TIME, Date.now()-this.codeTime*1000);
+    if (this.codeTime > 0) {
+      this.storage.set(STORAGE_KEY.GET_VALID_CODE_TIME, Date.now() - (60 - this.codeTime) * 1000);
     }
     this.clearTimer();
   }
@@ -72,7 +72,7 @@ export class ForgetPasswordPage {
     this.codeTime = 0;
   }
   onGetCode() {
-    if (!this.username) {
+      if (!this.username) {
       return this.toastService.show('请输入手机号');
     }
     if (this.codeTime) {
@@ -91,6 +91,7 @@ export class ForgetPasswordPage {
       if (data.status) {
         return this.toastService.show(data.message || '获取验证码失败');
       }
+      this.validCode = data.result.code;
       this.toastService.show('获取验证码成功');
     }, err => {
       this.loadingService.hide();
@@ -98,7 +99,7 @@ export class ForgetPasswordPage {
       this.toastService.show(err.message || '获取验证码失败');
     });
 
-    this.codeTime=60;
+    this.codeTime = 60;
     this.startTimer();
   }
 

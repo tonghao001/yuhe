@@ -16,7 +16,7 @@ import { MePage } from '../me/me';
   templateUrl: 'tab.html'
 })
 export class TabPage {
-  tabIndex = 2;
+  tabIndex = -1;
   tab1 = MessagePage;
   tab2 = DynamicPage;
   tab3 = HomePage;
@@ -28,16 +28,18 @@ export class TabPage {
     public navCtrl: NavController,
     public navParams: NavParams
   ) {
-    
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad', this.navParams);
-    this.tabIndex = parseInt(this.navParams.data.id);
-    this.tabRef.select(this.tabIndex);
+    let tabIndex = parseInt(this.navParams.data.id);
+    if (tabIndex !== this.tabIndex) {
+      this.tabRef.select(tabIndex);
+    }
+
   }
-  ionViewWillEnter() {
-    console.log('ionViewWillEnter', this.navParams);
-    this.tabIndex = parseInt(this.navParams.data.id);
-    this.tabRef.select(this.tabIndex);
-  }
+  // ionViewWillEnter() {
+  //   console.log('ionViewWillEnter', this.navParams);
+  //   this.tabIndex = parseInt(this.navParams.data.id);
+  //   this.tabRef.select(this.tabIndex);
+  // }
 }
