@@ -1,3 +1,4 @@
+import { ApprovalNetwork } from './../../../../network/approval.network';
 import { StationeryApply } from "./stationeryApply";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
@@ -7,7 +8,8 @@ import { IonicPageModule } from "ionic-angular";
   imports: [
       IonicPageModule.forChild(StationeryApply),
     ],
-  entryComponents: [StationeryApply]
+  entryComponents: [StationeryApply],
+  providers: [ApprovalNetwork],
 })
 export class StationeryApplyPageModule {
     

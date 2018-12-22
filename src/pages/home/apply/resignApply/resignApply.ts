@@ -123,7 +123,7 @@ export class ResignApply {
             var csid = this.csr.map((item) => { return item.id })
             var params = {
               apply: {
-                billType: 3,
+                billType: 4,
                 sqsj: this.applyData.sqsj,
                 yjlzsj: this.applyData.yjlzsj,
                 lzyy: this.applyData.lzyy,

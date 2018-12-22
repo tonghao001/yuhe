@@ -6,7 +6,8 @@
   <div class="block-view">
     <ion-item>
       <ion-label class="left">领用类型</ion-label>
-      <button item-end class="right" (click)="selectRestType()">请选择</button>
+      <!-- 没有接口 -->
+      <button item-end class="right">请选择</button>
     </ion-item>
     <ion-item>
       <ion-label class="left">领用时间</ion-label>
@@ -14,71 +15,88 @@
         class="right"
         placeholder="请选择"
         displayFormat="YYYY-MM-DD HH:mm"
-        [(ngModel)]="stationeryTime"
-        >{{ stationeryTime }}</ion-datetime
+        [(ngModel)]="applyData.lysj"
+        >{{ applyData.lysj }}</ion-datetime
       >
     </ion-item>
     <ion-item>
       <ion-label class="left">物品用途</ion-label>
-      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+      <ion-input class="right" [(ngModel)]="applyData.wpyt" item-end placeholder="请输入"></ion-input>
     </ion-item>
   </div>
 
-  <div class="block-view">
+  <div class="block-view" *ngFor="let item of applyData.lymxs">
     <ion-item>
       <ion-label class="left">名称</ion-label>
-      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+      <ion-input class="right" [(ngModel)]="item.wpmc" item-end placeholder="请输入">{{item.wpmc}}</ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label class="left">规格</ion-label>
-      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+      <ion-input class="right" [(ngModel)]="item.wpmc" item-end placeholder="请输入">{{item.wpmc}}</ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="left">单价</ion-label>
-      <ion-input class="right" item-end placeholder="请输入"></ion-input>
-    </ion-item>
+      <ion-input class="right" [(ngModel)]="item.wpmc" item-end placeholder="请输入">{{item.wpmc}}</ion-input>
+    </ion-item> -->
     <ion-item>
       <ion-label class="left">数量</ion-label>
-      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+      <ion-input class="right" [(ngModel)]="item.sl" item-end placeholder="请输入">{{item.sl}}</ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="left">总价</ion-label>
-      <ion-input class="right" item-end placeholder="请输入"></ion-input>
+      <ion-input class="right" [(ngModel)]="item.je" item-end placeholder="请输入">{{item.je}}</ion-input>
     </ion-item>
   </div>
 
+  <button class="center-button" (click)="addMoreGood()" >+添加明细</button>
+  
+
   <div class="appoval-person-list">
-    <p>审批人：</p>
-    <ion-row padding-horizontal>
-      <ion-col class="approval-person" *ngFor="let item of approvalPersons">
-        <img
-          class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-        <p>{{ item.name }}</p>
-        <p>{{ item.date }}</p>
-        <ion-icon
-          name="arrow-round-forward"
-          class="arrow-right"
-          [ngClass]="item.last"
-        ></ion-icon>
-      </ion-col>
-    </ion-row>
-  </div>
-  <div class="appoval-person-list end">
-    <p>抄送人：</p>
-    <ion-row padding-horizontal>
-      <ion-col class="approval-person">
-        <img
-          class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
-        />
-        <p>我发起的申请</p>
-        <p>2018-10-09</p>
-        <ion-icon name="arrow-round-forward" class="arrow-right"></ion-icon>
-      </ion-col>
-    </ion-row>
-  </div>
+      <ion-item no-lines>
+          <ion-label class="left-title"> 审批人： </ion-label>
+          <button item-end (click)="getApprovalPerson()">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </ion-item>
+      <ion-row padding-horizontal>
+        <ion-col class="approval-person" *ngFor="let item of spr">
+          <img
+            class="person-image"
+            src=".././../assets/icon/thumbnail-puppy-1.jpg"
+          />
+          <p>{{ item.zgName }}</p>
+          <!-- <p>{{ item.date }}</p> -->
+          <ion-icon
+            name="arrow-round-forward"
+            class="arrow-right"
+            [ngClass]="item.last"
+          ></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="appoval-person-list end">
+        <ion-item no-lines>
+            <ion-label class="left-title"> 抄送人： </ion-label>
+            <button item-end (click)="getCopyToPerson()">
+              <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-item>
+      <ion-row padding-horizontal>
+        <ion-col class="approval-person" *ngFor="let item of csr">
+            <img
+              class="person-image"
+              src=".././../assets/icon/thumbnail-puppy-1.jpg"
+            />
+            <p>{{ item.zgName }}</p>
+            <!-- <p>{{ item.date }}</p> -->
+            <ion-icon
+              name="arrow-round-forward"
+              class="arrow-right"
+              [ngClass]="item.last"
+            ></ion-icon>
+          </ion-col>
+      </ion-row>
+    </div>
 </ion-content>
 
 <div>
