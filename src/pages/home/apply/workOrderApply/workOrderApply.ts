@@ -1,9 +1,11 @@
+import { ApprovalNetwork } from './../../../../network/approval.network';
 import { Component } from "@angular/core";
 import {
   IonicPage,
   AlertController,
   NavParams,
-  ActionSheetController
+  ActionSheetController,
+  NavController,
 } from "ionic-angular";
 
 @IonicPage({
@@ -14,71 +16,95 @@ import {
   selector: "workOrderApply.ts"
 })
 export class WorkOrderApply {
-  approvalPersons;
-  fixTime;
+  applyData: any = { bxqds: [] };
+  approvalPersons: any = [];
+  stationTypes: any = [];
+  spr: any = [];
+  csr: any = [];
   constructor(
     public alertCtrl: AlertController,
     params: NavParams,
-    public actionSheet: ActionSheetController
+    public actionSheet: ActionSheetController,
+    public approvalNetWork: ApprovalNetwork,
+    public navCtrl: NavController
   ) {
-    this.approvalPersons = [
-        {
-          image: "",
-          name: "我发起的审批",
-          date: "2018-2-12"
-        },
-        {
-          image: "",
-          name: "小名",
-          date: "2018-2-12"
-        },
-        {
-          image: "",
-          name: "小绿",
-          date: "2018-2-12",
-          last: "last"
-        }
-      ];
+    this.applyData.bxqds.push({});
   }
 
-  async selectRestType() {
-    const actionSheet = await this.actionSheet.create({
-      buttons: [
-        {
-          text: "病假",
-          handler: () => {
-            console.log("Delete clicked");
-          }
+  addMoreOrder() {
+    this.applyData.bxqds.push({});
+  }
+
+  /// 审批人
+  getApprovalPerson() {
+    if (this.approvalPersons.length > 0) {
+      this.showAddApprovalAlert();
+    } else {
+      this.approvalNetWork.getStaffList().subscribe(
+        (data: any) => {
+          console.log(data);
+          this.approvalPersons = data;
+          this.showAddApprovalAlert();
         },
-        {
-          text: "调休",
-          handler: () => {
-            console.log("Share clicked");
-          }
-        },
-        {
-          text: "事假",
-          handler: () => {
-            console.log("Play clicked");
-          }
-        },
-        {
-          text: "年假",
-          handler: () => {
-            console.log("Favorite clicked");
-          }
-        },
-        {
-          text: "Cancel",
-          icon: "close",
-          role: "cancel",
-          handler: () => {
-            console.log("Cancel clicked");
-          }
+        error => {
+          console.log(error);
         }
-      ]
+      );
+    }
+  }
+  /// 审批人
+  showAddApprovalAlert() {
+    var buttons = this.approvalPersons.map(item => {
+      return {
+        text: item.zgxm,
+        handler: () => {
+          this.spr.push({
+            id: item.id,
+            zgName: item.zgxm
+          });
+        }
+      };
     });
-    await actionSheet.present();
+    const actionSheet = this.actionSheet.create({
+      buttons: buttons
+    });
+    actionSheet.present();
+  }
+
+  /// 抄送人
+  getCopyToPerson() {
+    if (this.approvalPersons.length > 0) {
+      this.showAddCopyToAlert();
+    } else {
+      this.approvalNetWork.getStaffList().subscribe(
+        (data: any) => {
+          console.log(data);
+          this.approvalPersons = data;
+          this.showAddCopyToAlert();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+  /// 抄送人
+  showAddCopyToAlert() {
+    var buttons = this.approvalPersons.map(item => {
+      return {
+        text: item.zgxm,
+        handler: () => {
+          this.csr.push({
+            id: item.id,
+            zgName: item.zgxm
+          });
+        }
+      };
+    });
+    const actionSheet = this.actionSheet.create({
+      buttons: buttons
+    });
+    actionSheet.present();
   }
 
   procurementApply() {
@@ -96,6 +122,29 @@ export class WorkOrderApply {
           text: "确定",
           handler: () => {
             console.log("Agree clicked");
+            var spid = this.spr.map((item) => { return item.id });
+            var csid = this.csr.map((item) => { return item.id })
+            var params = {
+              apply: {
+                billType: 1,
+                sqly: this.applyData.sqly,
+                bxsj: this.applyData.bxsj,
+                title: this.applyData.title,
+                spid: spid,
+                csid: csid,
+              },
+              items: this.applyData.cgqds,
+            };
+            // TODO: 接口不通 ！！！
+            this.approvalNetWork.applyBuyDetail(params).subscribe(
+              (data: any) => {
+                console.log(data);
+                this.navCtrl.pop();
+              },
+              error => {
+                console.log(error);
+              }
+            );
           }
         }
       ]
