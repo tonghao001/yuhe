@@ -1,6 +1,8 @@
 import { IonicPage } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { ClassNetwork } from "../../../../network/class.network";
+import { ToastService } from "../../../../service/toast.service";
 
 @IonicPage({
   name: 'app-home-classManage'
@@ -11,37 +13,39 @@ import { NavController } from 'ionic-angular';
 
 export class ClassManagePage {
   list;
-  constructor(public navCtrl: NavController) {
-  
-    this.list = [
-      {id:1, name: '大一班', image:'',totalCount: 30, female: 15, male: 15},
-      {id:2, name: '大二班', image:'',totalCount: 30, female: 15, male: 15},
-      {id:3, name: '大三班', image:'',totalCount: 30, female: 15, male: 15},
-      {id:4, name: '大四班', image:'',totalCount: 30, female: 15, male: 15},
-      {id:5, name: '大五班', image:'',totalCount: 30, female: 15, male: 15}
-    ];
+  constructor(private navCtrl: NavController, private classNetwork: ClassNetwork, private toastService: ToastService) {
+    this.getClassList();
   }
 
-  doRefresh(event){
-    console.log('refresh');
-    console.log('refresh');
-    console.log('refresh');
+  getClassList(onSuccess?: any) {
+    this.classNetwork.getClassList()
+      .subscribe((classList: [{ bid: string, bjmc: string, girl: string, man: string }]) => {
+        this.list = classList.map((classInfo) => {
+          return {
+            id: classInfo.bid,
+            name: classInfo.bjmc,
+            girl: classInfo.girl,
+            boy: classInfo.man,
+            totalCount: parseInt(classInfo.girl) + parseInt(classInfo.man) || 0
+          };
+        });
+        console.log(classList);
+        if (onSuccess) {
+          onSuccess();
+        }
+      }, err => {
+        this.toastService.show(err.message || '获取班级列表失败！');
+      });
+  }
 
-    console.log('refresh');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
+  doRefresh(event) {
+    this.getClassList(() => {
       event.complete();
-    }, 2000);
-  
+    });
   }
 
-  loadMore(event){
-  
-  }
-
-  goToStudentList(id){
-    console.log('id:',id);
+  goToStudentList(id) {
+    console.log('id:', id);
     this.navCtrl.push('app-home-studentManage', { id: id });
   }
 

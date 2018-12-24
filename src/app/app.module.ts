@@ -11,6 +11,7 @@ import { ForgetPasswordPageModule } from '../pages/forgetPassword/forgetPassword
 import { TabPageModule } from '../pages/tab/tab.module';
 import { ComponentsModule } from '../components/components.module';
 import { UserNetwork } from '../network/user.network';
+import { ClassNetwork } from '../network/class.network';
 import { HttpNetwork } from '../network/http';
 import { ToastService } from '../service/toast.service';
 
@@ -44,6 +45,7 @@ import {StorageService} from '../service/storage.service';
     ComponentsModule,
     HttpNetwork,
     UserNetwork,
+    ClassNetwork,
     ToastService,
 
     Chooser,
