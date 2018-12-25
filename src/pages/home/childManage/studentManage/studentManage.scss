@@ -32,10 +32,16 @@
                 line-height: 24px;
                 height: 24px;
             }
-            &.status.leave, .status-description.absent{
+            &.status.unnormal, .status-description.unnormal{
                 font-size: 14px;
                 line-height: 18px;
                 color: $color-danger;
+            }
+
+            &.status.normal, .status-description.unnormal{
+                font-size: 14px;
+                line-height: 18px;
+                color: $color-secondary;
             }
         }
     }

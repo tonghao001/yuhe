@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { ClassNetwork } from "../../../../network/class.network";
 import { ToastService } from "../../../../service/toast.service";
+import { HTTP_URL } from "../../../../network/http";
 
 @IonicPage({
   name: 'app-home-studentManage'
@@ -14,11 +15,13 @@ import { ToastService } from "../../../../service/toast.service";
 
 export class StudentManagePage {
   classId;
-  list;
+  className;
+  list: any = [];
   constructor(private navCtrl: NavController, params: NavParams, private classNetwork: ClassNetwork, private toastService: ToastService) {
     // params.data = params.data || {};
     console.log(params.data);
     this.classId = params.data.id;
+    this.className = params.data.className;
     // this.list = [
     //   {name: '章三', image:'',statusString: '在校', statusDescription:'正常', score: 95, status:'in-school'},
     //   {name: '里斯', image:'',statusString: '请假', statusDescription:'正常', score: 95, status:'leave'},
@@ -29,20 +32,21 @@ export class StudentManagePage {
 
   getClassStudentList(onSuccess?: any) {
     this.classNetwork.getClassStudents({classId: this.classId})
-      .subscribe((studentList: [{ id: number, xm: string, zp: string, }]) => {
+      .subscribe((studentList: [{ id: number, xm: string, zp: string, normal: number, statusValue: string }]) => {
         console.log(studentList);
-        this.list = studentList.map((student) => {
-          return {
-            id: student.id,
-            name: student.xm,
-            image: 'http://www.yuhe.insighthink.com/yh_YEManager/images/' + student.zp,
-            statusDescription: '正常',
-            status:'leave',
-            statusString: '请假',
-            score: 95
-          };
-        });
-        console.log(studentList);
+        if(Array.isArray(studentList) && studentList.length > 0){
+          this.list = studentList.map((student) => {
+            return {
+              id: student.id,
+              name: student.xm,
+              image: HTTP_URL.MAIN + '/images/' + student.zp,
+              statusDescription: student.normal === 1 ? '正常' : '不正常',
+              status: student.normal === 1 ? 'normal' :'unnormal',
+              statusString: student.statusValue,
+              score: 95
+            };
+          });
+        }
         if (onSuccess) {
           onSuccess();
         }
@@ -59,7 +63,7 @@ export class StudentManagePage {
 
   goToStudentDetail(id){
     console.log('id:',id);
-    this.navCtrl.push('app-home-studentDetail', { id: id });
+    this.navCtrl.push('app-home-studentDetail', { id: id , className: this.className});
   }
 
 }

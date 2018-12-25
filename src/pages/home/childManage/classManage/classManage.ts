@@ -12,7 +12,7 @@ import { ToastService } from "../../../../service/toast.service";
 })
 
 export class ClassManagePage {
-  list;
+  list: any = [];
   constructor(private navCtrl: NavController, private classNetwork: ClassNetwork, private toastService: ToastService) {
     this.getClassList();
   }
@@ -20,15 +20,17 @@ export class ClassManagePage {
   getClassList(onSuccess?: any) {
     this.classNetwork.getClassList()
       .subscribe((classList: [{ bid: string, bjmc: string, girl: string, man: string }]) => {
-        this.list = classList.map((classInfo) => {
-          return {
-            id: classInfo.bid,
-            name: classInfo.bjmc,
-            girl: classInfo.girl,
-            boy: classInfo.man,
-            totalCount: parseInt(classInfo.girl) + parseInt(classInfo.man) || 0
-          };
-        });
+        if(Array.isArray(classList) && classList.length > 0){
+          this.list = classList.map((classInfo) => {
+            return {
+              id: classInfo.bid,
+              name: classInfo.bjmc,
+              girl: classInfo.girl,
+              boy: classInfo.man,
+              totalCount: parseInt(classInfo.girl) + parseInt(classInfo.man) || 0
+            };
+          });
+        }
         console.log(classList);
         if (onSuccess) {
           onSuccess();
@@ -44,9 +46,11 @@ export class ClassManagePage {
     });
   }
 
-  goToStudentList(id) {
-    console.log('id:', id);
-    this.navCtrl.push('app-home-studentManage', { id: id });
+  goToStudentList(item) {
+    console.log(item);
+    console.log('id:', item.id);
+    console.log('bjmc:', item.name);
+    this.navCtrl.push('app-home-studentManage', { id: item.id, className: item.name });
   }
 
 }

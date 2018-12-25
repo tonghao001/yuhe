@@ -15,10 +15,10 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of list" (click)="goToStudentList(item.id)">
+      <ion-col *ngFor="let item of list" (click)="goToStudentList(item)">
         <div class='class-item'>
           <div class="class-detail photo">
-              <img class="header-image" src=".././../assets/imgs/logo.png" />
+              <img class="header-image"  src=".././../assets/imgs/image-default.png" />
           </div>
           <div class="class-detail class-name">
             <label>{{item.name}}</label>
