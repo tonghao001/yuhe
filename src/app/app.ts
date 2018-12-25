@@ -8,16 +8,19 @@ import { LoginPage } from '../pages/login/login';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage: any = LoginPage;
 
   constructor(platform: Platform, private statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      
+
       this.statusBar.show();
-      // this.statusBar.overlaysWebView(false);
-      // this.statusBar.styleDefault();
+
+      if (platform.platforms().indexOf('ios') >= 0) {
+        this.statusBar.overlaysWebView(false);
+        this.statusBar.styleDefault();
+      }
     });
   }
 }
