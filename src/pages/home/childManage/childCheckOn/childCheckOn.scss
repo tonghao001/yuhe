@@ -69,7 +69,7 @@
                 width: 100%;
                 .date-picker-area{
                     margin: 0 auto;
-                    width: 120px;
+                    width: 130px;
                     height: 30px;
                     line-height: 30px;
 
@@ -82,6 +82,10 @@
                     span, strong{
                         line-height: 30px;
                         font-weight: bold;
+                    }
+                    ion-icon{
+                        width: 15px;
+                        height: 20px;
                     }
                 }
                 .chart-area{
