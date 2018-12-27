@@ -34,6 +34,9 @@ export class ChildCheckOn {
     this.loadMonthFirstDayAndLastDayString(this.currentMonthString);
     this.getSummary();
     this.loadAttendanceStatisticOnChart();
+
+    this.loadRankingCompleted = false;
+    this.loadAttendanceRanking();
   }
 
   chart: Chart = new Chart({
@@ -121,7 +124,6 @@ export class ChildCheckOn {
   }
 
   loadAttendanceStatisticOnChart(){
-    //{"absenceCount":2736,"absenceRate":0.94,"leaveCount":9,"leaveRate":0.00,"signCount":155,"signRate":0.05,"totalCount":2900}
     this.childAttendanceNetwork.getAttendanceRateChart({startDate: formatDate(this.currentMonthFirstDay, 'yyyy-MM-dd'), endDate: formatDate(this.currentMonthLastDay, 'yyyy-MM-dd') })
     .subscribe((result: {absenceCount: number, absenceRate: number, leaveCount: number, leaveRate: number,signCount: number, signRate: number, totalCount: number})=>{
       console.log(result);
@@ -149,17 +151,9 @@ export class ChildCheckOn {
               color: '#7d81ff'
             }]
         },true);
-        // this.chart.options.series[0].data[0].description = result.absenceRate * 100 + '%';
-        // console.log(this.chart.options.series[0].data.);
       }
-      // this.summary = {
-      //   absenceCount: result.absenceCount,
-      //   leaveCount: result.leaveCount,
-      //   signCount: result.signCount,
-      //   totalCount: result.totalCount
-      // };
     }, err=>{
-
+      this.toastService.show('加载图标数据失败！');
     });
   }
 
@@ -167,10 +161,53 @@ export class ChildCheckOn {
     currentPage: 1,
     size: 10
   };
-  loadAttendanceRanking(){
+  rankings: any = [];
+  loadRankingCompleted: boolean;
+  loadAttendanceRanking(onSuccess?:any, onError?:any){
+    this.childAttendanceNetwork.getStudentRankings({
+      startDate: this.todayString,
+      endDate: this.todayString,
+      pageSize: this.pagination.size,
+      pageNo: this.pagination.currentPage
+    }).subscribe((result: any)=>{
+        console.log(result);
+        if(result && Array.isArray(result) && result.length > 0){
+          this.rankings = this.rankings.concat(result.map((item)=>{
+            return {
+              name: item.xm,
+              signRate: item.signRate
+            };
+          }));
+        }else{
+          this.loadRankingCompleted = true;
+        }
 
+        if(onSuccess){
+          onSuccess();
+        }
+    },err=>{
+      this.toastService.show('获取排名失败！');
+      if(onError){
+        onError();
+      }
+    });
   }
 
+  loadMore(event){
+    if(this.loadRankingCompleted){//已加载完成
+      event.complete();
+      return;
+    }
+
+    this.pagination.currentPage += 1;
+    this.loadAttendanceRanking(()=>{
+      console.log('load more...');
+      event.complete();
+    }, () =>{
+      this.pagination.currentPage -= 1;
+      event.complete();
+    });
+  }
 
 
   //判断是否是闰年

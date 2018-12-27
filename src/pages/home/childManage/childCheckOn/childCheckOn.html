@@ -58,19 +58,17 @@
     <div class="box-title-nav"><span class="left">幼儿出勤率</span></div>
     <div class="box-content">
       <ion-list>
-        <ion-item>
-          <label class="color-1">1</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-2">2</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-3">3</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-4">4</label><span>小敏</span><strong>100%</strong>
+        <ion-item *ngFor="let child of rankings;let number = index;">
+          <label class="color-1">{{number + 1}}</label><span>{{child.name}}</span><strong>{{child.signRate * 100}}%</strong>
         </ion-item>
       </ion-list>
+
+
+
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     </div>
   </div>
 </ion-content>
