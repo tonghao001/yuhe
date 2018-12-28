@@ -43,7 +43,7 @@ export class ChildCheckList {
   goToPage(pageName, item){
     pageName = pageName || 'app-home-childCheckListItem';
     console.log('item:',item);
-    this.navCtrl.push(pageName, { id: item.id });
+    this.navCtrl.push(pageName, { id: item.id, className: item.name });
   }
 
   getClassList() {

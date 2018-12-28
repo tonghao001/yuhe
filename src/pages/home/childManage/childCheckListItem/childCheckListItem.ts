@@ -15,13 +15,15 @@ import { formatDate } from '../../../../network/http';
 export class ChildCheckListItem {
 
   classId;
+  className;
   list;
   todayString = formatDate(new Date(), 'yyyy-MM-dd');
 
   constructor(params: NavParams, private childAttendanceNetwork: ChildAttendanceNetwork, private toastService: ToastService) {
     this.classId = params.data.id;
     console.log('classId:', this.classId);
-
+    this.className = params.data.className;
+    console.log('className:', this.className);
     this.getStudentAttendanceList();
   }
 
