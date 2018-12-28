@@ -4,6 +4,7 @@ import { ChildCheckOn } from "./childCheckOn";
 import { ChartModule } from 'angular-highcharts';
 import { ChildAttendanceNetwork } from "../../../../network/childAttendance.network";
 import { ToastService } from "../../../../service/toast.service";
+import { ComponentsModule } from "../../../../components/components.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { ToastService } from "../../../../service/toast.service";
   ],
   imports: [
     IonicPageModule.forChild(ChildCheckOn),
-    ChartModule
+    ChartModule,
+    ComponentsModule
   ],
   providers: [ChildAttendanceNetwork, ToastService],
   entryComponents: [

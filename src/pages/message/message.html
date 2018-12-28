@@ -13,6 +13,10 @@
   </ion-list>
   <calendar  [defaultSelectToday]="defaultSelectToday"  (selectDateChange)="selectDateChange($event)"></calendar>
   <div>currentSelectDate: {{currentSelectDate}}</div>
+
+  <div>
+    <date-switch [dateStringFormat]="yyyy-MM" (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></date-switch>
+  </div>
   
   <div>
     <button ion-button color="primary" (click)="getFile()">选照片</button>

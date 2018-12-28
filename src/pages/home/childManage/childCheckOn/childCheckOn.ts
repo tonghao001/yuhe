@@ -85,17 +85,19 @@ export class ChildCheckOn {
     }]
   });
 
-  nextMonth(){
-    let currentMonth = new Date(this.currentMonthString);
-    currentMonth.setMonth(currentMonth.getMonth() + 1);
-    this.currentMonthString = formatDate(new Date(currentMonth), 'yyyy-MM');
+  nextMonth(date){
+    // let currentMonth = new Date(this.currentMonthString);
+    // currentMonth.setMonth(currentMonth.getMonth() + 1);
+    // this.currentMonthString = formatDate(new Date(currentMonth), 'yyyy-MM');
+    this.currentMonthString = formatDate(date, 'yyyy-MM');
     this.loadMonthFirstDayAndLastDayString(this.currentMonthString);
     this.loadAttendanceStatisticOnChart();
   }
-  prevMonth(){
-    let currentMonth = new Date(this.currentMonthString);
-    currentMonth.setMonth(currentMonth.getMonth() - 1);
-    this.currentMonthString = formatDate(new Date(currentMonth), 'yyyy-MM');
+  prevMonth(date){
+    // let currentMonth = new Date(this.currentMonthString);
+    // currentMonth.setMonth(currentMonth.getMonth() - 1);
+    // this.currentMonthString = formatDate(new Date(currentMonth), 'yyyy-MM');
+    this.currentMonthString = formatDate(date, 'yyyy-MM');
     this.loadMonthFirstDayAndLastDayString(this.currentMonthString);
     this.loadAttendanceStatisticOnChart();
   }

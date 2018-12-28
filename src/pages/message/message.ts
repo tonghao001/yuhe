@@ -33,6 +33,13 @@ export class MessagePage {
     }
   }
 
+  prevMonth(date){
+    console.log('prevMonth:', date);
+  }
+  nextMonth(date){
+    console.log('nextMonth:', date);
+  }
+
   
   selectDateChange(newDate){
     this.currentSelectDate = newDate;

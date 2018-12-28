@@ -42,11 +42,12 @@
         <ion-icon name="arrow-forward"></ion-icon>
       </span></div>
     <div class="box-content chart-box">
-      <div class="date-picker-area">
+        <date-switch (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></date-switch>
+      <!-- <div class="date-picker-area">
         <ion-icon name="arrow-back" (click)="prevMonth()"></ion-icon>
         <span>{{currentMonthString}}</span>
         <ion-icon name="arrow-forward" (click)="nextMonth()"></ion-icon>
-      </div>
+      </div> -->
       <div class="chart-area">
         <div [chart]="chart" class="chart-content" (click)="goToPage('app-home-childCheckChartDetail')"></div>
       </div>
