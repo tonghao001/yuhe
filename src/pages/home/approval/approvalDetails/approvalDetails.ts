@@ -33,6 +33,42 @@ export class ApprovalDetails {
     switch (this.params.billType) {
       case 1:
       this.approvalNetWork
+        .applyBuyDetail({
+          id: this.params.id
+        })
+        .subscribe(
+          (data: any) => {
+            console.log(data);
+            this.buyDetail = data;
+            this.csr = data.csr;
+            this.spr = data.sps;
+            this.picture = data.path;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+      break;
+      case 2:
+      this.approvalNetWork
+          .applyGoodDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.goodDetail = data;
+              this.csr = data.csr;
+              this.spr = data.spr;
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
+      case 3:
+      this.approvalNetWork
           .applyRestDetail({
             id: this.params.id
           })
@@ -49,25 +85,7 @@ export class ApprovalDetails {
             }
           );
         break;
-      case 2:
-        this.approvalNetWork
-          .applyBuyDetail({
-            id: this.params.id
-          })
-          .subscribe(
-            (data: any) => {
-              console.log(data);
-              this.buyDetail = data;
-              this.csr = data.csr;
-              this.spr = data.sps;
-              this.picture = data.path;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        break;
-      case 3:
+      case 4:
       this.approvalNetWork
           .applyLeaveDetail({
             id: this.params.id
@@ -76,24 +94,6 @@ export class ApprovalDetails {
             (data: any) => {
               console.log(data);
               this.levelDetail = data;
-              this.csr = data.csr;
-              this.spr = data.spr;
-              this.picture = data.path;
-            },
-            error => {
-              console.log(error);
-            }
-          );
-        break;
-      case 4:
-      this.approvalNetWork
-          .applyGoodDetail({
-            id: this.params.id
-          })
-          .subscribe(
-            (data: any) => {
-              console.log(data);
-              this.goodDetail = data;
               this.csr = data.csr;
               this.spr = data.spr;
               this.picture = data.path;

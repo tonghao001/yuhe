@@ -3,6 +3,7 @@ import { EditAnnouncement } from "./editAnnouncement";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
 import { NoticeNetWork } from "./../../../../network/notice.network";
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [EditAnnouncement],
@@ -12,7 +13,8 @@ import { NoticeNetWork } from "./../../../../network/notice.network";
   entryComponents: [EditAnnouncement],
   providers: [
     // Geolocation,
-    NoticeNetWork
+    NoticeNetWork,
+    DatePipe
   ]
 })
 export class EditAnnouncementPageModule {}

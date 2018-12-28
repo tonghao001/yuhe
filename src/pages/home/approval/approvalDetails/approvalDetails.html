@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content class="approval-detail-body">
-  <div *ngIf="params.billType == 1">
+  <div *ngIf="params.billType == 3">
     <div class="block-view">
       <div class="info-cell">
         <p class="left">请假类型</p>
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="params.billType == 2">
+  <div *ngIf="params.billType == 1">
     <div class="block-view">
       <ion-item>
         <ion-label class="left">采购类型</ion-label>
@@ -70,7 +70,7 @@
     </div>
   </div>
 
-  <div *ngIf="params.billType == 3">
+  <div *ngIf="params.billType == 4">
     <div class="block-view">
       <ion-item>
         <ion-label class="left">申请时间</ion-label>
@@ -95,7 +95,7 @@
     </div>
   </div>
 
-  <div *ngIf="params.billType == 4">
+  <div *ngIf="params.billType == 2">
     <div class="block-view">
       <ion-item>
         <ion-label class="left">领用类型</ion-label>
