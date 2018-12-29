@@ -11,16 +11,8 @@ import { NoticeNetWork } from './../../../network/notice.network';
 })
 export class Announcement {
   props;
-  readNotiList = [{
-    "ggbt": "",
-    "zgxm": "费在美",
-    "nr": "你好院长，我是费在美的家长",
-  }];
-  unReadNotiList = [{
-    "ggbt": "",
-    "zgxm": "费在美",
-    "nr": "你好院长，我是费在美的家长",
-  }];
+  readNotiList: any = [];
+  unReadNotiList: any = [];
   isRead: string = "false";
 
   constructor(
@@ -29,17 +21,17 @@ export class Announcement {
     private notiNetWork: NoticeNetWork
     ) {
     this.props = params.data;
-
-    this.notiNetWork.getReadNoticeList().subscribe((data: {result}) => {
+//TODO:  未读人数缺失
+    this.notiNetWork.getReadNoticeList().subscribe((data: any) => {
       console.log(data);
-      // this.readNotiList = data.result;
+      this.readNotiList = data;
     }, err => {
       console.log(err)
     })
 
-    this.notiNetWork.getunReadNoticeList().subscribe((data: {result}) => {
+    this.notiNetWork.getunReadNoticeList().subscribe((data: any) => {
       console.log(data);
-      // this.unReadNotiList = data.result;
+      this.unReadNotiList = data;
     }, err => {
       console.log(err)
     })
@@ -47,7 +39,7 @@ export class Announcement {
 
   clickItem(item) {
     /// 是否阅读
-    item.irRead = this.isRead;
+    item.isRead = this.isRead;
     this.navCtrl.push("app-home-announce-details", item,);
   }
 

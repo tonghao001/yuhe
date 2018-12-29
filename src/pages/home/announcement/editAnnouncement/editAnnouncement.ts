@@ -1,8 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { NoticeNetWork } from "./../../../../network/notice.network";
 import { Component } from "@angular/core";
-import { NavParams, IonicPage, AlertController } from "ionic-angular";
+import { IonicPage, AlertController, NavController } from "ionic-angular";
 // import { Geolocation } from "@ionic-native/geolocation/ngx";
-
 @IonicPage({
   name: "app-home-edit-announcement"
 })
@@ -13,14 +13,15 @@ import { NavParams, IonicPage, AlertController } from "ionic-angular";
 
 // todo 复用
 export class EditAnnouncement {
-  title;
-  content;
+  title: String = "";
+  content: String = "";
   reciverList = [];
   constructor(
-    params: NavParams,
     public alert: AlertController,
+    public navCtr: NavController,
     // private geolocation: Geolocation,
-    private notiNetWork: NoticeNetWork
+    private notiNetWork: NoticeNetWork,
+    private datePipe: DatePipe,
   ) {
 
   }
@@ -39,9 +40,6 @@ export class EditAnnouncement {
       buttons: [
         {
           text: "取消",
-          handler: data => {
-            console.log("Cancel clicked");
-          }
         },
         {
           text: "保存",
@@ -80,12 +78,20 @@ export class EditAnnouncement {
   }
 
   sendAnnounceMent() {
+    if (this.title.length < 1 && this.content.length < 1) {
+      return;
+    }
+
+    var time =  this.datePipe.transform(Date(), 'yyyy-MM-dd HH:mm:ss');
     this.notiNetWork.saveNewNotice({
       "ggbt": this.title,
       "nr": this.content,
-       
-    }).subscribe((data) => {
+       "fbsj": time
+    }).subscribe((data: any) => {
       console.log(data)
+      if (data.status == 0) {
+        this.navCtr.pop()
+      }
     }, error => {
       console.log(error)
     })

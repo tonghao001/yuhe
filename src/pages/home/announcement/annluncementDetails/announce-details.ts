@@ -18,12 +18,9 @@ export class AnnounceDetails {
   isReadOpen = false;
   unReadOpen = false;
 
-  unReadUsers = [];
-  readUsers = [];
-  noticeDetails = {
-    "zgxm": "费在美",
-    "nr": "你好院长，我是费在美的家长"
-  };
+  unReadUsers: any = [];
+  readUsers: any = [];
+  noticeDetails = {};
   
   constructor(
     public alertController: AlertController, 
@@ -32,50 +29,48 @@ export class AnnounceDetails {
     ) {
     this.item = params.data;
     if (this.item.isRead === 'true') {
-      this.notiNetWork.getReadNoticeDetails(this.item.id).subscribe((data) => {
+      this.notiNetWork.getReadNoticeDetails({id: this.item.id}).subscribe((data) => {
         console.log(data)
+        this.noticeDetails = data;
       }, error => {
         console.log(error)
       })
     } else {
-      this.notiNetWork.getUnReadNoticeDetails(this.item.id).subscribe((data) => {
+      this.notiNetWork.getUnReadNoticeDetails({id: this.item.id}).subscribe((data) => {
         console.log(data)
+        this.noticeDetails = data;
       }, error => {
         console.log(error)
       })
     }
 
-    this.notiNetWork.getReadPersonList(this.item.id).subscribe((data) => {
+    this.notiNetWork.getReadPersonList({id: this.item.id}).subscribe((data) => {
       console.log(data)
+      this.readUsers = data;
     }, error => {
       console.log(error)
     })
 
-    this.notiNetWork.getUnReadPersonList(this.item.id).subscribe((data) => {
+    this.notiNetWork.getUnReadPersonList({id: this.item.id}).subscribe((data) => {
       console.log(data)
+      this.unReadUsers = data;
     }, error => {
       console.log(error)
     })
-
   }
 
-
-  async presentAlertConfirm() {
-    const alert = await this.alertController.create({
-      message: '已经一键提醒',
+  //TODO: 接口不通
+  presentAlertConfirm() {
+    const alert =  this.alertController.create({
+      message: '确定提醒所有用户',
       buttons: [
         {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-            console.log('Confirm Cancel: blah');
-          }
+          text: '取消',
         }, {
-          text: 'Ok',
+          text: '确定',
           handler: () => {
             console.log('Confirm Okay');
-            this.notiNetWork.postNoticeForAllUsers(this.item.id).subscribe((data) => {
+            this.notiNetWork.postNoticeForAllUsers({id: this.item.id}).subscribe((data) => {
               console.log(data)
             }, error => {
               console.log(error)
@@ -84,8 +79,7 @@ export class AnnounceDetails {
         }
       ]
     });
-
-    await alert.present();
+   alert.present();
   }
 
   readOpenClick() {
