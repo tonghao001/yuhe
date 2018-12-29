@@ -20,7 +20,7 @@ export class ChildCheckOn {
     this.currentMonthFirstDay = new Date(firstDayString);
     this.currentMonthLastDay = new Date(lastDayString);
   }
-  currentMonthString = formatDate(new Date(), 'yyyy-MM');
+  
   currentMonthFirstDay :Date;
   currentMonthLastDay: Date;
   todayString = formatDate(new Date(), 'yyyy-MM-dd');
@@ -31,7 +31,7 @@ export class ChildCheckOn {
     totalCount: 0
   };
   constructor(private navCtrl: NavController, private childAttendanceNetwork: ChildAttendanceNetwork, private toastService: ToastService) {
-    this.loadMonthFirstDayAndLastDayString(this.currentMonthString);
+    this.loadMonthFirstDayAndLastDayString(formatDate(new Date(), 'yyyy-MM'));
     this.getSummary();
     this.loadAttendanceStatisticOnChart();
 
@@ -89,16 +89,15 @@ export class ChildCheckOn {
     // let currentMonth = new Date(this.currentMonthString);
     // currentMonth.setMonth(currentMonth.getMonth() + 1);
     // this.currentMonthString = formatDate(new Date(currentMonth), 'yyyy-MM');
-    this.currentMonthString = formatDate(date, 'yyyy-MM');
-    this.loadMonthFirstDayAndLastDayString(this.currentMonthString);
+    this.loadMonthFirstDayAndLastDayString(formatDate(date, 'yyyy-MM'));
     this.loadAttendanceStatisticOnChart();
   }
   prevMonth(date){
     // let currentMonth = new Date(this.currentMonthString);
     // currentMonth.setMonth(currentMonth.getMonth() - 1);
     // this.currentMonthString = formatDate(new Date(currentMonth), 'yyyy-MM');
-    this.currentMonthString = formatDate(date, 'yyyy-MM');
-    this.loadMonthFirstDayAndLastDayString(this.currentMonthString);
+    
+    this.loadMonthFirstDayAndLastDayString(formatDate(date, 'yyyy-MM'));
     this.loadAttendanceStatisticOnChart();
   }
 
