@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { UserNetwork } from '../../network/user.network';
 import { ToastService } from '../../service/toast.service';
 import { StorageService, STORAGE_KEY } from '../../service/storage.service';
@@ -17,6 +17,7 @@ export class LoginPage {
     private toastService: ToastService,
     private storage: StorageService,
     private loading: LoadingService,
+    private app: App
   ) {
 
   }
@@ -64,7 +65,15 @@ export class LoginPage {
       }
 
       this.storage.set(STORAGE_KEY.USER_INFO, data);
-      this.navCtrl.push('app-tab', { id: 2 });
+
+      let nav = this.app.getRootNav();
+      if (nav.canGoBack()) {
+        nav.pop();
+      }
+      else {
+        nav.push('app-tab', { id: 2 });
+
+      }
     }, err => {
       this.loading.hide();
     })

@@ -321,5 +321,6 @@ export class HomePage {
   ionViewDidEnter() {
     this.onSelectChart('chart1');
   }
+  
 
 }
