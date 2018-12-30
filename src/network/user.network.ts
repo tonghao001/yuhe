@@ -21,4 +21,7 @@ export class UserNetwork {
   resetPassword(data) {
     return this.http.postForm('/app/login/resetPassword', data);
   }
+  getSalaryDetails(data) {
+    return this.http.get('/app/salary/getSalaryDetail', data);
+  }
 }

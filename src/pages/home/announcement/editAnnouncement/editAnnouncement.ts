@@ -82,7 +82,7 @@ export class EditAnnouncement {
       return;
     }
 
-    var time =  this.datePipe.transform(Date(), 'yyyy-MM-dd HH:mm:ss');
+    var time = this.datePipe.transform(Date(), 'yyyy-MM-dd HH:mm:ss');
     this.notiNetWork.saveNewNotice({
       "ggbt": this.title,
       "nr": this.content,

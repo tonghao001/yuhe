@@ -22,29 +22,35 @@
         </ion-segment-button>
       </ion-segment>
     </ion-list-header>
-    <div [hidden]="isApproval==='false'">
-        <ion-item *ngFor="let item of approavlList" (click)="clickItem(item)">
-            <ion-avatar item-start>
-              <img src="assets/icon/thumbnail-puppy-1.jpg" />
-            </ion-avatar>
-            <h2>{{ item.initiatorName }}</h2>
-            <p>类型：{{ item.billTypeName }}</p>
-            <p class="status-label" [ngClass]="'status' + item.approvalStatus">
-              {{ item.approvalStatusName }}
-            </p>
-          </ion-item>
+    <div [hidden]="isApproval === 'false'">
+      <ion-item *ngFor="let item of approavlList" (click)="clickItem(item)">
+        <ion-avatar item-start>
+          <img
+            src="{{ item.photo }}"
+            onerror="this.src='assets/icon/thumbnail-puppy-1.jpg'"
+          />
+        </ion-avatar>
+        <h2>{{ item.initiatorName }}</h2>
+        <p>类型：{{ item.billTypeName }}</p>
+        <p class="status-label" [ngClass]="'status' + item.approvalStatus">
+          {{ item.approvalStatusName }}
+        </p>
+      </ion-item>
     </div>
-    <div *ngIf="isApproval==='false'">
-        <ion-item *ngFor="let item of unApprovalList" (click)="clickItem(item)">
-            <ion-avatar item-start>
-              <img src="assets/icon/thumbnail-puppy-1.jpg" />
-            </ion-avatar>
-            <h2>{{ item.initiatorName }}</h2>
-            <p>类型：{{ item.billTypeName }}</p>
-            <p class="status-label" [ngClass]="'status' + item.approvalStatus">
-              {{ item.approvalStatusName }}
-            </p>
-          </ion-item>
+    <div *ngIf="isApproval === 'false'">
+      <ion-item *ngFor="let item of unApprovalList" (click)="clickItem(item)">
+        <ion-avatar item-start>
+          <img
+            src="{{ item.photo }}"
+            onerror="this.src='assets/icon/thumbnail-puppy-1.jpg'"
+          />
+        </ion-avatar>
+        <h2>{{ item.initiatorName }}</h2>
+        <p>类型：{{ item.billTypeName }}</p>
+        <p class="status-label" [ngClass]="'status' + item.approvalStatus">
+          {{ item.approvalStatusName }}
+        </p>
+      </ion-item>
     </div>
   </ion-list>
 </ion-content>
