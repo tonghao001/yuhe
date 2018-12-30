@@ -50,11 +50,11 @@ export class LoginPage {
     this.userNetwork.login({
       account: this.username,
       password: this.password
-    }).subscribe((data: { message?: string }) => {
+    }).subscribe((data: { status?: string }) => {
       this.loading.hide();
       console.log(data);
-      if (data.message) {
-        return this.toastService.show(data.message);
+      if (data.status) {
+        return;
       }
       if (this.isRememberPassword) {
         this.storage.set(STORAGE_KEY.LOGIN_INFO, { username: this.username, password: this.password });
@@ -67,7 +67,6 @@ export class LoginPage {
       this.navCtrl.push('app-tab', { id: 2 });
     }, err => {
       this.loading.hide();
-      this.toastService.show(err.message || '登录失败');
     })
 
   }

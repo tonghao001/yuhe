@@ -1,11 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { extend } from 'lodash';
 import { DatePipe } from '@angular/common';
+import { Observable } from 'rxjs/Observable';
+import { ToastService } from '../service/toast.service';
+import { App } from 'ionic-angular';
+import { LoginPage } from '../pages/login/login';
 
 @Injectable()
 export class HttpNetwork {
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private http: HttpClient,
+    private toast: ToastService,
+    private app: App
+  ) { }
 
   fetch(url, options?) {
     const httpOptions = {
@@ -13,7 +22,6 @@ export class HttpNetwork {
       headers: { 'Content-Type': 'application/json;charset=UTF-8' },
       withCredentials: true
     };
-
 
     if (url.indexOf('http') !== 0) {
       url = `${HTTP_URL.MAIN}${url}`;
@@ -24,7 +32,33 @@ export class HttpNetwork {
     if (options.body) {
       httpOptions.body = options.body;
     }
-    return this.http.request(options.method, url, httpOptions);
+    // return this.http.request(options.method, url, httpOptions);
+
+    return new Observable((observe) => {
+      this.http.request(options.method, url, httpOptions).subscribe({
+        next: (data: any) => {
+          if (!data) {
+            this.toast.show('请求没有返回数据');
+          }
+          else if (data.status) {
+            if (data.status == 7001) {
+              this.app.getRootNav().push(LoginPage);
+            }
+            this.toast.show(data.message || '获取数据错误');
+          }
+          observe.next(data);
+        },
+        error: (err) => {
+          this.toast.show(err.message || '请求异常');
+          if (err.status == 7001) {
+            this.app.getRootNav().push(LoginPage);
+          }
+          observe.error(err);
+        },
+        complete: () => { observe.complete() }
+      });
+    });
+
   }
 
   get(url, params?) {
