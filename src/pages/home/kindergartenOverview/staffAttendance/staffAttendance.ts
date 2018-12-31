@@ -89,7 +89,7 @@ export class StaffAttendancePage {
               showInLegend: true,
               events: {
                 click: (e) => {
-                  this.goToPage('app-home-attendance-chart', null);
+                  this.navCtrl.push('app-home-attendance-chart');
                 }
               },
               tooltip: {
@@ -133,12 +133,4 @@ export class StaffAttendancePage {
         }
       })
   }
-
-
-  goToPage(pageName, id) {
-    pageName = pageName || 'app-home-attendance-list';
-    console.log('id:', id);
-    this.navCtrl.push(pageName, { id: id });
-  }
-
 }
