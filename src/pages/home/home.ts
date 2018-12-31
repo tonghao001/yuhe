@@ -40,7 +40,7 @@ export class HomePage {
       endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
-        return this.toastService.show(data.message || '获取数据错误');
+        return;
       }
       let options = {
         chart: {
@@ -111,7 +111,7 @@ export class HomePage {
       endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
-        return this.toastService.show(data.message || '获取数据错误');
+        return;
       }
       let seriesData=[];let total=0;
       data.forEach(item=>{
@@ -169,7 +169,7 @@ export class HomePage {
       endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
-        return this.toastService.show(data.message || '获取数据错误');
+        return;
       }
 
       let seriesData=[];let total=0;
@@ -321,5 +321,6 @@ export class HomePage {
   ionViewDidEnter() {
     this.onSelectChart('chart1');
   }
+  
 
 }
