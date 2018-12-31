@@ -39,6 +39,18 @@ export class MessagePage {
   nextMonth(date){
     console.log('nextMonth:', date);
   }
+  prevSeason(date){
+    console.log('prevSeason:', date);
+  }
+  nextSeason(date){
+    console.log('nextSeason:', date);
+  }
+  prevYear(date){
+    console.log('prevYear:', date);
+  }
+  nextYear(date){
+    console.log('nextYear:', date);
+  }
 
   
   selectDateChange(newDate){

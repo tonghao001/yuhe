@@ -1,18 +1,17 @@
-import { Component, Output,EventEmitter } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import { formatDate } from "../../network/http";
 
 /**
- * Generated class for the DateSwitchComponent component.
+ * Generated class for the MonthSwitchComponent component.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
 @Component({
-  selector: 'date-switch',
-  templateUrl: 'date-switch.html'
+  selector: 'month-switch',
+  templateUrl: 'month-switch.html'
 })
-export class DateSwitchComponent {
-
+export class MonthSwitchComponent {
   @Output() prevMonthChange: EventEmitter<Date> = new EventEmitter();
   @Output() nextMonthChange: EventEmitter<Date> = new EventEmitter();
 
