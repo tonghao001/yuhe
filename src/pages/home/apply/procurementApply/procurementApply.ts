@@ -130,13 +130,14 @@ export class ProcurementApply {
                 billType: 1,
                 cgsj: this.applyData.cgsj,
                 sqsy: this.applyData.sqsy,
-                spid: spid,
-                csid: csid,
+                cglx: this.applyData.cglx,
               },
+              spid: spid,
+              csid: csid,
               items: this.applyData.cgqds,
             };
             // TODO: 接口不通 ！！！
-            this.approvalNetWork.applyBuyDetail(params).subscribe(
+            this.approvalNetWork.applyForBuy(params).subscribe(
               (data: any) => {
                 console.log(data);
                 this.navCtrl.pop();
