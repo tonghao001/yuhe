@@ -14,6 +14,7 @@ import { isArray, isEmpty } from 'lodash';
 export class StaffAttendancePage {
   startDate: Date;
   chart1: Chart;
+  infos: any;
   attendanceList: any[];
 
   constructor(
@@ -22,104 +23,115 @@ export class StaffAttendancePage {
   ) {
     this.startDate = new Date(formatDate(new Date(), 'yyyy/MM/dd'));
     this.startDate.setDate(1);
+    this.infos = {};
   }
 
   ionViewDidEnter() {
-    this.updateChart1();
-    this.getStaffAttendanceList();
+    this.refreshData();
   }
 
+  refreshData() {
+    let params = {
+      startDate: formatDate(this.startDate, 'yyyy-MM-dd'),
+      endDate: formatDate(this.getEndDate(), 'yyyy-MM-dd')
+    };
+    this.updateChart1(params);
+    this.getStaffAttendanceList(params);
+  }
 
   getEndDate() {
     return new Date(new Date(this.startDate).setMonth(this.startDate.getMonth() + 1) - 1000);
   }
 
-  updateChart1 = () => {
-    this.kindergartenOverviewNetwork.getAllAttendanceInfo({
-      startDate: formatDate(this.startDate, 'yyyy-MM-dd'),
-      endDate: formatDate(this.getEndDate(), 'yyyy-MM-dd'),
-    }).subscribe((data: any) => {
-      if (data.status) {
-        return;
-      }
-      let options = {
-        chart: {
-          type: 'pie'
-        },
-        title: {
-          text: ''
-        },
-        credits: {
-          enabled: false
-        },
-        legend: {
-          labelFormat: '{name}<br/>{y}人'
-        },
-        loading: {
-          showDuration: 100,
-          hideDuration: 100
-        },
-        plotOptions: {
-          pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-              enabled: true,
-              format: '{percentage:.1f}%',
-              distance: -20
-            },
-            showInLegend: true,
-            events: {
-              click: (e) => {
-                this.goToPage('app-home-staffAttendance', null);
-              }
-            },
-            tooltip: {
-            }
-          }
-        },
-        series: [
-          {
-            name: '出勤',
-            data: [
-              {
-                name: '应到',
-                y: data.totalCount
-              },
-              {
-                name: '实到',
-                y: data.signCount
-              },
-              {
-                name: '缺勤',
-                y: data.leaveCount
-              },
-              {
-                name: '其他',
-                y: data.absenceCount
-              }
-            ]
-          }
-        ]
-      };
-      this.chart1 = new Chart(options);
-    });
+
+  goPrevMonth() {
+    this.startDate = new Date(this.startDate.setMonth(this.startDate.getMonth() - 1));
+    this.refreshData();
+  }
+  goNextMonth() {
+    this.startDate = new Date(this.startDate.setMonth(this.startDate.getMonth() + 1));
+    this.refreshData();
   }
 
-  getStaffAttendanceList() {
-    this.kindergartenOverviewNetwork.getStaffAttendanceList({
-      startDate: formatDate(this.startDate, 'yyyy-MM-dd'),
-      endDate: formatDate(this.getEndDate(), 'yyyy-MM-dd')
-    }).subscribe((data: any) => {
-      if (isArray(data)) {
-        this.attendanceList = data.map((item) => {
-          return {
-            name: item.teacherName,
-            rate: (item.signRate || 0) * 100
-          }
-        })
-      }
-    })
+  updateChart1 = (params) => {
+    this.kindergartenOverviewNetwork.getAllAttendanceInfo(params)
+      .subscribe((data: any) => {
+        if (data.status) {
+          return;
+        }
+        this.infos = data;
+        let options = {
+          chart: {
+            type: 'pie'
+          },
+          title: {
+            text: ''
+          },
+          credits: {
+            enabled: false
+          },
+          legend: {
+            labelFormat: '{name}<br/>{percentage}%'
+          },
+          loading: {
+            showDuration: 100,
+            hideDuration: 100
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                enabled: true,
+                format: '{percentage:.1f}%',
+                distance: -20
+              },
+              showInLegend: true,
+              events: {
+                click: (e) => {
+                  this.goToPage('app-home-attendance-chart', null);
+                }
+              },
+              tooltip: {
+              }
+            }
+          },
+          series: [
+            {
+              name: '出勤',
+              data: [
+                {
+                  name: '出勤率',
+                  y: data.signRate
+                },
+                {
+                  name: '请假率',
+                  y: data.leaveRate
+                },
+                {
+                  name: '未签到率',
+                  y: data.absenceRate
+                }
+              ]
+            }
+          ]
+        };
+        this.chart1 = new Chart(options);
+      });
+  }
+
+  getStaffAttendanceList(params) {
+    this.kindergartenOverviewNetwork.getStaffAttendanceList(params)
+      .subscribe((data: any) => {
+        if (isArray(data)) {
+          this.attendanceList = data.map((item) => {
+            return {
+              name: item.teacherName,
+              rate: (item.signRate || 0) * 100
+            }
+          })
+        }
+      })
   }
 
 

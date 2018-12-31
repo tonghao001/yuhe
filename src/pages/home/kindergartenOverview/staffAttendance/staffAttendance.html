@@ -14,19 +14,19 @@
         <ion-row (click)="goToPage()">
           <ion-col>
             <span>应到</span>
-            <strong class="secondary" color="secondary">500</strong>
+            <strong class="secondary" color="secondary">{{infos.totalCount}}</strong>
           </ion-col>
           <ion-col>
             <span>实到</span>
-            <strong>440</strong>
+            <strong>{{infos.signCount}}</strong>
           </ion-col>
           <ion-col>
             <span>请假</span>
-            <strong>60</strong>
+            <strong>{{infos.leaveCount}}</strong>
           </ion-col>
           <ion-col>
             <span>未签到</span>
-            <strong>0</strong>
+            <strong>{{infos.absenceCount}}</strong>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -41,9 +41,9 @@
     </div>
     <div class="box-content chart-box">
       <div class="date-picker-area">
-        <ion-icon name="arrow-back"></ion-icon>
-        <span>2018-10</span>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-icon name="arrow-back" (click)="goPrevMonth()"></ion-icon>
+        <span>{{startDate|date:'yyyy-MM'}}</span>
+        <ion-icon name="arrow-forward" (click)="goNextMonth()"></ion-icon>
       </div>
       <div class="chart-area">
         <div [chart]="chart1" class="chart-content"></div>
