@@ -11,22 +11,22 @@
     <!-- <div class="box-title-nav"><span class="left">全教职工出勤</span><span class="right" ><ion-icon name="arrow-forward"></ion-icon></span></div> -->
     <div class="box-content">
       <ion-grid>
-        <ion-row (click)="goToPage()">
+        <ion-row (click)="navCtrl.push('app-home-attendance-list')">
           <ion-col>
             <span>应到</span>
-            <strong class="secondary" color="secondary">500</strong>
+            <strong class="secondary" color="secondary">{{infos.totalCount}}</strong>
           </ion-col>
           <ion-col>
             <span>实到</span>
-            <strong>440</strong>
+            <strong>{{infos.signCount}}</strong>
           </ion-col>
           <ion-col>
             <span>请假</span>
-            <strong>60</strong>
+            <strong>{{infos.leaveCount}}</strong>
           </ion-col>
           <ion-col>
             <span>未签到</span>
-            <strong>0</strong>
+            <strong>{{infos.absenceCount}}</strong>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -41,12 +41,12 @@
     </div>
     <div class="box-content chart-box">
       <div class="date-picker-area">
-        <ion-icon name="arrow-back"></ion-icon>
-        <span>2018-10</span>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-icon name="arrow-back" (click)="goPrevMonth()"></ion-icon>
+        <span>{{startDate|date:'yyyy-MM'}}</span>
+        <ion-icon name="arrow-forward" (click)="goNextMonth()"></ion-icon>
       </div>
       <div class="chart-area">
-        <div [chart]="chart" class="chart-content"></div>
+        <div [chart]="chart1" class="chart-content"></div>
       </div>
     </div>
   </div>
@@ -56,17 +56,8 @@
     <div class="box-title-nav"><span class="left">全教职工出勤率</span></div>
     <div class="box-content">
       <ion-list>
-        <ion-item>
-          <label class="color-1">1</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-2">2</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-3">3</label><span>小敏</span><strong>100%</strong>
-        </ion-item>
-        <ion-item>
-          <label class="color-4">4</label><span>小敏</span><strong>100%</strong>
+        <ion-item *ngFor="let people of attendanceList; index as i">
+          <label class="color-1">{{i+1}}</label><span>{{people.name}}</span><strong>{{people.rate}}%</strong>
         </ion-item>
       </ion-list>
     </div>

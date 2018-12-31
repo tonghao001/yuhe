@@ -1,6 +1,7 @@
 import { IonicPage,NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Chart } from 'angular-highcharts';
+import { formatDate } from "../../../../network/http";
 
 @IonicPage({
   name: 'app-home-childCheckChartDetail'
@@ -98,6 +99,18 @@ export class ChildCheckChartDetail {
   }
   prevMonth(date){
     console.log('prev date:', date);
+  }
+  nextSeason(date){
+    console.log('next Season:', date);
+  }
+  prevSeason(date){
+    console.log('prev Season:', date);
+  }
+  nextYear(date){
+    console.log('next year:', date);
+  }
+  prevYear(date){
+    console.log('prev year:', date);
   }
 
 }

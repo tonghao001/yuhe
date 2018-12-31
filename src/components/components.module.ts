@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { CalendarComponent } from './calendar/calendar';
-import { DateSwitchComponent } from './date-switch/date-switch';
+import { YearSwitchComponent } from './year-switch/year-switch';
+import { MonthSwitchComponent } from './month-switch/month-switch';
+import { SeasonSwitchComponent } from './season-switch/season-switch';
 
 
 @NgModule({
 	declarations: [
 		CalendarComponent,
-    DateSwitchComponent
+    YearSwitchComponent,
+    MonthSwitchComponent,
+    SeasonSwitchComponent
 	],
 	imports: [IonicModule],
 	exports: [
 		CalendarComponent,
-    DateSwitchComponent]
+    YearSwitchComponent,
+    MonthSwitchComponent,
+    SeasonSwitchComponent]
 })
 export class ComponentsModule { }
