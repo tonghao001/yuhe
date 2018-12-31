@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { formatDate } from "../../network/http";
 
 /**
  * Generated class for the SeasonSwitchComponent component.
@@ -15,34 +14,47 @@ export class SeasonSwitchComponent {
   @Output() prevSeasonChange: EventEmitter<Date> = new EventEmitter();
   @Output() nextSeasonChange: EventEmitter<Date> = new EventEmitter();
 
-  private formatString = 'yyyy 第q+季度';
-  currentSeasonString = formatDate(new Date(), this.formatString);
-  currentDate = new Date(this.currentSeasonString);
+  private formatString = 'yyyy 第q季度';
+  currentDate: Date;
+  currentSeasonString: string;
 
   constructor() {
-    // this.currentSeasonString = '2018 第一季度';
+    let currentSeason = Math.floor((new Date().getMonth() + 3) / 3);//第几季度
+    let theCurrentSeasonFirstDayString = [new Date().getFullYear(), (3 * currentSeason - 2), 1].join('/');
+    this.currentDate = new Date(theCurrentSeasonFirstDayString);//默认为当季度第一天
+    this.currentSeasonString = this.privateDateFormat(this.currentDate, this.formatString);
   }
 
-
-  currentSeason = 1;
-  loadSeason(){
-
-    
-  }
-
-  // Math.floor((this.getMonth() + 3) / 3), //季度
-
-  prevSeason(){
-    let currentYear = new Date(this.currentSeasonString);
-    currentYear.setFullYear(currentYear.getMonth() -3 - 1);
-    // this.currentYearString = formatDate(new Date(currentYear), this.formatString);
-    // this.nextYearChange.emit(new Date(this.currentYearString));
+  prevSeason() {
+    this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() - 3));
+    this.currentSeasonString = this.privateDateFormat(this.currentDate, this.formatString);
+    this.nextSeasonChange.emit(this.currentDate);
   };
-  // nextSeason(){
-  //   let currentYear = new Date(this.currentYearString);
-  //   currentYear.setFullYear(currentYear.getFullYear() - 1);
-  //   this.currentYearString = formatDate(new Date(currentYear), this.formatString);
-  //   this.nextYearChange.emit(new Date(this.currentYearString));
-  // }
+  nextSeason() {
+    this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() + 3));
+    this.currentSeasonString = this.privateDateFormat(this.currentDate, this.formatString);
+    this.nextSeasonChange.emit(this.currentDate);
+  }
+
+  privateDateFormat(newDate, fmt) {
+    var o = {
+      "M+": newDate.getMonth() + 1,                 //月份
+      "d+": newDate.getDate(),                    //日
+      "h+": newDate.getHours(),                   //小时
+      "m+": newDate.getMinutes(),                 //分
+      "s+": newDate.getSeconds(),                 //秒
+      "q+": Math.floor((newDate.getMonth() + 3) / 3), //季度
+      "S": newDate.getMilliseconds()             //毫秒
+    };
+    if (/(y+)/.test(fmt)) {
+      fmt = fmt.replace(RegExp.$1, (newDate.getFullYear() + "").substr(4 - RegExp.$1.length));
+    }
+    for (var k in o) {
+      if (new RegExp("(" + k + ")").test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+      }
+    }
+    return fmt;
+  }
 
 }
