@@ -10,25 +10,25 @@ export class KindergartenOverviewNetwork {
 
   }
   //获取全体职工考勤情况
-  getAllAttendanceInfo(data) {
+  getAllAttendanceInfo(data:any) {
     return this.http.get('/app/workattendance/getAttendances', data);
   }
   //获取所有职工的出勤list
-  getStaffAttendanceList(data) {
+  getStaffAttendanceList(data:any) {
     return this.http.get('/app/workattendance/getStaffAttendances', data);
   }
 
 
   //获取整体疾病情况
-  getAllSicknessCaseInfo(data) {
+  getAllSicknessCaseInfo(data:any) {
     return this.http.get('/app/illnessinfo/getIllnessInfos', data);
   }
   //获取财务收入来源情况
-  getAllFinancialSourceInfo(data) {
+  getAllFinancialSourceInfo(data:any) {
     return this.http.get('/app/financialstatement/selectIncomes', data);
   }
   //获取财务报表情况
-  getAllFinancialSourceRankingInfo(data) {
+  getAllFinancialSourceRankingInfo(data:any) {
     return this.http.get('/app/financialstatement/selectIncomesRank', data);
   }
 
