@@ -130,13 +130,13 @@ export class WorkOrderApply {
                 sqly: this.applyData.sqly,
                 bxsj: this.applyData.bxsj,
                 title: this.applyData.title,
+                bxlx: this.applyData.bxlx,
               },
               spid: spid,
               csid: csid,
               items: this.applyData.cgqds,
             };
-            // TODO: 接口不通 ！！！
-            this.approvalNetWork.applyBuyDetail(params).subscribe(
+            this.approvalNetWork.applyForOrder(params).subscribe(
               (data: any) => {
                 console.log(data);
                 this.navCtrl.pop();
