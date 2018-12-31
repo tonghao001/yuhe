@@ -20,7 +20,7 @@ export class YearSwitchComponent {
 
   constructor() {
     console.log('Hello YearSwitchComponent Component');
-    this.currentYearString = '2018';
+    // this.currentYearString = '2018';
   }
 
   prevYear(){
