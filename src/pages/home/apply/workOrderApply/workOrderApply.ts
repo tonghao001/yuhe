@@ -130,9 +130,9 @@ export class WorkOrderApply {
                 sqly: this.applyData.sqly,
                 bxsj: this.applyData.bxsj,
                 title: this.applyData.title,
-                spid: spid,
-                csid: csid,
               },
+              spid: spid,
+              csid: csid,
               items: this.applyData.cgqds,
             };
             // TODO: 接口不通 ！！！

@@ -165,9 +165,9 @@ export class RestApply {
                 qjsc: this.applyData.qjsc,
                 qjsy: this.applyData.qjsy,
                 qjlx: this.applyData.qjlx,
-                spid: spid,
-                csid: csid,
-              }
+              },
+              spid: spid,
+              csid: csid,
             };
             // TODO: 接口不通 ！！！
             this.approvalNetWork.applyForReset(params).subscribe(

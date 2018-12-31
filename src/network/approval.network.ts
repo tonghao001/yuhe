@@ -12,7 +12,7 @@ export class ApprovalNetwork {
   }
   // 获取已审批列表
   getApprovalList() {
-    return this.http.get('/app/approval/myReception/getUnreadList');  
+    return this.http.get('/app/approval/myApprovals/getApprovedList');  
   }
   // 获取未审批列表
   getUnApprovalList() {
