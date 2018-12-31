@@ -165,9 +165,9 @@ export class StationeryApply {
               apply: {
                 billType: 2,
                 lysj: this.applyData.lysj,
-                spid: spid,
-                csid: csid,
               },
+              spid: spid,
+              csid: csid,
               items: this.applyData.lymxs,
             };
             // TODO: 接口不通 ！！！

@@ -127,9 +127,9 @@ export class ResignApply {
                 sqsj: this.applyData.sqsj,
                 yjlzsj: this.applyData.yjlzsj,
                 lzyy: this.applyData.lzyy,
-                spid: spid,
-                csid: csid,
-              }
+              },
+              spid: spid,
+              csid: csid,
             };
             // TODO: 接口不通 ！！！
             this.approvalNetWork.applyForLeave(params).subscribe(

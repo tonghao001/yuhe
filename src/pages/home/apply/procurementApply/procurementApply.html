@@ -6,8 +6,12 @@
   <div class="block-view">
     <ion-item>
       <ion-label class="left">采购类型</ion-label>
-      <!-- 没有接口 -->
-      <button item-end class="right">请选择</button>
+      <ion-input
+        class="right"
+        [(ngModel)]="applyData.cglx"
+        item-end
+        placeholder="请输入"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="left">预购时间</ion-label>
@@ -90,7 +94,7 @@
       <ion-col class="approval-person" *ngFor="let item of spr">
         <img
           class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
+          src=".././../assets/imgs/image-default.png"
         />
         <p>{{ item.zgName }}</p>
         <!-- <p>{{ item.date }}</p> -->
@@ -113,7 +117,7 @@
       <ion-col class="approval-person" *ngFor="let item of csr">
         <img
           class="person-image"
-          src=".././../assets/icon/thumbnail-puppy-1.jpg"
+          src="assets/imgs/image-default.png"
         />
         <p>{{ item.zgName }}</p>
         <!-- <p>{{ item.date }}</p> -->

@@ -1,7 +1,7 @@
 import { NoticeNetWork } from './../../../../network/notice.network';
 import { Component } from "@angular/core";
 import { NavParams, IonicPage, AlertController } from "ionic-angular";
-
+import { HTTP_URL } from "../../../../network/http";
 
 @IonicPage({
     name: "app-home-announce-details",
@@ -44,16 +44,22 @@ export class AnnounceDetails {
       })
     }
 
-    this.notiNetWork.getReadPersonList({id: this.item.id}).subscribe((data) => {
+    this.notiNetWork.getReadPersonList({id: this.item.id}).subscribe((data: Array<any>) => {
       console.log(data)
-      this.readUsers = data;
+      this.readUsers = data.map((user) => {
+        user.image = HTTP_URL.MAIN + '/images/' + user.photo;
+        return user;
+      });
     }, error => {
       console.log(error)
     })
 
-    this.notiNetWork.getUnReadPersonList({id: this.item.id}).subscribe((data) => {
+    this.notiNetWork.getUnReadPersonList({id: this.item.id}).subscribe((data: Array<any>) => {
       console.log(data)
-      this.unReadUsers = data;
+      this.unReadUsers = data.map((user) => {
+        user.image = HTTP_URL.MAIN + '/images/' + user.photo;
+        return user;
+      });;
     }, error => {
       console.log(error)
     })

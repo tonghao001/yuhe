@@ -36,22 +36,22 @@
         item.badage
       }}</ion-badge> -->
       <ion-avatar item-start>
-        <img src="assets/icon/thumbnail-puppy-1.jpg" />
+        <img src="assets/imgs/image-default.png" />
         <!-- <img src="{{}}" /> -->
       </ion-avatar>
-      <h2>{{ item.initiatorName }}</h2>
-      <p>{{ item.billTypeName }}</p>
+      <h2>{{ item.title }}</h2>
+      <p>{{ item.summary }}</p>
     </ion-item>
     <ion-item *ngFor="let item of unReadList" (click)="clickItem(item)" [hidden]="isRead === 'true' " >
         <!-- <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
           item.badage
         }}</ion-badge> -->
         <ion-avatar item-start>
-          <img src="assets/icon/thumbnail-puppy-1.jpg" />
+          <img src="assets/imgs/image-default.png" />
           <!-- <img src="{{}}" /> -->
         </ion-avatar>
-        <h2>{{ item.initiatorName }}</h2>
-        <p>{{ item.billTypeName }}</p>
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.summary }}</p>
       </ion-item>
   </ion-list>
 
