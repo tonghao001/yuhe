@@ -9,7 +9,10 @@ import { Chart } from 'angular-highcharts';
   templateUrl: 'childCheckChartDetail.html'
 })
 export class ChildCheckChartDetail {
-  constructor(public navCtrl: NavController) {
+  currentTag: string;
+
+  constructor(private navCtrl: NavController) {
+    this.changeTag('day');
   }
 
   chart: Chart = new Chart({
@@ -77,9 +80,24 @@ export class ChildCheckChartDetail {
     this.navCtrl.push(pageName, { id: id });
   }
 
+  changeTag(tag){
+    console.log('tag:', tag);
+    if(tag === this.currentTag){
+      return;
+    }
+    this.currentTag = tag;
+  }
   selectTime(event){
     console.log(event.value);
     this.timeString = event.value;
+  }
+
+
+  nextMonth(date){
+    console.log('next date:', date);
+  }
+  prevMonth(date){
+    console.log('prev date:', date);
   }
 
 }

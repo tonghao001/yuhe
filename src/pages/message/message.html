@@ -15,7 +15,7 @@
   <div>currentSelectDate: {{currentSelectDate}}</div>
 
   <div>
-    <date-switch [dateStringFormat]="yyyy-MM" (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></date-switch>
+    <date-switch (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></date-switch>
   </div>
   
   <div>
