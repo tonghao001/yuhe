@@ -28,7 +28,9 @@
   <div class="attenance-statistic">
     <div class="box-content chart-box">
       <div class="date-picker-area">
-          <date-switch (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></date-switch>
+          <month-switch  *ngIf="currentTag === 'month'" (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></month-switch>
+          <season-switch *ngIf="currentTag === 'season'" (prevSeasonChange)="prevSeason($event)" (nextSeasonChange)="nextSeason($event)"></season-switch>
+          <year-switch *ngIf="currentTag === 'year'" (prevYearChange)="prevYear($event)" (nextYearChange)="nextYear($event)"></year-switch>
       </div>
       <div class="chart-area">
         <div [chart]="chart" class="chart-content"></div>
