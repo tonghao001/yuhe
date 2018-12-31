@@ -17,7 +17,7 @@ export class PrincipalEmail {
     this.props = params.data;
     this.items = [
       {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
+        picture: "assets/imgs/image-default.png",
         title: "肥仔美",
         subTitle:
           "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
@@ -45,7 +45,7 @@ export class PrincipalEmail {
         badage: 10
       },
       {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
+        picture: "assets/imgs/image-default.png",
         title: "肥仔美",
         subTitle:
           "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
@@ -73,7 +73,7 @@ export class PrincipalEmail {
         badage: 10
       },
       {
-        picture: "assets/icon/thumbnail-puppy-1.jpg",
+        picture: "assets/imgs/image-default.png",
         title: "肥仔美",
         subTitle:
           "你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!你好院长我是肥仔美的妈妈!",
