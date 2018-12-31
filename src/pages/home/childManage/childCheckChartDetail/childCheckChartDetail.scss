@@ -8,19 +8,38 @@
 
         text-align: center;
         line-height: 50px;
-        ion-segment ion-segment-button{
-            &:nth-last-child(1){
-                border: none;
-            }
-            border-color: $color-border;
-            border-top: 0;
-            border-left: 0;
-            border-bottom: 0;
-            color: $color-text;
+        .segment-list{
+            display: block;
+            overflow:hidden;
+            width: 100%;
+            height: 50px;
 
-            &.segment-activated{
-                color: $color-primary;
-                background: #fff;
+            .segment-item{
+                display: inline-block;
+                float: left;
+
+                margin-top: 10px;
+                width: 25%;
+                height: 30px;
+                line-height: 30px;
+
+                border-color: $color-border;
+                border-top: 0;
+                border-left: 0;
+                border-bottom: 0;
+                border-right: 1px solid $color-border;
+                &:nth-last-child(1){
+                    border: none;
+                }
+                span{
+                    color: $color-text;
+                }
+                &.selected span{
+                    color: $color-primary;
+                }
+                &:hover{
+                    cursor: pointer;
+                }
             }
         }
     }
