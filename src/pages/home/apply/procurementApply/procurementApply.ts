@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ApprovalNetwork } from "./../../../../network/approval.network";
 import { Component } from "@angular/core";
 import {
@@ -27,7 +28,8 @@ export class ProcurementApply {
     params: NavParams,
     public actionSheet: ActionSheetController,
     public approvalNetWork: ApprovalNetwork,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private datePipe: DatePipe,
   ) {
     this.applyData.cgqds.push({});
   }
@@ -124,19 +126,20 @@ export class ProcurementApply {
           handler: () => {
             console.log("Agree clicked");
             var spid = this.spr.map((item) => { return item.id });
-            var csid = this.csr.map((item) => { return item.id })
+            var csid = this.csr.map((item) => { return item.id });
+            var start = this.datePipe.transform(this.applyData.cgsj, 'yyyy-MM-dd HH:mm:ss');
+            var apply = {
+              billType: 1,
+              cgsj: start,
+              sqsy: this.applyData.sqsy,
+              cglx: this.applyData.cglx,
+            }
             var params = {
-              apply: {
-                billType: 1,
-                cgsj: this.applyData.cgsj,
-                sqsy: this.applyData.sqsy,
-                cglx: this.applyData.cglx,
-              },
-              spid: spid,
-              csid: csid,
-              items: this.applyData.cgqds,
+              apply: JSON.stringify(apply),
+              spid: spid.join(','),
+              csid: csid.join(','),
+              items: JSON.stringify(this.applyData.cgqds),
             };
-            // TODO: 接口不通 ！！！
             this.approvalNetWork.applyForBuy(params).subscribe(
               (data: any) => {
                 console.log(data);
@@ -152,4 +155,38 @@ export class ProcurementApply {
     });
     confirm.present();
   }
+
+  // selectProceType() {
+  //   if (this.stationTypes.length > 0) {
+  //     this.showSelectTypeAlert()
+  //   } else {
+  //     this.approvalNetWork.getRestApplayType().subscribe(
+  //       (data: any) => {
+  //         console.log(data);
+  //         this.stationTypes = data;
+  //         this.showSelectTypeAlert()
+  //       },
+  //       error => {
+  //         console.log(error);
+  //       }
+  //     );
+  //    }
+  // }
+
+  // /// 请假类型
+  // showSelectTypeAlert() {
+  //   var buttons = this.stationTypes.map((item) => {
+  //     return {
+  //       text: item.qjyy,
+  //       handler: () => {
+  //         this.applyData.qjlx = item.id;
+  //         this.applyData.qjyy = item.brand + item.model + item.name + item.nums + item.price;
+  //       }
+  //     }
+  //   })
+  //   const actionSheet = this.actionSheet.create({
+  //     buttons: buttons,
+  //   });
+  //   actionSheet.present();
+  // }
 }

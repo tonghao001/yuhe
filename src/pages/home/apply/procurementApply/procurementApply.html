@@ -4,15 +4,10 @@
 
 <ion-content class="procurement-apply-body">
   <div class="block-view">
-    <ion-item>
-      <ion-label class="left">采购类型</ion-label>
-      <ion-input
-        class="right"
-        [(ngModel)]="applyData.cglx"
-        item-end
-        placeholder="请输入"
-      ></ion-input>
-    </ion-item>
+    <!-- <ion-item>
+        <ion-label class="left">采购类型</ion-label>
+        <button item-end class="right" (click)="selectProceType()">{{applyData.cglx}}</button>
+      </ion-item> -->
     <ion-item>
       <ion-label class="left">预购时间</ion-label>
       <ion-datetime
@@ -91,7 +86,7 @@
       </button>
     </ion-item>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person" *ngFor="let item of spr">
+      <ion-col class="approval-person" *ngFor="let item of spr; let i = index">
         <img
           class="person-image"
           src=".././../assets/imgs/image-default.png"
@@ -102,6 +97,7 @@
           name="arrow-round-forward"
           class="arrow-right"
           [ngClass]="item.last"
+          [hidden]="i == spr.length - 1"
         ></ion-icon>
       </ion-col>
     </ion-row>
@@ -114,7 +110,7 @@
       </button>
     </ion-item>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person" *ngFor="let item of csr">
+      <ion-col class="approval-person" *ngFor="let item of csr; let i = index">
         <img
           class="person-image"
           src="assets/imgs/image-default.png"
@@ -125,6 +121,7 @@
           name="arrow-round-forward"
           class="arrow-right"
           [ngClass]="item.last"
+          [hidden]="i == csr.length - 1"
         ></ion-icon>
       </ion-col>
     </ion-row>

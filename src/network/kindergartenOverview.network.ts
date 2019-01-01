@@ -10,38 +10,49 @@ export class KindergartenOverviewNetwork {
 
   }
   //获取全体职工考勤情况
-  getAllAttendanceInfo(data:any) {
+  getAllAttendanceInfo(data: any) {
     return this.http.get('/app/workattendance/getAttendances', data);
   }
   //获取所有职工的出勤list
-  getStaffAttendanceList(data:any) {
+  getStaffAttendanceList(data: any) {
     return this.http.get('/app/workattendance/getStaffAttendances', data);
   }
 
 
   //获取整体疾病情况
-  getAllSicknessCaseInfo(data:any) {
+  getAllSicknessCaseInfo(data: any) {
     return this.http.get('/app/illnessinfo/getIllnessInfos', data);
   }
   //获取某一个疾病情况的病人列表
-  getOneSicknessCaseList(data:any) {
+  getOneSicknessCaseList(data: any) {
     return this.http.get('/app/illnessinfo/selectBySickName', data);
   }
   //获取疾病分类集合
-  getSicknessCaseCategoryList(data:any) {
+  getSicknessCaseCategoryList(data: any) {
     return this.http.get('/app/illnessinfo/selectByClassId', data);
   }
 
 
   //获取财务收入来源情况
-  getAllFinancialSourceInfo(data:any) {
+  getAllFinancialSourceInfo(data: any) {
     return this.http.get('/app/financialstatement/selectIncomes', data);
   }
-  //获取财务报表情况
-  getAllFinancialSourceRankingInfo(data:any) {
+
+  //获取财务收入来源情况 (排名)
+  getAllFinancialSourceInfoRanking(data: any) {
     return this.http.get('/app/financialstatement/selectIncomesRank', data);
   }
 
-  
+  //获取财务支出情况 (排名)
+  getAllFinancialOutputInfo(data: any) {
+    return this.http.get('/app/financialstatement/selectPayouts', data);
+  }
+  //获取财务支出情况 (排名)
+  getAllFinancialOutputInfoRanking(data: any) {
+    return this.http.get('/app/financialstatement/selectPayoutsRank', data);
+  }
+
+
+
 
 }

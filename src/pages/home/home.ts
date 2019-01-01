@@ -217,14 +217,7 @@ export class HomePage {
         }]
       }
       this.chart3 = new Chart(options);
-
     });
-    // this.kindergartenOverviewNetwork.getAllFinancialSourceRankingInfo({
-    //   startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
-    //   endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
-    // }).subscribe((data: any) => {
-
-    // })
   }
 
   onSelectChart(chartName) {

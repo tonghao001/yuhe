@@ -81,10 +81,21 @@ export class ApprovalNetwork {
   getRestApplayType() {
     return this.http.get('/app/approval/application/getLeaveType');
   }
+  // 离职类型
   getRestResginType() {
     return this.http.get('/app/approval/application/getResignationType');
+  }
+  // 领用类型
+  getReciveGoodType() {
+    return this.http.get('/app/approval/application/getRecieveGoodItems');
+  }
+  // 采购类型
+  getPurchaseGoodType() {
+    return this.http.get('/app/approval/application/getPurchaseGoodItems');
   }
   getStaffList() {
     return this.http.get('/app/approval/application/getStaffList');
   }
+
+
 }
