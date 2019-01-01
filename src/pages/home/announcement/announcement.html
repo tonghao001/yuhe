@@ -27,9 +27,9 @@
       </ion-segment>
     </ion-list-header>
     <ion-item [hidden]="isRead==='false'" *ngFor="let item of readNotiList" (click)="clickItem(item)" >
-      <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
+      <!-- <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
         item.id
-      }}</ion-badge>
+      }}</ion-badge> -->
       <ion-avatar item-start>
         <img src="assets/imgs/image-default.png" />
       </ion-avatar>
@@ -37,9 +37,9 @@
       <p>{{ item.nr }}</p>
     </ion-item>
     <ion-item [hidden]="isRead==='true'" *ngFor="let item of unReadNotiList" (click)="clickItem(item)">
-      <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
+      <!-- <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
         item.id
-      }}</ion-badge>
+      }}</ion-badge> -->
       <ion-avatar item-start>
         <img src="assets/imgs/image-default.png" />
       </ion-avatar>

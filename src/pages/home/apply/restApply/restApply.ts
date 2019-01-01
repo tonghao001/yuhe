@@ -139,7 +139,6 @@ export class RestApply {
     actionSheet.present();
   }
 
-// TODO: 前端怎么计算出请假时间 ！！！
   resetApply() {
     const confirm = this.alertCtrl.create({
       title: "",
