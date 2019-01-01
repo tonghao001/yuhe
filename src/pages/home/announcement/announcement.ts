@@ -14,14 +14,7 @@ export class Announcement {
   readNotiList: any = [];
   unReadNotiList: any = [];
   isRead: string = "false";
-
-  constructor(
-    public navCtrl: NavController, 
-    params: NavParams,
-    private notiNetWork: NoticeNetWork
-    ) {
-    this.props = params.data;
-//TODO:  未读人数缺失
+  ionViewDidEnter () {
     this.notiNetWork.getReadNoticeList().subscribe((data: any) => {
       console.log(data);
       this.readNotiList = data;
@@ -35,6 +28,14 @@ export class Announcement {
     }, err => {
       console.log(err)
     })
+  }
+
+  constructor(
+    public navCtrl: NavController, 
+    params: NavParams,
+    private notiNetWork: NoticeNetWork
+    ) {
+    this.props = params.data;
   }
 
   clickItem(item) {
