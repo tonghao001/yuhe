@@ -1,3 +1,4 @@
+import { ToastService } from './../../../../service/toast.service';
 import { CheckInPage } from "./checkIn";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
@@ -11,6 +12,6 @@ import { DatePipe } from "@angular/common";
       IonicPageModule.forChild(CheckInPage),
     ],
   entryComponents: [CheckInPage],
-  providers: [CheckNetwork, DatePipe],
+  providers: [CheckNetwork, DatePipe, ToastService],
 })
 export class CheckInPageModule {}

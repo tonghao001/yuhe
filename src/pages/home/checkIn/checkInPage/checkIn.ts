@@ -1,3 +1,4 @@
+import { ToastService } from './../../../../service/toast.service';
 // import { DatePipe } from "@angular/common";
 import { Component } from "@angular/core";
 import { NavParams, IonicPage, NavController } from "ionic-angular";
@@ -9,6 +10,7 @@ import {
   STORAGE_KEY
 } from "../../../../service/storage.service";
 import { formatDate } from "../../../../network/http";
+
 
 @IonicPage({
   name: "app-home-checkIn"
@@ -32,16 +34,17 @@ export class CheckInPage {
     public checkNetWork: CheckNetwork,
     private storage: StorageService,
     // public datePipe: DatePipe
+    public toast: ToastService,
   ) {
     console.warn(
       "hshdfhashdfhsa======",
       this.storage.get(STORAGE_KEY.USER_INFO)
     );
     let loginInfo = this.storage.get(STORAGE_KEY.USER_INFO);
-
+    console.log(loginInfo);
     this.user = {
-      name: loginInfo.username,
-      team: "",
+      name: loginInfo.zgxm,
+      team: "考勤组：技术部",
       image: HTTP_URL.MAIN + '/images/' +  loginInfo.photo,
     };
 
@@ -91,6 +94,7 @@ export class CheckInPage {
             console.log(data);
             if (data.status == 0) {
                 this.checkData.checkInTime = "打卡时间" +  formatDate(new Date(), "HH:mm:ss");
+                this.toast.show('打卡成功');
             }
           },
           error => {
@@ -108,6 +112,7 @@ export class CheckInPage {
             console.log(data);
             if (data.status == 0) {
                 this.checkData.checkOutTime = "打卡时间" + formatDate(new Date(), "HH:mm:ss");
+                this.toast.show('打卡成功');
             }
           },
           error => {
