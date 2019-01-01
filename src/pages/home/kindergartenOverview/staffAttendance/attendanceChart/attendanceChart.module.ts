@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
 import { AttendanceChartPage } from "./attendanceChart";
 import { ChartModule } from 'angular-highcharts';
+import { ComponentsModule } from "../../../../../components/components.module";
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { ChartModule } from 'angular-highcharts';
   ],
   imports: [
     IonicPageModule.forChild(AttendanceChartPage),
-    ChartModule
+    ChartModule,
+    ComponentsModule
   ],
   entryComponents: [
     AttendanceChartPage

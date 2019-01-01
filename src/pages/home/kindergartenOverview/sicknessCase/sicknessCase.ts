@@ -12,7 +12,6 @@ import { ToastService } from '../../../../service/toast.service';
   templateUrl: 'sicknessCase.html'
 })
 export class SicknessCasePage {
-  timeString: 'day';
   chart: Chart;
   categoryList: any[];
 
