@@ -4,12 +4,13 @@
     <div class="user-info">
       <div class="photo-row">
           <ion-avatar>
-              <img src="../../assets/image/me/wuyifan.jpg">
+                <img src="{{user.photo}}" onerror="this.src='../../assets/imgs/image-default.png'" />
+              <!-- <img src="../../assets/image/me/wuyifan.jpg"> -->
             </ion-avatar>
       </div>
 
           <ion-row justify-content-start class="bottom-login">
-              <span>昵称：吴亦凡</span><span>工号：1001</span>
+              <span>昵称：{{user.name}}</span><span>工号：{{user.number}}</span>
           </ion-row>
     </div>
 
