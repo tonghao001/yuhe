@@ -36,8 +36,8 @@ export class HomePage {
 
   updateChart1 = (data: any) => {
     this.kindergartenOverviewNetwork.getAllAttendanceInfo({
-      startDate: formatDate('2018-12-22 00:00:00', 'yyyy-MM-dd'),
-      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+      startDate: formatDate(new Date(), 'yyyy-MM-dd'),
+      endDate: formatDate(new Date(), 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
         return;
@@ -107,19 +107,19 @@ export class HomePage {
   }
   updateChart2 = (data: any) => {
     this.kindergartenOverviewNetwork.getAllSicknessCaseInfo({
-      startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
-      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+      startDate: formatDate(new Date(), 'yyyy-MM-dd'),
+      endDate: formatDate(new Date(), 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
         return;
       }
-      let seriesData=[];let total=0;
-      data.forEach(item=>{
+      let seriesData = []; let total = 0;
+      data.forEach(item => {
         seriesData.push({
-          name:item.bzm,
-          y:item.bzs
+          name: item.bzm,
+          y: item.bzs
         });
-        total+=item.bzs;
+        total += item.bzs;
       })
 
       let options = {
@@ -165,20 +165,20 @@ export class HomePage {
   }
   updateChart3 = (data: any) => {
     this.kindergartenOverviewNetwork.getAllFinancialSourceInfo({
-      startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
-      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+      startDate: formatDate(new Date(), 'yyyy-MM-dd'),
+      endDate: formatDate(new Date(), 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
         return;
       }
 
-      let seriesData=[];let total=0;
-      data.forEach(item=>{
+      let seriesData = []; let total = 0;
+      data.forEach(item => {
         seriesData.push({
-          name:item.name,
-          y:item.chargeSum
+          name: item.name,
+          y: item.chargeSum
         });
-        total+=item.chargeSum;
+        total += item.chargeSum;
       })
 
       let options = {
@@ -314,6 +314,6 @@ export class HomePage {
   ionViewDidEnter() {
     this.onSelectChart('chart1');
   }
-  
+
 
 }

@@ -11,7 +11,7 @@
     <!-- <div class="box-title-nav"><span class="left">全教职工出勤</span><span class="right" ><ion-icon name="arrow-forward"></ion-icon></span></div> -->
     <div class="box-content">
       <ion-grid>
-        <ion-row (click)="navCtrl.push('app-home-attendance-list')">
+        <ion-row (click)="goToListPage()">
           <ion-col>
             <span>应到</span>
             <strong class="secondary" color="secondary">{{infos.totalCount}}</strong>
@@ -34,7 +34,7 @@
   </div>
 
   <div class="attenance-statistic">
-    <div class="box-title-nav"><span class="left">全教职工出勤率</span>
+    <div class="box-title-nav" (click)="goToDetail()"><span class="left">全教职工出勤率</span>
       <span class="right">
         <ion-icon name="arrow-forward"></ion-icon>
       </span>

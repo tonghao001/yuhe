@@ -16,6 +16,7 @@ export class StaffAttendancePage {
   chart1: Chart;
   infos: any;
   attendanceList: any[];
+  statistic: object;
 
   constructor(
     private navCtrl: NavController,
@@ -24,6 +25,7 @@ export class StaffAttendancePage {
     this.startDate = new Date(formatDate(new Date(), 'yyyy/MM/dd'));
     this.startDate.setDate(1);
     this.infos = {};
+    this.statistic = {};
   }
 
   ionViewDidEnter() {
@@ -87,11 +89,11 @@ export class StaffAttendancePage {
                 distance: -20
               },
               showInLegend: true,
-              events: {
-                click: (e) => {
-                  this.navCtrl.push('app-home-attendance-chart');
-                }
-              },
+              // events: {
+              //   click: (e) => {
+              //     this.navCtrl.push('app-home-attendance-chart');
+              //   }
+              // },
               tooltip: {
               }
             }
@@ -133,4 +135,16 @@ export class StaffAttendancePage {
         }
       })
   }
+
+  goToListPage() {
+    this.navCtrl.push('app-home-attendance-list', {
+      startDate: formatDate(this.startDate, 'yyyy-MM-dd'),
+      endDate: formatDate(this.getEndDate(), 'yyyy-MM-dd')
+    })
+  }
+
+  goToDetail() {
+    this.navCtrl.push('app-home-attendance-chart');
+  }
+
 }

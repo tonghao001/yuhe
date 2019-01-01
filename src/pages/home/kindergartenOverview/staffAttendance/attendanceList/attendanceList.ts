@@ -1,5 +1,6 @@
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
+import { KindergartenOverviewNetwork } from '../../../../../network/kindergartenOverview.network';
 
 
 @IonicPage({
@@ -9,20 +10,35 @@ import { Component } from '@angular/core';
   templateUrl: 'attendanceList.html'
 })
 export class AttendanceListPage {
+  list: any[];
 
-  list;
-
-  constructor() {
-    this.list = [
-      {
-        name: '朱晓杰',
-        status: 'inSchool',
-        statusString: '在校',
-        leaveCount: 54,
-        signCount: 54,
-        noSignedCount: 0
-      }
-    ];
+  constructor(
+    private navParams: NavParams,
+    private kindNetwork: KindergartenOverviewNetwork
+  ) {
+    this.list = [];
+    console.log(this.navParams);
+    this.getList(this.navParams.data);
   }
+
+
+  getList(params: object) {
+    this.kindNetwork.getStaffAttendanceList(params)
+      .subscribe((data: any) => {
+        if (data.status) {
+          return;
+        }
+        this.list = (data || []).map(item => {
+          return {
+            name:item.teacherName,
+            signCount:item.signCount,
+            noSignedCount:item.absenceCount,
+            leaveCount:item.leaveCount,
+            statusString:item.statusValue
+          }
+        });
+      });
+  }
+
 
 }
