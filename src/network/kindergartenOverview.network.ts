@@ -23,6 +23,16 @@ export class KindergartenOverviewNetwork {
   getAllSicknessCaseInfo(data:any) {
     return this.http.get('/app/illnessinfo/getIllnessInfos', data);
   }
+  //获取某一个疾病情况的病人列表
+  getOneSicknessCaseList(data:any) {
+    return this.http.get('/app/illnessinfo/selectBySickName', data);
+  }
+  //获取疾病分类集合
+  getSicknessCaseCategoryList(data:any) {
+    return this.http.get('/app/illnessinfo/selectByClassId', data);
+  }
+
+
   //获取财务收入来源情况
   getAllFinancialSourceInfo(data:any) {
     return this.http.get('/app/financialstatement/selectIncomes', data);

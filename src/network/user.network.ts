@@ -24,4 +24,12 @@ export class UserNetwork {
   getSalaryDetails(data) {
     return this.http.get('/app/salary/getSalaryDetail', data);
   }
+
+  postData() {
+    return this.http.postForm('/app/approval/application/postResignation', {
+      "apply": JSON.stringify({ "billType": 4, "sqsj": "2018-12-31 00:00:00", "yjlzsj": "2018-12-31 00:00:00", "lzyy": "对对对" }),
+      "spid": [21,22].join(','),
+      "csid": [42,41].join(',')
+    });
+  }
 }
