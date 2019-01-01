@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 
 import { ChildAttendanceNetwork } from "../../../../network/childAttendance.network";
 import { ToastService } from "../../../../service/toast.service";
-import { formatDate } from '../../../../network/http';
 
 @IonicPage({
   name: 'app-home-chartDetailList'
