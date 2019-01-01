@@ -47,9 +47,11 @@ export class MessagePage {
   }
   prevYear(date){
     console.log('prevYear:', date);
+    
   }
   nextYear(date){
     console.log('nextYear:', date);
+    
   }
 
   

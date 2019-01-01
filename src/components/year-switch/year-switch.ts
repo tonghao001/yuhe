@@ -12,15 +12,13 @@ import { formatDate } from "../../network/http";
   templateUrl: 'year-switch.html'
 })
 export class YearSwitchComponent {
-  @Output() prevYearChange: EventEmitter<Date> = new EventEmitter();
-  @Output() nextYearChange: EventEmitter<Date> = new EventEmitter();
+  @Output() prevYearChange: EventEmitter<any> = new EventEmitter();
+  @Output() nextYearChange: EventEmitter<any> = new EventEmitter();
 
   private formatString = 'yyyy';
   currentYearString = formatDate(new Date(), this.formatString);
 
   constructor() {
-    console.log('Hello YearSwitchComponent Component');
-    this.currentYearString = '2018';
   }
 
   prevYear(){
@@ -35,5 +33,7 @@ export class YearSwitchComponent {
     this.currentYearString = formatDate(new Date(currentYear), this.formatString);
     this.nextYearChange.emit(new Date(this.currentYearString));
   }
+
+
 
 }

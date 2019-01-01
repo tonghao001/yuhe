@@ -6,8 +6,12 @@
   <div class="block-view">
     <ion-item>
       <ion-label class="left">保修类型</ion-label>
-      <!-- 没有接口 -->
-      <button item-end class="right">请选择</button>
+      <ion-input
+        class="right"
+        [(ngModel)]="applyData.bxlx"
+        item-end
+        placeholder="请输入"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label class="left">物品用途</ion-label>
@@ -99,7 +103,7 @@
       </button>
     </ion-item>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person" *ngFor="let item of spr">
+      <ion-col class="approval-person" *ngFor="let item of spr; let i = index">
         <img
           class="person-image"
           src="assets/imgs/image-default.png"
@@ -110,6 +114,7 @@
           name="arrow-round-forward"
           class="arrow-right"
           [ngClass]="item.last"
+          [hidden]="i == spr.length - 1"
         ></ion-icon>
       </ion-col>
     </ion-row>
@@ -122,7 +127,7 @@
       </button>
     </ion-item>
     <ion-row padding-horizontal>
-      <ion-col class="approval-person" *ngFor="let item of csr">
+      <ion-col class="approval-person" *ngFor="let item of csr; let i = index">
         <img
           class="person-image"
           src="assets/imgs/image-default.png"
@@ -133,6 +138,7 @@
           name="arrow-round-forward"
           class="arrow-right"
           [ngClass]="item.last"
+          [hidden]="i == csr.length - 1"
         ></ion-icon>
       </ion-col>
     </ion-row>

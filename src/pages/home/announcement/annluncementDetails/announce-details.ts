@@ -1,6 +1,6 @@
 import { NoticeNetWork } from './../../../../network/notice.network';
 import { Component } from "@angular/core";
-import { NavParams, IonicPage, AlertController } from "ionic-angular";
+import { NavParams, IonicPage, AlertController, NavController } from "ionic-angular";
 import { HTTP_URL } from "../../../../network/http";
 
 @IonicPage({
@@ -25,7 +25,8 @@ export class AnnounceDetails {
   constructor(
     public alertController: AlertController, 
     params: NavParams,
-    private notiNetWork: NoticeNetWork
+    private notiNetWork: NoticeNetWork,
+    private navCtr: NavController,
     ) {
     this.item = params.data;
     if (this.item.isRead === 'true') {
@@ -76,8 +77,11 @@ export class AnnounceDetails {
           text: '确定',
           handler: () => {
             console.log('Confirm Okay');
-            this.notiNetWork.postNoticeForAllUsers({id: this.item.id}).subscribe((data) => {
+            this.notiNetWork.postNoticeForAllUsers({id: this.item.id}).subscribe((data: any) => {
               console.log(data)
+              if (data.status == 0) {
+                this.navCtr.pop();
+              }
             }, error => {
               console.log(error)
             })
