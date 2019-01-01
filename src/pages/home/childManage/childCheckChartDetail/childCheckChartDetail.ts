@@ -121,7 +121,6 @@ export class ChildCheckChartDetail {
     }
   }
 
-
   sure() {
     console.log('search start:', this.startDateString);
     console.log('search end:', this.endDateString);
