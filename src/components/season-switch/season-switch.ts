@@ -28,7 +28,7 @@ export class SeasonSwitchComponent {
   prevSeason() {
     this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() - 3));
     this.currentSeasonString = this.privateDateFormat(this.currentDate, this.formatString);
-    this.nextSeasonChange.emit(this.currentDate);
+    this.prevSeasonChange.emit(this.currentDate);
   };
   nextSeason() {
     this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() + 3));
