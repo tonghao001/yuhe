@@ -27,9 +27,9 @@
     </div>
     <div class="box-content chart-box">
       <div class="date-picker-area">
-        <ion-icon name="arrow-back"></ion-icon>
-        <span>2018-10</span>
-        <ion-icon name="arrow-forward"></ion-icon>
+        <ion-icon name="arrow-back" (click)="changeMonth('startDate1', -1, 'updateChart1')"></ion-icon>
+        <span>{{startDate1|date:'yyyy-MM'}}</span>
+        <ion-icon name="arrow-forward" (click)="changeMonth('startDate1', 1, 'updateChart1')"></ion-icon>
       </div>
       <div class="chart-area">
         <div [chart]="chart1" class="chart-content"></div>
@@ -44,11 +44,11 @@
       </span>
     </div>
     <div class="box-content chart-box">
-      <div class="date-picker-area">
-        <ion-icon name="arrow-back"></ion-icon>
-        <span>2018-10</span>
-        <ion-icon name="arrow-forward"></ion-icon>
-      </div>
+      <!-- <div class="date-picker-area">
+        <ion-icon name="arrow-back" (click)="changeMonth('startDate2', -1, 'updateChart2')"></ion-icon>
+        <span>{{startDate2|date:'yyyy-MM'}}</span>
+        <ion-icon name="arrow-forward" (click)="changeMonth('startDate2', 1, 'updateChart2')"></ion-icon>
+      </div> -->
       <div class="chart-area">
         <div [chart]="chart2" class="chart-content"></div>
       </div>

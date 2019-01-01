@@ -11,26 +11,43 @@ import { formatDate } from '../../../../network/http';
   templateUrl: 'financialReporting.html'
 })
 export class FinancialReportingPage {
+  startDate1: Date;
+  startDate2: Date;
   chart1: Chart;
   chart2: Chart;
-  inComeTotal:number;
-  outputTotal:number;
-  timeString: 'day';
+  inComeTotal: number;
+  outputTotal: number;
 
   constructor(
     public navCtrl: NavController,
     public kindergartenOverviewNetwork: KindergartenOverviewNetwork
   ) {
-    this.inComeTotal=0;
-    this.outputTotal=0;
-    this.updateChart1({});
-    this.updateChart2({});
+    this.startDate1 = new Date(formatDate(new Date(), 'yyyy/MM/dd'));
+    this.startDate1.setDate(1);
+
+    this.startDate2 = new Date(formatDate(new Date(), 'yyyy/MM/dd'));
+    this.startDate2.setDate(1);
+
+    this.inComeTotal = 0;
+    this.outputTotal = 0;
+    this.updateChart1();
+    this.updateChart2();
+  }
+  getEndDate(startDate:Date) {
+    return new Date(new Date(startDate).setMonth(startDate.getMonth() + 1) - 1000);
   }
 
-  updateChart1 = (params: any) => {
+  changeMonth(timeProp: string, num: number, updateProp:string) {
+    this[timeProp] = new Date(this[timeProp].setMonth(this[timeProp].getMonth() + num));
+    // this[updateProp]();
+    this.updateChart1();
+    this.updateChart2();
+  }
+
+  updateChart1 = () => {
     this.kindergartenOverviewNetwork.getAllFinancialSourceInfo({
-      startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
-      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+      startDate: formatDate(this.startDate1, 'yyyy-MM-dd'),
+      endDate: formatDate(this.getEndDate(this.startDate1), 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
         return;
@@ -44,7 +61,7 @@ export class FinancialReportingPage {
         });
         total += item.chargeSum;
       })
-      this.inComeTotal=total;
+      this.inComeTotal = total;
 
       let options = {
         chart: {
@@ -84,10 +101,10 @@ export class FinancialReportingPage {
       this.chart1 = new Chart(options);
     });
   }
-  updateChart2 = (params: any) => {
+  updateChart2 = () => {
     this.kindergartenOverviewNetwork.getAllFinancialOutputInfo({
-      startDate: formatDate('2018-10-04 00:00:00', 'yyyy-MM-dd'),
-      endDate: formatDate('2018-12-22 23:00:00', 'yyyy-MM-dd'),
+      startDate: formatDate(this.startDate1, 'yyyy-MM-dd'),
+      endDate: formatDate(this.getEndDate(this.startDate1), 'yyyy-MM-dd'),
     }).subscribe((data: any) => {
       if (data.status) {
         return;
@@ -101,7 +118,7 @@ export class FinancialReportingPage {
         });
         total += item.payoutSum;
       })
-      this.outputTotal=total;
+      this.outputTotal = total;
       let options = {
         chart: {
           type: 'column'
@@ -144,12 +161,7 @@ export class FinancialReportingPage {
   goToPage(pageName, id) {
     pageName = pageName;
     console.log('id:', id);
-    this.navCtrl.push(pageName, { type:id });
-  }
-
-  selectTime(event) {
-    console.log(event.value);
-    this.timeString = event.value;
+    this.navCtrl.push(pageName, { type: id });
   }
 
 }
