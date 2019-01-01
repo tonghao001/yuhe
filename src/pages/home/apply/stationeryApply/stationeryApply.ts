@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ApprovalNetwork } from './../../../../network/approval.network';
 import { Component } from "@angular/core";
 import {
@@ -28,6 +29,7 @@ export class StationeryApply {
     public actionSheet: ActionSheetController,
     public approvalNetWork: ApprovalNetwork,
     public navCtrl: NavController,
+    private datePipe: DatePipe,
   ) {
       this.applyData.lymxs.push({});
   }
@@ -160,15 +162,17 @@ export class StationeryApply {
           handler: () => {
             console.log("Agree clicked");
             var spid = this.spr.map((item) => { return item.id });
-            var csid = this.csr.map((item) => { return item.id })
+            var csid = this.csr.map((item) => { return item.id });
+            var start = this.datePipe.transform(this.applyData.lysj, 'yyyy-MM-dd HH:mm:ss');
+            var apply =  {
+              billType: 2,
+              lysj: start,
+            }
             var params = {
-              apply: {
-                billType: 2,
-                lysj: this.applyData.lysj,
-              },
-              spid: spid,
-              csid: csid,
-              items: this.applyData.lymxs,
+              apply: JSON.stringify(apply),
+              spid: spid.join(','),
+              csid: csid.join(','),
+              items: JSON.stringify(this.applyData.lymxs),
             };
             // TODO: 接口不通 ！！！
             this.approvalNetWork.applyForReset(params).subscribe(
