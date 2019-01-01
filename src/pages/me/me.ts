@@ -4,6 +4,8 @@ import { ActionSheetService } from '../../service/actionSheet.service';
 import { UserNetwork } from "../../network/user.network";
 import { ToastService } from "../../service/toast.service";
 import { LoginPage } from "../../pages/login/login";
+import { StorageService, STORAGE_KEY } from '../../service/storage.service';
+import { HTTP_URL } from "../../network/http";
 
 @Component({
   selector: 'page-me',
@@ -14,7 +16,9 @@ export class MePage {
     private navCtrl: NavController,
     private actionSheetService: ActionSheetService,
     private userNetwork: UserNetwork,
-    private toastService: ToastService) {
+    private toastService: ToastService,
+    private storage: StorageService) {
+      this.loadUserInfo()
     }
 
   showActionSheet(): void {
@@ -37,6 +41,18 @@ export class MePage {
       }
       ]
     })
+  }
+
+  user: any = {};
+
+  loadUserInfo() {
+    let userInfo = this.storage.get(STORAGE_KEY.USER_INFO);
+    if (userInfo && typeof userInfo === "object") {
+      console.log(userInfo);
+      this.user.number = userInfo.zggh;
+      this.user.name = userInfo.zgxm;
+      this.user.photo = HTTP_URL.MAIN + '/images/' + userInfo.photo;
+    }
   }
 
   logOut():void{

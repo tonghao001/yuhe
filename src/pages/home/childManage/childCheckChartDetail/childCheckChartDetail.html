@@ -30,13 +30,13 @@
       <div class="date-pick">
         <div class="date-range-pick" *ngIf="currentTag === 'day'">
           <ion-item>
-            <ion-datetime placeholder="开始时间" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
+            <ion-datetime [(ngModel)]="startDate" placeholder="开始时间" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
           </ion-item>
           <span>~</span>
           <ion-item>
-            <ion-datetime placeholder="结束时间" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
+            <ion-datetime [(ngModel)]="endDate" placeholder="结束时间" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD"></ion-datetime>
           </ion-item>
-          <button>确定</button>
+          <button (click)="sure()">确定</button>
         </div>
         <div class="margin-top-15">
             <month-switch  *ngIf="currentTag === 'month'" (prevMonthChange)="prevMonth($event)" (nextMonthChange)="nextMonth($event)"></month-switch>
