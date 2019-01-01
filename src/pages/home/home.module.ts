@@ -30,6 +30,7 @@ import { ScheduleManageModule } from './schedule/schedule.module';
 import { SicknessCasePageModule } from './kindergartenOverview/sicknessCase/sicknessCase.module';
 import { HttpNetwork } from '../../network/http';
 import { KindergartenOverviewNetwork } from '../../network/kindergartenOverview.network';
+import { FinancialReportingPageModule } from './kindergartenOverview/financialReporting/financialReporting.module';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { KindergartenOverviewNetwork } from '../../network/kindergartenOverview.
     EditEmailPageModule,
     WorkOrderApplyPageModule,
     ScheduleManageModule,
-    SicknessCasePageModule
+    SicknessCasePageModule,
+    FinancialReportingPageModule
   ],
   providers:[
     MessageService,

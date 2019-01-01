@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="child-check-page financial-reporting-view child-check-cart-detail-page" color="background">
+
+  <ion-row class="o-header">
+
+  </ion-row>
+  <div class="attenance-statistic">
+    <div class="box-content chart-box">
+      <div class="date-picker-area">
+        <ion-icon name="arrow-back"></ion-icon>
+        <span>2018-10</span>
+        <ion-icon name="arrow-forward"></ion-icon>
+      </div>
+      <div class="chart-area">
+        <div [chart]="chart1" class="chart-content"></div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>
