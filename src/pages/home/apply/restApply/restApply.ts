@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from "@angular/core";
 import {
   IonicPage,
@@ -27,6 +28,7 @@ export class RestApply {
     public actionSheet: ActionSheetController,
     public approvalNetWork: ApprovalNetwork,
     public navCtrl: NavController,
+    private datePipe: DatePipe,
   ) {
     this.applyData.qjyy = "请选择";
   }
@@ -155,20 +157,22 @@ export class RestApply {
           handler: () => {
             console.log("Agree clicked");
             var spid = this.spr.map((item) => { return item.id });
-            var csid = this.csr.map((item) => { return item.id })
-            var params = {
-              apply: {
-                billType: 3,
-                qssj: this.applyData.qssj,
-                jssj: this.applyData.jssj,
-                qjsc: this.applyData.qjsc,
-                qjsy: this.applyData.qjsy,
-                qjlx: this.applyData.qjlx,
-              },
-              spid: spid,
-              csid: csid,
+            var csid = this.csr.map((item) => { return item.id });
+            var start = this.datePipe.transform(this.applyData.qssj, 'yyyy-MM-dd HH:mm:ss');
+            var end = this.datePipe.transform(this.applyData.jssj, 'yyyy-MM-dd HH:mm:ss');
+            var apply =  {
+              billType: 3,
+              qssj: start,
+              jssj: end,
+              qjsc: this.applyData.qjsc,
+              qjsy: this.applyData.qjsy,
+              qjlx: this.applyData.qjlx,
             };
-            // TODO: 接口不通 ！！！
+            var params = {
+              apply: JSON.stringify(apply),
+              spid: spid.join(','),
+              csid: csid.join(','),
+            };
             this.approvalNetWork.applyForReset(params).subscribe(
               (data: any) => {
                 console.log(data);

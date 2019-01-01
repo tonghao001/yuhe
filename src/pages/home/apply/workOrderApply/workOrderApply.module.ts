@@ -1,8 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { ApprovalNetwork } from './../../../../network/approval.network';
 import { WorkOrderApply } from "./workOrderApply";
 import { NgModule } from "@angular/core";
 import { IonicPageModule } from "ionic-angular";
-
 
 @NgModule({
   declarations: [WorkOrderApply],
@@ -10,7 +10,7 @@ import { IonicPageModule } from "ionic-angular";
       IonicPageModule.forChild(WorkOrderApply),
     ],
   entryComponents: [WorkOrderApply],
-  providers: [ApprovalNetwork],
+  providers: [ApprovalNetwork, DatePipe],
 })
 export class WorkOrderApplyPageModule {
     

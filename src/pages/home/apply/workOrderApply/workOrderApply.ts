@@ -7,6 +7,8 @@ import {
   ActionSheetController,
   NavController,
 } from "ionic-angular";
+import { DatePipe } from '@angular/common';
+
 
 @IonicPage({
   name: "app-home-workorder-apply",
@@ -26,7 +28,8 @@ export class WorkOrderApply {
     params: NavParams,
     public actionSheet: ActionSheetController,
     public approvalNetWork: ApprovalNetwork,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private datePipe: DatePipe,
   ) {
     this.applyData.bxqds.push({});
   }
@@ -123,17 +126,19 @@ export class WorkOrderApply {
           handler: () => {
             console.log("Agree clicked");
             var spid = this.spr.map((item) => { return item.id });
-            var csid = this.csr.map((item) => { return item.id })
+            var csid = this.csr.map((item) => { return item.id });
+            var start = this.datePipe.transform(this.applyData.bxsj, 'yyyy-MM-dd HH:mm:ss');
+            var apply = {
+              billType: 5,
+              sqly: this.applyData.sqly,
+              bxsj: start,
+              title: this.applyData.title,
+              bxlx: this.applyData.bxlx,
+            }
             var params = {
-              apply: {
-                billType: 1,
-                sqly: this.applyData.sqly,
-                bxsj: this.applyData.bxsj,
-                title: this.applyData.title,
-                bxlx: this.applyData.bxlx,
-              },
-              spid: spid,
-              csid: csid,
+              apply: JSON.stringify(apply),
+              spid: spid.join(','),
+              csid: csid.join(','),
               items: this.applyData.cgqds,
             };
             this.approvalNetWork.applyForOrder(params).subscribe(

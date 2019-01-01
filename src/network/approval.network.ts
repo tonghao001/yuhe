@@ -60,7 +60,7 @@ export class ApprovalNetwork {
   }
   // 请假
   applyForReset(data) {
-    return this.http.post('/app/approval/application/postLeave', data);
+    return this.http.postForm('/app/approval/application/postLeave', data);
   }
   // 采购
   applyForBuy(data) {
@@ -76,7 +76,7 @@ export class ApprovalNetwork {
   }
   // 离职
   applyForLeave(data) {
-    return this.http.post('/app/approval/application/postResignation', data);
+    return this.http.postForm('/app/approval/application/postResignation', data);
   }
   getRestApplayType() {
     return this.http.get('/app/approval/application/getLeaveType');
