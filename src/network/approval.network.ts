@@ -28,15 +28,15 @@ export class ApprovalNetwork {
   }
   // 审核通过
   approvalSucceed(data) {
-    return this.http.post('/app/approval/myApprovals/validate/billType', data);
+    return this.http.postForm('/app/approval/myApprovals/validate', data);
   }
   // 审核不通过
   approvalFaild(data) {
-    return this.http.post('/app/approval/myApprovals/invalidate/billType', data);
+    return this.http.postForm('/app/approval/myApprovals/invalidate', data);
   }
   // 撤销申请
   withdrowApplay(data) {
-    return this.http.post('/app/approval/myApplication/revoke', data);
+    return this.http.postForm('/app/approval/myApplication/revoke', data);
   }
   // 请假
   applyRestDetail(data) {
@@ -64,15 +64,15 @@ export class ApprovalNetwork {
   }
   // 采购
   applyForBuy(data) {
-    return this.http.post('/app/approval/application/postPurchase', data);
+    return this.http.postForm('/app/approval/application/postPurchase', data);
   }
   // 工单
   applyForOrder(data) {
-    return this.http.post('/app/approval/application/postRepair', data);
+    return this.http.postForm('/app/approval/application/postRepair', data);
   }
   // 领用
   applyForGood(data) {
-    return this.http.post('/app/approval/application/postRequestGoods', data);
+    return this.http.postForm('/app/approval/application/postRequestGoods', data);
   }
   // 离职
   applyForLeave(data) {

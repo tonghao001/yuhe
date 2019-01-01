@@ -8,11 +8,11 @@ export class CheckNetwork {
   }
   // 上班打卡
   checkIn(data) {
-    return this.http.post('/app/attendanceManagement/checkIn', data); 
+    return this.http.postForm('/app/attendanceManagement/checkIn', data); 
   }
   // 下班打卡
   checkOut(data) {
-    return this.http.post('/app/attendanceManagement/checkOut', data); 
+    return this.http.postForm('/app/attendanceManagement/checkOut', data); 
   }
   // 日报
   getDayReport(data) {

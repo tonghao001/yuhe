@@ -75,6 +75,9 @@ export class ApprovalDetails {
           .subscribe(
             (data: any) => {
               console.log(data);
+              if (!data.qjsq) {
+                data.qjsq = {};
+              }
               this.restDetail = data;
               this.csr = data.csr;
               this.spr = data.spr;
@@ -93,6 +96,9 @@ export class ApprovalDetails {
           .subscribe(
             (data: any) => {
               console.log(data);
+              if (!data.lzsq) {
+                data.lzsq = {};
+              }
               this.levelDetail = data;
               this.csr = data.csr;
               this.spr = data.spr;

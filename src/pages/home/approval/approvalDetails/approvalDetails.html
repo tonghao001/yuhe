@@ -190,7 +190,7 @@
         </div>
   </div>
 
-  <div class="block-view">
+  <!-- <div class="block-view">
     <div class="title-view">
       <p class="left title">图片</p>
       <ion-row>
@@ -199,13 +199,16 @@
         </ion-col>
       </ion-row>
     </div>
-  </div>
+  </div> -->
   <div class="appoval-person-list">
     <p>审批人：</p>
     <ion-row padding-horizontal>
       <ion-col class="approval-person" *ngFor="let item of spr; let i = index">
-        <img class="person-image" src="{{item.photo}}" />
-        <p>{{ item.zgxm }}</p>
+        <img class="person-image" 
+        src="{{item.photo}}" 
+        onerror="this.src='assets/imgs/image-default.png'"
+        />
+        <p>{{ item.zgName }}</p>
         <ion-icon
           [hidden]="i == spr.length - 1"
           name="arrow-round-forward"
@@ -219,8 +222,11 @@
     <p>抄送人：</p>
     <ion-row padding-horizontal>
       <ion-col class="approval-person" *ngFor="let item of csr; let i = index">
-        <img class="person-image" src="{{item.photo}}" />
-        <p>{{ item.zgxm }}</p>
+        <img 
+        class="person-image"
+         src="{{item.photo}}"
+         onerror="this.src='assets/imgs/image-default.png'" />
+        <p>{{ item.zgName }}</p>
         <!-- <p>{{item.zgxm}}</p> 缺乏审批时间 和 审核状态字段 -->
         <ion-icon
           name="arrow-round-forward"
