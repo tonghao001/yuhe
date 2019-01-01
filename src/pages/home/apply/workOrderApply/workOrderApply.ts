@@ -139,7 +139,8 @@ export class WorkOrderApply {
               apply: JSON.stringify(apply),
               spid: spid.join(','),
               csid: csid.join(','),
-              items: this.applyData.cgqds,
+              // items: items.join(','),
+              items: JSON.stringify(this.applyData.bxqds),
             };
             this.approvalNetWork.applyForOrder(params).subscribe(
               (data: any) => {

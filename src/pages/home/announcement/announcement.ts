@@ -20,14 +20,14 @@ export class Announcement {
       this.readNotiList = data;
     }, err => {
       console.log(err)
-    })
+    });
 
     this.notiNetWork.getunReadNoticeList().subscribe((data: any) => {
       console.log(data);
       this.unReadNotiList = data;
     }, err => {
       console.log(err)
-    })
+    });
   }
 
   constructor(
