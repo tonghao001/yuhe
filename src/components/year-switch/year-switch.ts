@@ -25,7 +25,7 @@ export class YearSwitchComponent {
     let currentYear = new Date(this.currentYearString);
     currentYear.setFullYear(currentYear.getFullYear() - 1);
     this.currentYearString = formatDate(new Date(currentYear), this.formatString);
-    this.nextYearChange.emit(new Date(this.currentYearString));
+    this.prevYearChange.emit(new Date(this.currentYearString));
   }
   nextYear(){
     let currentYear = new Date(this.currentYearString);
