@@ -20,14 +20,18 @@ export class MyApproval {
     ) {
     this.approavlNetWork.getApprovalList().subscribe((data:any) => {
       console.log(data)
-      if(data) {
-        this.approavlList = data;
+      if(data.message) {
+        return;
       }
+      this.approavlList = data;
     }, error => {
       console.log(error)
     })
     this.approavlNetWork.getUnApprovalList().subscribe((data: any) => {
       console.log(data)
+      if (data.message) {
+        return;
+      }
       this.unApprovalList = data;
     }, error => {
       console.log(error)

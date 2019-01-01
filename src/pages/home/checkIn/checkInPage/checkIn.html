@@ -10,7 +10,10 @@
 <ion-content class="checkIn-body">
   <ion-item>
     <ion-avatar item-start>
-      <img src="assets/imgs/image-default.png" />
+      <img
+      onerror="this.src='assets/imgs/image-default.png'"
+       src="{{user.image}}"
+        />
     </ion-avatar>
     <h2>{{ user.name }}</h2>
     <p class="sub-Title-label">{{ user.team }}</p>
@@ -26,7 +29,7 @@
     </div>
 
     <div class="off-office" class="left-margin-16">
-      <p>下班时间：17：00</p>
+      <p>下班时间：18：00</p>
       <div class="off-office">
         <p class="blod-title">{{checkData.checkOutTime}}</p>
         <p>{{checkData.checkOutAddress}}</p>
@@ -34,10 +37,10 @@
     </div>
   </div>
   <div class="checkIn-area">
-        <div class="checkIn-button" (click)="checkInClick()">
-            <p>{{isChenckIn ? '上班打卡' : '下班打卡'}}</p>
-            <p>{{ today | date: 'HH:mm:ss'}}</p>
-        </div>
+      <button (click)="checkInClick()"  class="checkIn-button">
+          <p>{{isChenckIn ? '上班打卡' : '下班打卡'}}</p>
+          <p>{{ today | date: 'HH:mm:ss'}}</p>
+      </button>
         <div class="checkIn-tip">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
             <p class="check-status">已进入考勤范围 天安中心</p>

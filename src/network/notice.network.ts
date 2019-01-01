@@ -27,14 +27,14 @@ export class NoticeNetWork {
   }
 
   getUnReadNoticeDetails(data) {
-    return this.http.post('/app/notice/getUnread', data);
+    return this.http.postForm('/app/notice/getUnread', data);
   }
 
   postNoticeForAllUsers(data) {
-    return this.http.post('/app/notice/notice', data);
+    return this.http.postForm('/app/notice/notice', data);
   }
 
   saveNewNotice(data) {
-    return this.http.post('/app/notice/saveNotice', data);
+    return this.http.postForm('/app/notice/saveNotice', data);
   }
 }

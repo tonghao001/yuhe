@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content class="announcement-body">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
       pullingText="下拉刷新"
@@ -18,7 +18,7 @@
       refreshingText="加载中......"
     >
     </ion-refresher-content>
-  </ion-refresher>
+  </ion-refresher> -->
   <ion-list>
     <ion-list-header>
       <ion-segment [(ngModel)]="isRead">
@@ -27,9 +27,9 @@
       </ion-segment>
     </ion-list-header>
     <ion-item [hidden]="isRead==='false'" *ngFor="let item of readNotiList" (click)="clickItem(item)" >
-      <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
+      <!-- <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
         item.id
-      }}</ion-badge>
+      }}</ion-badge> -->
       <ion-avatar item-start>
         <img src="assets/imgs/image-default.png" />
       </ion-avatar>
@@ -37,9 +37,9 @@
       <p>{{ item.nr }}</p>
     </ion-item>
     <ion-item [hidden]="isRead==='true'" *ngFor="let item of unReadNotiList" (click)="clickItem(item)">
-      <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
+      <!-- <ion-badge [hidden]="isRead === 'true'" class="badge-icon">{{
         item.id
-      }}</ion-badge>
+      }}</ion-badge> -->
       <ion-avatar item-start>
         <img src="assets/imgs/image-default.png" />
       </ion-avatar>
@@ -48,11 +48,11 @@
     </ion-item>
   </ion-list>
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+  <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
       loadingText="加载更多..."
     >
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll> -->
 </ion-content>

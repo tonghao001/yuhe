@@ -81,12 +81,9 @@ export class EditAnnouncement {
     if (this.title.length < 1 && this.content.length < 1) {
       return;
     }
-
-    var time = this.datePipe.transform(Date(), 'yyyy-MM-dd HH:mm:ss');
     this.notiNetWork.saveNewNotice({
       "ggbt": this.title,
-      "nr": this.content,
-       "fbsj": time
+      "nr": this.content
     }).subscribe((data: any) => {
       console.log(data)
       if (data.status == 0) {

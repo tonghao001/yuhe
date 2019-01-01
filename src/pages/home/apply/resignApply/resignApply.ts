@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ApprovalNetwork } from './../../../../network/approval.network';
 import { Component } from "@angular/core";
 import {
@@ -29,6 +30,7 @@ export class ResignApply {
     public actionSheet: ActionSheetController,
     public approvalNetWork: ApprovalNetwork,
     public navCtrl: NavController,
+    private datePipe: DatePipe,
   ) {
     
   }
@@ -120,18 +122,20 @@ export class ResignApply {
           text: "确定",
           handler: () => {
             var spid = this.spr.map((item) => { return item.id });
-            var csid = this.csr.map((item) => { return item.id })
-            var params = {
-              apply: {
-                billType: 4,
-                sqsj: this.applyData.sqsj,
-                yjlzsj: this.applyData.yjlzsj,
-                lzyy: this.applyData.lzyy,
-              },
-              spid: spid,
-              csid: csid,
+            var csid = this.csr.map((item) => { return item.id });
+            var start = this.datePipe.transform(this.applyData.sqsj, 'yyyy-MM-dd HH:mm:ss');
+            var end = this.datePipe.transform(this.applyData.yjlzsj, 'yyyy-MM-dd HH:mm:ss');
+            var apply = {
+              billType: 4,
+              sqsj: start,
+              yjlzsj: end,
+              lzyy: this.applyData.lzyy,
             };
-            // TODO: 接口不通 ！！！
+            var params = {
+              apply: JSON.stringify(apply),
+              spid: spid.join(','),
+              csid: csid.join(','),
+            };
             this.approvalNetWork.applyForLeave(params).subscribe(
               (data: any) => {
                 console.log(data);
