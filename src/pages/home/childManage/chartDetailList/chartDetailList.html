@@ -1,16 +1,16 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      未签到
+      {{title || '其他'}}
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="chart-detail-list-page" color="background">
 
-  <div class="chart-summary">
+  <!-- <div class="chart-summary">
     <span>手足口病</span><span>4人</span>
-  </div>
+  </div> -->
 
   <div class="class-student-list" *ngFor="let item of list" >
     <div class="class-student-header">
