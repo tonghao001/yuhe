@@ -13,11 +13,8 @@ export class MyApproval {
   approavlList:any = [];
   unApprovalList:any = [];
   isApproval: string = "false";
-  constructor(
-    public navCtrl: NavController, 
-    params: NavParams,
-    public approavlNetWork: ApprovalNetwork
-    ) {
+
+  ionViewDidEnter() {
     this.approavlNetWork.getApprovalList().subscribe((data:any) => {
       console.log(data)
       if(data.message) {
@@ -36,6 +33,12 @@ export class MyApproval {
     }, error => {
       console.log(error)
     })
+  }
+  constructor(
+    public navCtrl: NavController, 
+    params: NavParams,
+    public approavlNetWork: ApprovalNetwork
+    ) {
   }
   clickItem(item) {
     this.navCtrl.push('app-home-approval-details', {params: item, type: 1});

@@ -90,7 +90,6 @@ export class CheckInPage {
           (data: any) => {
             console.log(data);
             if (data.status == 0) {
-                var now = 
                 this.checkData.checkInTime = "打卡时间" +  formatDate(new Date(), "HH:mm:ss");
             }
           },
