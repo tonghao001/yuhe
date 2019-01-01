@@ -90,6 +90,7 @@ export class LoginPage {
   }
 
   onForgetPassword() {
+    // this.userNetwork.postData().subscribe(data=>{console.log(data)}); //测试代码
     this.navCtrl.push('app-forget-password');
   }
 
