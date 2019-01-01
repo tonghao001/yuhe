@@ -132,7 +132,7 @@ export class WorkOrderApply {
               billType: 5,
               sqly: this.applyData.sqly,
               bxsj: start,
-              title: this.applyData.title,
+              wxr: this.applyData.wxr,
               bxlx: this.applyData.bxlx,
             }
             var params = {
