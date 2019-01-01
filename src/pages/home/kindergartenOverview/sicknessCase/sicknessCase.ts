@@ -4,8 +4,6 @@ import { Chart } from 'angular-highcharts';
 import { KindergartenOverviewNetwork } from '../../../../network/kindergartenOverview.network';
 import { formatDate } from '../../../../network/http';
 
-
-
 @IonicPage({
   name: 'app-home-sickness-case'
 })
@@ -22,7 +20,7 @@ export class SicknessCasePage {
     public navCtrl: NavController,
     private kindergartenOverviewNetwork: KindergartenOverviewNetwork
   ) {
-    this.startDate = new Date(formatDate(new Date(), 'yyyy/MM/dd'));
+    this.startDate = new Date(formatDate('2018/10/1', 'yyyy/MM/dd'));
     this.startDate.setDate(1);
     this.categoryList = [];
   }
@@ -37,7 +35,6 @@ export class SicknessCasePage {
       endDate: formatDate(this.getEndDate(), 'yyyy-MM-dd')
     };
     this.updateChart(params);
-    this.getCategoryList(params);
   }
 
   getEndDate() {
@@ -59,6 +56,14 @@ export class SicknessCasePage {
         if (data.status) {
           return;
         }
+        let count = data.reduce((a, b) => {
+          return a + b.bzs;
+        }, 0);
+        if (count > 0) {
+          data.forEach(a => { a.rate = (a.bzs / count) * 100 });
+        }
+        this.categoryList = data;
+
         let seriesData = []; let total = 0;
         data.forEach(item => {
           seriesData.push({
@@ -106,19 +111,17 @@ export class SicknessCasePage {
 
         this.chart = new Chart(options);
       });
+  }
 
-  }
-  getCategoryList = (params: any) => {
-    this.kindergartenOverviewNetwork.getSicknessCaseCategoryList(params)
-      .subscribe(data => {
-        console.log(data);
-      });
-  }
 
   goToPage(pageName, id) {
     pageName = pageName || 'app-home-sickness-case-list';
     console.log('id:', id);
-    this.navCtrl.push(pageName, { id: id });
+    this.navCtrl.push(pageName, {
+      sickName:id,
+      startDate: formatDate(this.startDate,'yyyy-MM-dd'),
+      endDate: formatDate(this.getEndDate(),'yyyy-MM-dd')
+    });
   }
 
   selectTime(event) {
