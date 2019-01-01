@@ -37,20 +37,13 @@
     </div>
   </div>
 
-  <div class="attenance-statistic">
+  <div class="attenance-statistic" style="margin-top: 20px;">
     <div class="box-content">
-      <ion-list>
-        <ion-item (click)="goToPage()">
-          <label class="color-1">1</label><span>手足口病</span><strong>100%</strong>
-        </ion-item>
-        <ion-item (click)="goToPage()">
-          <label class="color-2">2</label><span>感冒</span><strong>100%</strong>
-        </ion-item>
-        <ion-item (click)="goToPage()">
-          <label  class="color-3">3</label><span>发烧</span><strong>100%</strong>
-        </ion-item>
-        <ion-item (click)="goToPage()">
-          <label  class="color-4">4</label><span>健康</span><strong>100%</strong>
+      <ion-list style="margin:0">
+        <ion-item 
+          *ngFor="let category of categoryList; index as i;"
+        (click)="goToPage('app-home-sickness-case-list',category.bzm)" >
+          <label class="color-1">{{i+1}}</label><span>{{category.bzm}}</span><strong>{{category.rate}}%</strong>
         </ion-item>
       </ion-list>
     </div>

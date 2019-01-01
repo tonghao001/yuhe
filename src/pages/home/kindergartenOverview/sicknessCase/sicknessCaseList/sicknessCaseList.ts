@@ -1,5 +1,6 @@
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
+import { KindergartenOverviewNetwork } from '../../../../../network/kindergartenOverview.network';
 
 @IonicPage({
   name: 'app-home-sickness-case-list'
@@ -8,22 +9,45 @@ import { Component } from '@angular/core';
   templateUrl: 'sicknessCaseList.html'
 })
 export class SicknessCaseListPage {
-  constructor( ) {
-    this.list = [
-      {
-        className: '小二班',
-        studentCount: 12,
-        students: [{ name: '小明', id: '1' }, { name: '小梅', id: 2 }, { name: '小强', id: 3 }]
-      },
-      {
-        className: '大一班',
-        studentCount: 4,
-        students: [{ name: '小海', id: 4 }, { name: '小红', id: 5 }]
-      }
-    ];
+  list: any[];
+  totalCount: number;
+  constructor(
+    public navParams: NavParams,
+    public kindergartenOverviewNetwork: KindergartenOverviewNetwork
+  ) {
+
+    console.log(this.navParams);
+    this.totalCount = 0;
+    this.list = [];
+    this.getCategoryList(this.navParams.data);
   }
 
-  list;
+  getCategoryList = (params: any) => {
+    this.kindergartenOverviewNetwork.getOneSicknessCaseList(params)
+      .subscribe((data: any) => {
+        console.log(data);
+        if (data.status) {
+          return;
+        }
+        let infos = {};
+        data.forEach((item: any) => {
+          if (!infos[item.className]) {
+            infos[item.className] = [];
+          }
+          infos[item.className].push({
+            name: item.xm
+          });
+        });
 
+        this.totalCount=data.length;
+        this.list = Object.keys(infos).map(key => {
+          return {
+            className: key,
+            students: infos[key],
+            count: infos[key].length
+          }
+        });
+      });
+  }
 
 }

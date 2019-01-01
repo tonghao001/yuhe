@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      手足口病
+      {{navParams.data.sickName}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,12 +9,12 @@
 <ion-content class="chart-detail-list-page" color="background">
 
   <div class="chart-summary">
-    <span>手足口病</span><span>4人</span>
+    <span>{{navParams.data.sickName}}</span><span> 共{{totalCount}}例</span>
   </div>
 
   <div class="class-student-list" *ngFor="let item of list" >
     <div class="class-student-header">
-      <span>{{item.className}}（{{item.studentCount}}人）</span>
+      <span>{{item.className}}（{{item.count}}人）</span>
     </div>
     <div class="class-student-body">
         <ion-item   *ngFor="let student of item.students" >

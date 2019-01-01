@@ -32,8 +32,6 @@ export class HttpNetwork {
     if (options.body) {
       httpOptions.body = options.body;
     }
-    // return this.http.request(options.method, url, httpOptions);
-
     return new Observable((observe) => {
       this.http.request(options.method, url, httpOptions).subscribe({
         next: (data: any) => {
