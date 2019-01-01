@@ -20,22 +20,22 @@
     <div class="left-margin-16">
       <p>上班时间：9：00</p>
       <div class="on-office">
-        <p class="blod-title">打卡时间： 8：20</p>
-        <p>天安中心</p>
+        <p class="blod-title">{{checkData.checkInTime}}</p>
+        <p>{{checkData.checkInAddress}}</p>
       </div>
     </div>
 
     <div class="off-office" class="left-margin-16">
-      <p>下班时间：9：00</p>
+      <p>下班时间：17：00</p>
       <div class="off-office">
-        <p class="blod-title">打卡时间： 8：20</p>
-        <p>天安中心</p>
+        <p class="blod-title">{{checkData.checkOutTime}}</p>
+        <p>{{checkData.checkOutAddress}}</p>
       </div>
     </div>
   </div>
   <div class="checkIn-area">
         <div class="checkIn-button" (click)="checkInClick()">
-            <p>下班打卡</p>
+            <p>{{isChenckIn ? '上班打卡' : '下班打卡'}}</p>
             <p>{{ today | date: 'HH:mm:ss'}}</p>
         </div>
         <div class="checkIn-tip">
