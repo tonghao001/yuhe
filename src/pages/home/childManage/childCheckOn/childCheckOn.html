@@ -14,21 +14,20 @@
     <div class="box-content">
       <ion-grid>
         <ion-row>
-          <ion-col>
+          <ion-col (click)="goToPage('app-home-StatusDetailList','应到')">
             <span>应到</span>
             <strong class="secondary" color="secondary">{{summary.totalCount}}</strong>
           </ion-col>
-          <ion-col>
+          <ion-col (click)="goToPage('app-home-StatusDetailList','实到')">
             <span>实到</span>
             <strong>{{summary.signCount}}</strong>
           </ion-col>
-          <ion-col>
+          <ion-col (click)="goToPage('app-home-StatusDetailList','请假')">
             <span>请假</span>
             <strong>{{summary.leaveCount}}</strong>
 
           </ion-col>
-          <ion-col>
-
+          <ion-col (click)="goToPage('app-home-StatusDetailList','未签到')">
             <span>未签到</span>
             <strong>{{summary.absenceCount}}</strong>
           </ion-col>
@@ -55,7 +54,7 @@
     <div class="box-content">
       <ion-list>
         <ion-item *ngFor="let child of rankings;let number = index;">
-          <label class="color-1">{{number + 1}}</label><span>{{child.name}}</span><strong>{{child.signRate * 100}}%</strong>
+          <label class="color-{{(number + 1) % 4}}">{{number + 1}}</label><span>{{child.name}}</span><strong>{{child.signRate * 100}}%</strong>
         </ion-item>
       </ion-list>
 

@@ -2,7 +2,6 @@ import { IonicPage, NavController,NavParams } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { ScheduleNetwork } from '../../../../network/schedule.network';
 import { ToastService } from '../../../../service/toast.service';
-import { formatDate } from '../../../../network/http';
 
 @IonicPage({
   name: 'app-home-scheduleDetail'
