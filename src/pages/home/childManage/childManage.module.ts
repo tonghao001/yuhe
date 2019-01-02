@@ -7,6 +7,7 @@ import { ChildCheckListPageModule } from "./childCheckList/childCheckList.module
 import { ChildCheckListItemPageModule } from "./childCheckListItem/childCheckListItem.module";
 import { ChildCheckChartDetailPageModule } from "./childCheckChartDetail/childCheckChartDetail.module";
 import { ChartDetailListPageModule } from "./chartDetailList/chartDetailList.module";
+import { StatusDetailListPageModule } from "./statusDetailList/statusDetailList.module";
 
 @NgModule({
   declarations:[
@@ -19,7 +20,8 @@ import { ChartDetailListPageModule } from "./chartDetailList/chartDetailList.mod
     ChildCheckListPageModule,
     ChildCheckListItemPageModule,
     ChildCheckChartDetailPageModule,
-    ChartDetailListPageModule
+    ChartDetailListPageModule,
+    StatusDetailListPageModule
   ],
   entryComponents:[
   ]

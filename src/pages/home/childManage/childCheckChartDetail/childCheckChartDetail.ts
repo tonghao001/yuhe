@@ -49,8 +49,7 @@ export class ChildCheckChartDetail {
         },
         events: {
           click: (e) => {
-            console.log(e.point.name);
-            this.navCtrl.push('app-home-chartDetailList', { name: e.point.name });
+            this.onChartClick(e);
           }
         },
         showInLegend: true
@@ -83,7 +82,10 @@ export class ChildCheckChartDetail {
 
   onChartClick(e){
     console.log(e.point.name);
-    this.navCtrl.push('app-home-chartDetailList', { name: e.point.name });
+
+    console.log('start:',this.startDateFilter);
+    console.log('end:',this.endDateFilter);
+    this.navCtrl.push('app-home-chartDetailList', { name: e.point.name, startDate: this.startDateFilter, endDate: this.endDateFilter });
   }
 
   goToPage(pageName, id) {

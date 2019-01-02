@@ -11,10 +11,16 @@ export class ChildAttendanceNetwork {
     return this.http.get('/app/studentAttendance/getClassInforns', data);
   }
 
-  //根据不通的幼儿状态获取以班级分组的学生列表
+  //根据不通的幼儿状态获取以班级分组的学生列表（点击）
   //params：checkData
   getStudentsOfClassGroupByStatus(data){
     return this.http.get('/app/studentAttendance/getAbsenceList', data);
+  }
+
+  //根据不通的幼儿状态获取以班级分组的学生列表（图标点击时）
+  //params: startDate, endDate
+  getStudentsOfClassGroupByStatusOnChartClick(data){
+    return this.http.get('/app/studentAttendance/getAbsenceDetailList', data);
   }
 
   //获取出勤率排名（分页）
