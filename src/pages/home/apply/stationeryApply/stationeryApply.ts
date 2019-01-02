@@ -149,7 +149,7 @@ export class StationeryApply {
   procurementApply() {
     const confirm = this.alertCtrl.create({
       title: "",
-      message: "你确定要通过申请吗?",
+      message: "你确定要申请吗?",
       buttons: [
         {
           text: "取消",

@@ -41,6 +41,7 @@ export class MyApproval {
     ) {
   }
   clickItem(item) {
+    item.approvalStatus = 0;
     this.navCtrl.push('app-home-approval-details', {params: item, type: 1});
   }
 }

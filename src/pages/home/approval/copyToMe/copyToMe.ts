@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NavParams, NavController, IonicPage } from "ionic-angular";
-import { ApprovalNetwork } from './../../../../network/approval.network';
+import { ApprovalNetwork } from "./../../../../network/approval.network";
 
 @IonicPage({
   name: "app-home-copyTome"
@@ -17,11 +17,12 @@ export class CopyToMe {
 
   constructor(
     public navCtrl: NavController,
-     params: NavParams,
-     public approvalNetWork: ApprovalNetwork,
-     ) {
+    params: NavParams,
+    public approvalNetWork: ApprovalNetwork
+  ) {
     this.props = params.data;
-
+  }
+  ionViewDidEnter() {
     this.approvalNetWork.getReadCopyList().subscribe(
       (data: any) => {
         console.log(data);
@@ -29,20 +30,22 @@ export class CopyToMe {
       },
       error => {
         console.log(error);
-      })
+      }
+    );
 
-      this.approvalNetWork.getUnReadCopyList().subscribe(
-        (data: any) => {
-          console.log(data);
-          this.unReadList = data;
-        },
-        error => {
-          console.log(error);
-        })
+    this.approvalNetWork.getUnReadCopyList().subscribe(
+      (data: any) => {
+        console.log(data);
+        this.unReadList = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   clickItem(item) {
-    this.navCtrl.push("app-home-approval-details", {params: item, type: 3});
+    this.navCtrl.push("app-home-approval-details", { params: item, type: 3 });
   }
 
   doRefresh(event) {

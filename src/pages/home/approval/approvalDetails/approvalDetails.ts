@@ -1,6 +1,12 @@
 import { Component } from "@angular/core";
-import { IonicPage, AlertController, NavParams, NavController } from "ionic-angular";
+import {
+  IonicPage,
+  AlertController,
+  NavParams,
+  NavController
+} from "ionic-angular";
 import { ApprovalNetwork } from "./../../../../network/approval.network";
+import { HTTP_URL } from "../../../../network/http";
 
 @IonicPage({
   name: "app-home-approval-details"
@@ -12,17 +18,17 @@ import { ApprovalNetwork } from "./../../../../network/approval.network";
 export class ApprovalDetails {
   params: any = {};
   type = 1;
-  buyDetail: any = { csxq: {}, cgqds: [], cgsq: {}};
+  buyDetail: any = { csxq: {}, cgqds: [], cgsq: {} };
   restDetail: any = { qjsq: {} };
   levelDetail: any = { lzsq: {} };
-  goodDetail: any = { lymxs: [], lysqb:{} };
+  goodDetail: any = { lymxs: [], lysqb: {} };
   orderDetail: any = { bxqds: [], gdsq: {} };
 
   csr: any = [];
   spr: any = [];
   picture: any = [];
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public alertCtrl: AlertController,
     params: NavParams,
     public approvalNetWork: ApprovalNetwork
@@ -32,25 +38,26 @@ export class ApprovalDetails {
 
     switch (this.params.billType) {
       case 1:
-      this.approvalNetWork
-        .applyBuyDetail({
-          id: this.params.id
-        })
-        .subscribe(
-          (data: any) => {
-            console.log(data);
-            this.buyDetail = data;
-            this.csr = data.csr;
-            this.spr = data.sps;
-            this.picture = data.path;
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      break;
+        this.approvalNetWork
+          .applyBuyDetail({
+            id: this.params.id
+          })
+          .subscribe(
+            (data: any) => {
+              console.log(data);
+              this.buyDetail = data;
+              this.csr = this.addImageToUser(data.csr);
+              this.spr = this.addImageToUser(data.spr);
+              console.log(this.spr);
+              this.picture = data.path;
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        break;
       case 2:
-      this.approvalNetWork
+        this.approvalNetWork
           .applyGoodDetail({
             id: this.params.id
           })
@@ -58,8 +65,8 @@ export class ApprovalDetails {
             (data: any) => {
               console.log(data);
               this.goodDetail = data;
-              this.csr = data.csr;
-              this.spr = data.spr;
+              this.csr = this.addImageToUser(data.csr);
+              this.spr = this.addImageToUser(data.spr);
               this.picture = data.path;
             },
             error => {
@@ -68,7 +75,7 @@ export class ApprovalDetails {
           );
         break;
       case 3:
-      this.approvalNetWork
+        this.approvalNetWork
           .applyRestDetail({
             id: this.params.id
           })
@@ -79,8 +86,8 @@ export class ApprovalDetails {
                 data.qjsq = {};
               }
               this.restDetail = data;
-              this.csr = data.csr;
-              this.spr = data.spr;
+              this.csr = this.addImageToUser(data.csr);
+              this.spr = this.addImageToUser(data.spr);
               this.picture = data.path;
             },
             error => {
@@ -89,7 +96,7 @@ export class ApprovalDetails {
           );
         break;
       case 4:
-      this.approvalNetWork
+        this.approvalNetWork
           .applyLeaveDetail({
             id: this.params.id
           })
@@ -100,8 +107,8 @@ export class ApprovalDetails {
                 data.lzsq = {};
               }
               this.levelDetail = data;
-              this.csr = data.csr;
-              this.spr = data.spr;
+              this.csr = this.addImageToUser(data.csr);
+              this.spr = this.addImageToUser(data.spr);
               this.picture = data.path;
             },
             error => {
@@ -110,7 +117,7 @@ export class ApprovalDetails {
           );
         break;
       case 5:
-      this.approvalNetWork
+        this.approvalNetWork
           .applyOrderDetail({
             id: this.params.id
           })
@@ -118,8 +125,8 @@ export class ApprovalDetails {
             (data: any) => {
               console.log(data);
               this.orderDetail = data;
-              this.csr = data.csr;
-              this.spr = data.sps;
+              this.csr = this.addImageToUser(data.csr);
+              this.spr = this.addImageToUser(data.spr);
               this.picture = data.path;
             },
             error => {
@@ -132,6 +139,15 @@ export class ApprovalDetails {
     }
   }
 
+  addImageToUser(users: Array<any>) {
+    return users.map(item => {
+      if (item.staffInformations) {
+        item.image = HTTP_URL.MAIN + "/images/" + item.staffInformations.photo;
+      }
+      return item;
+    });
+  }
+
   approvalClick() {
     const confirm = this.alertCtrl.create({
       title: "",
@@ -139,8 +155,7 @@ export class ApprovalDetails {
       buttons: [
         {
           text: "取消",
-          handler: () => {
-          }
+          handler: () => {}
         },
         {
           text: "通过",
