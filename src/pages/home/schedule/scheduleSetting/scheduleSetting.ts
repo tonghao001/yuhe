@@ -52,6 +52,8 @@ export class ScheduleSettingPage {
     });
   }
 
+  changeDate(){}
+
   goToPage(pageName, id) {
     pageName = pageName || 'app-home-scheduleDetail';
     console.log('id:', id);
