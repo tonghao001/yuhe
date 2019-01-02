@@ -18,7 +18,7 @@ export class NewSchedulePage {
     private navCtrl: NavController,
     private confirmService: ConfirmService,
     private toastService: ToastService,
-    private scheduleService: ScheduleNetwork
+    private scheduleNetwork: ScheduleNetwork
   ) {
 
     let now = new Date();
@@ -60,9 +60,10 @@ export class NewSchedulePage {
       return this.toastService.show('描述必填');
     }
 
-    this.scheduleService.saveSchedule({
+    this.scheduleNetwork.saveSchedule({
       title: this.schedule.title,
-      summary: this.schedule.content,
+      content: this.schedule.content,
+      summary: this.schedule.remark,
       scheduleDate: this.schedule.startDateString,
       beginTime: this.schedule.startTimeString + ':00'
     })

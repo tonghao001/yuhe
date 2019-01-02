@@ -13,18 +13,18 @@
 
 <ion-content class="schedule-setting-page" color="background">
   <div class="calendar-area">
-    <p>2018-10</p>
+    <p>{{currentMonthString}}</p>
 
     <ion-row>
-      <ion-col>
-        <span>一</span>
-        <div>
-          <strong class="secondary" color="secondary">1</strong>
-          <span>初三</span>
+      <ion-col *ngFor="let item of weekDay">
+        <span>{{item.name}}</span>
+        <div ngClass="{{item.today === true ? 'current' : ''}}" (click)="changeDate(item)">
+          <strong class="secondary" color="secondary">{{item.dateNumber}}</strong>
+          <!-- <span>初三</span> -->
         </div>
-        <span class="status">*</span>
+        <!-- <span class="status">*</span> -->
       </ion-col>
-      <ion-col>
+      <!-- <ion-col>
         <span>二</span>
         <div>
           <strong class="secondary" color="secondary">2</strong>
@@ -67,7 +67,7 @@
             <strong class="secondary" color="secondary">7</strong>
             <span>初九</span>
         </div>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </div>
 
