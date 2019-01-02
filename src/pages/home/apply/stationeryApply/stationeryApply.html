@@ -4,10 +4,10 @@
 
 <ion-content class="stationery-apply-body">
   <div class="block-view">
-    <ion-item>
+    <!-- <ion-item>
       <ion-label class="left">领用类型</ion-label>
       <button item-end class="right">请选择</button>
-    </ion-item>
+    </ion-item> -->
     <ion-item>
       <ion-label class="left">领用时间</ion-label>
       <ion-datetime
@@ -93,7 +93,7 @@
           name="arrow-round-forward"
           class="arrow-right"
           [ngClass]="item.last"
-          hidden]="i == spr.length - 1"
+          [hidden]="i == spr.length - 1"
         ></ion-icon>
       </ion-col>
     </ion-row>
@@ -117,7 +117,7 @@
           name="arrow-round-forward"
           class="arrow-right"
           [ngClass]="item.last"
-          hidden]="i == csr.length - 1"
+          [hidden]="i == csr.length - 1"
         ></ion-icon>
       </ion-col>
     </ion-row>

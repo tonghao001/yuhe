@@ -18,6 +18,8 @@ export class StartByMe {
     public approvalNetWork: ApprovalNetwork
   ) {
     this.props = params.data;
+  }
+  ionViewDidEnter() {
     this.approvalNetWork.getApplayApprovalList().subscribe(
       (data: any) => {
         console.log(data);
@@ -30,7 +32,7 @@ export class StartByMe {
   }
 
   clickItem(item) {
-    this.navCtrl.push("app-home-approval-details", {params: item, type: 2});
+    this.navCtrl.push("app-home-approval-details", { params: item, type: 2 });
   }
 
   doRefresh(event) {
