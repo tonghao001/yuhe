@@ -174,8 +174,7 @@ export class StationeryApply {
               csid: csid.join(','),
               items: JSON.stringify(this.applyData.lymxs),
             };
-            // TODO: 接口不通 ！！！
-            this.approvalNetWork.applyForReset(params).subscribe(
+            this.approvalNetWork.applyForGood(params).subscribe(
               (data: any) => {
                 console.log(data);
                 this.navCtrl.pop();

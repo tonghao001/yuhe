@@ -72,7 +72,7 @@ export class ApprovalNetwork {
   }
   // 领用
   applyForGood(data) {
-    return this.http.postForm('/app/approval/application/postRequestGoods', data);
+    return this.http.postForm('/app/approval/application/postRecieveGoods', data);
   }
   // 离职
   applyForLeave(data) {
