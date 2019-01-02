@@ -29,24 +29,14 @@
     </ion-item>
   </div>
 
-  <div class="block-view" *ngFor="let item of applyData.cgqds">
+  <div class="block-view" *ngFor="let item of applyData.cgqds; let i = index">
     <ion-item>
       <ion-label class="left">名称</ion-label>
-      <ion-input
-        class="right"
-        [(ngModel)]="item.xmmx"
-        item-end
-        placeholder="请输入"
-      ></ion-input>
+      <button item-end class="right" (click)="selectGood(i)">{{item.name}}</button>
     </ion-item>
     <ion-item>
       <ion-label class="left">规格</ion-label>
-      <ion-input
-        class="right"
-        [(ngModel)]="item.gg"
-        item-end
-        placeholder="请输入"
-      ></ion-input>
+      <p class="right" item-end >{{item.model}}</p>
     </ion-item>
     <ion-item>
       <ion-label class="left">单价</ion-label>

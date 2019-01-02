@@ -19,7 +19,7 @@ import {
 export class ProcurementApply {
   applyData: any = { cgqds: [] };
   approvalPersons: any = [];
-  stationTypes: any = [];
+  purseGoods: any = [];
   spr: any = [];
   csr: any = [];
 
@@ -31,11 +31,47 @@ export class ProcurementApply {
     public navCtrl: NavController,
     private datePipe: DatePipe,
   ) {
-    this.applyData.cgqds.push({});
+    this.applyData.cgqds.push({name: "请选择"});
   }
 
   addMoreGood() {
-    this.applyData.cgqds.push({});
+    this.applyData.cgqds.push({name: "请选择"});
+  }
+
+  /// 领用类型
+  selectGood(i) {
+    console.log(i);
+    /// 请假类型没有定义
+    if (this.purseGoods.length > 0) {
+      this.showStationTypeAlert(i)
+    } else {
+      this.approvalNetWork.getPurchaseGoodType().subscribe(
+        (data: any) => {
+          console.log(data);
+          this.purseGoods = data;
+          this.showStationTypeAlert(i)
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  /// 领用类型
+  showStationTypeAlert(i) {
+    var buttons = this.purseGoods.map((item) => {
+      return {
+        text: item.name,
+        handler: () => {
+          this.applyData.cgqds[i] = item;
+        }
+      }
+    })
+    const actionSheet = this.actionSheet.create({
+      buttons: buttons,
+    });
+    actionSheet.present();
   }
 
   /// 审批人
@@ -133,12 +169,17 @@ export class ProcurementApply {
               cgsj: start,
               sqsy: this.applyData.sqsy,
               cglx: this.applyData.cglx,
-            }
+            };
+            var items = this.applyData.cgqds.map((item) => {
+              item.lyid = item.id;
+              item.xmmx = item.name;
+              return item;
+            });
             var params = {
               apply: JSON.stringify(apply),
               spid: spid.join(','),
               csid: csid.join(','),
-              items: JSON.stringify(this.applyData.cgqds),
+              items: JSON.stringify(items),
             };
             this.approvalNetWork.applyForBuy(params).subscribe(
               (data: any) => {

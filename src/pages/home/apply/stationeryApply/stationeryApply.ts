@@ -178,7 +178,7 @@ export class StationeryApply {
               apply: JSON.stringify(apply),
               spid: spid.join(','),
               csid: csid.join(','),
-              items: JSON.stringify(this.applyData.lymxs),
+              items: JSON.stringify(items),
             };
             this.approvalNetWork.applyForGood(params).subscribe(
               (data: any) => {
