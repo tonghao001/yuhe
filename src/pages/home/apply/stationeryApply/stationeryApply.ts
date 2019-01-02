@@ -20,7 +20,7 @@ import {
 export class StationeryApply {
   applyData: any = {lymxs: []};
   approvalPersons: any= [];
-  stationTypes: any= [];
+  stationGoods: any= [];
   spr: any = [];
   csr: any = [];
   constructor(
@@ -31,24 +31,25 @@ export class StationeryApply {
     public navCtrl: NavController,
     private datePipe: DatePipe,
   ) {
-      this.applyData.lymxs.push({});
+      this.applyData.lymxs.push({name: "请选择"});
   }
 
   addMoreGood() {
-    this.applyData.lymxs.push({});
+    this.applyData.lymxs.push({name: "请选择"});
   }
 
   /// 领用类型
-  stationType() {
+  selectGood(i) {
+    console.log(i);
     /// 请假类型没有定义
-    if (this.stationTypes.length > 0) {
-      this.showStationTypeAlert()
+    if (this.stationGoods.length > 0) {
+      this.showStationTypeAlert(i)
     } else {
-      this.approvalNetWork.getRestApplayType().subscribe(
+      this.approvalNetWork.getReciveGoodType().subscribe(
         (data: any) => {
           console.log(data);
-          this.stationTypes = data;
-          this.showStationTypeAlert()
+          this.stationGoods = data;
+          this.showStationTypeAlert(i)
         },
         error => {
           console.log(error);
@@ -58,13 +59,12 @@ export class StationeryApply {
   }
 
   /// 领用类型
-  showStationTypeAlert() {
-    var buttons = this.stationTypes.map((item) => {
+  showStationTypeAlert(i) {
+    var buttons = this.stationGoods.map((item) => {
       return {
-        text: item.qjyy,
+        text: item.name,
         handler: () => {
-          this.applyData.qjlx = item.id;
-          this.applyData.qjyy = item.qjyy;
+          this.applyData.lymxs[i] = item;
         }
       }
     })
@@ -167,7 +167,13 @@ export class StationeryApply {
             var apply =  {
               billType: 2,
               lysj: start,
-            }
+            };
+            var items = this.applyData.lymxs.map((item) => {
+              item.lyid = item.id;
+              item.wpmc = item.name;
+              return item;
+            })
+        
             var params = {
               apply: JSON.stringify(apply),
               spid: spid.join(','),
