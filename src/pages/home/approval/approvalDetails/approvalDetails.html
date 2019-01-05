@@ -32,10 +32,10 @@
   </div>
   <div *ngIf="params.billType == 1">
     <div class="block-view">
-      <ion-item>
+      <!-- <ion-item>
         <ion-label class="left">采购类型</ion-label>
         <ion-label item-end class="right">{{ buyDetail.cgsq.cglx }}</ion-label>
-      </ion-item>
+      </ion-item> -->
       <ion-item>
         <ion-label class="left">预购时间</ion-label>
         <ion-label item-end class="right">{{ buyDetail.cgsq.cgsj }}</ion-label>
@@ -49,7 +49,7 @@
     <div class="block-view" *ngFor="let item of buyDetail.cgqds">
       <ion-item>
         <ion-label class="left">名称</ion-label>
-        <ion-label item-end class="right">{{ item.xmmx }}</ion-label>
+        <ion-label item-end class="right">{{ item.goodsItem.name }}</ion-label>
       </ion-item>
       <ion-item>
         <ion-label class="left">规格</ion-label>
@@ -95,12 +95,12 @@
 
   <div *ngIf="params.billType == 2">
     <div class="block-view">
-      <ion-item>
+      <!-- <ion-item>
         <ion-label class="left">领用类型</ion-label>
         <ion-label item-end class="right">{{
           goodDetail.lysqb.billTypeName
         }}</ion-label>
-      </ion-item>
+      </ion-item> -->
       <ion-item>
         <ion-label class="left">领用时间</ion-label>
         <ion-label item-end class="right">{{
@@ -120,16 +120,15 @@
         <ion-label class="left">名称</ion-label>
         <ion-label item-end class="right">{{ item.wpmc }}</ion-label>
       </ion-item>
-      <!-- <ion-item> -->
-      <!--
+      <ion-item>
         <ion-label class="left">规格</ion-label>
-          <ion-label item-end class="right">{{ item.gg }}</ion-label>
+          <ion-label item-end class="right">{{ item.goodsItem.model }}</ion-label>
         </ion-item>
         <ion-item>
           <ion-label class="left">单价</ion-label>
-          <ion-label item-end class="right">{{ item.dj }}</ion-label>
+          <ion-label item-end class="right">{{ item.goodsItem.price }}</ion-label>
         </ion-item>
-      -->
+
       <ion-item>
         <ion-label class="left">数量</ion-label>
         <ion-label item-end class="right">{{ item.sl }}</ion-label>

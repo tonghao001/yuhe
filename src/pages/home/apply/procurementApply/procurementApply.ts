@@ -173,6 +173,16 @@ export class ProcurementApply {
             var items = this.applyData.cgqds.map((item) => {
               item.lyid = item.id;
               item.xmmx = item.name;
+              item.dj = item.price;
+              item.gg = item.model;
+              item.pp = item.pp;
+              item.goodsItem = {
+                id: item.id,
+                name: item.name,
+                model: item.model,
+                brand: item.brand,
+                defaultRepertoryId: item.repertoryId,
+              };
               return item;
             });
             var params = {

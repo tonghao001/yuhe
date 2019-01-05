@@ -167,10 +167,20 @@ export class StationeryApply {
             var apply =  {
               billType: 2,
               lysj: start,
+              wpyt: this.applyData.wpyt,
             };
             var items = this.applyData.lymxs.map((item) => {
               item.lyid = item.id;
               item.wpmc = item.name;
+              item.dj = item.price;
+              item.gg = item.model;
+              item.goodsItem = {
+                id: item.id,
+                name: item.name,
+                model: item.model,
+                brand: item.brand,
+                defaultRepertoryId: item.repertoryId,
+              };
               return item;
             })
         
