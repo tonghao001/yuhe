@@ -75,7 +75,6 @@ export class ScheduleSettingPage {
           });
           return callback(newList);
         } else {
-          this.toastService.show('保存失败！');
           return callback([]);
         }
       }, err => {
