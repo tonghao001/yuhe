@@ -27,6 +27,7 @@ export class CheckInPage {
   timer: any;
   isChenckIn: boolean = true;
   checkData: any = {};
+  timeData: any = {};
 
   constructor(
     params: NavParams,
@@ -59,7 +60,9 @@ export class CheckInPage {
     this.timer = setInterval(() => {
       this.today = Date.now(); // 或者this.today = new Date();
     }, 1000);
+  }
 
+  ionViewDidEnter() {
     this.checkNetWork.getCompanyLocation().subscribe(
       (data: any) => {
         console.log(data);
@@ -71,7 +74,23 @@ export class CheckInPage {
         console.log(error);
       }
     );
+
+    this.checkNetWork.getDayReport({
+      checkDate: formatDate(new Date(), "yyyy-MM-dd")
+      // checkDate: "2019-1-1"
+    }).subscribe(
+      (data: any) => {
+        if (data.length > 0) {
+          console.log(data[0]);
+          this.checkData = data[0];
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
+
   ngOnDestroy() {
     clearInterval(this.timer);
   }
@@ -93,7 +112,7 @@ export class CheckInPage {
           (data: any) => {
             console.log(data);
             if (data.status == 0) {
-                this.checkData.checkInTime = "打卡时间" +  formatDate(new Date(), "HH:mm:ss");
+                this.checkData.sbjs = formatDate(new Date(), "yyyy-MM-dd HH:mm:ss");
                 this.toast.show('打卡成功');
             }
           },
@@ -111,7 +130,7 @@ export class CheckInPage {
           (data: any) => {
             console.log(data);
             if (data.status == 0) {
-                this.checkData.checkOutTime = "打卡时间" + formatDate(new Date(), "HH:mm:ss");
+                this.checkData.xbsj = formatDate(new Date(), "yyyy-MM-dd HH:mm:ss");
                 this.toast.show('打卡成功');
             }
           },
