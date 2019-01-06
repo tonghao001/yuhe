@@ -4,6 +4,8 @@ import { AttendanceReportPage } from "./attendanceReport";
 
 import { MessagePageModule } from "../../../message/message.module";
 import { ComponentsModule } from "../../../../components/components.module";
+import { CheckNetwork } from "../../../../network/check.network";
+import { ToastService } from "../../../../service/toast.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +21,7 @@ import { ComponentsModule } from "../../../../components/components.module";
     AttendanceReportPage
   ],
   providers:[
-    
+    CheckNetwork, ToastService
   ],
 })
 export class AttendanceReportPageModule { };
